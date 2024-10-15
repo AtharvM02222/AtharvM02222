@@ -1,4 +1,4 @@
-<h1 align="center">Hi 👋, I'm Vyom Dwivedi</h1>
+<h1 align="center">Hi 👋, I'm Atharv Mandlavdiya</h1>
 <h3 align="center">A passionate part time programmer from India</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=AtharvM02222&label=Profile%20views&color=0e75b6&style=flat" alt="AtharvM02222" /> </p>
@@ -11,7 +11,7 @@
 
 - 💬 Ask me about **anything you want to know about**
 
-- 📫 How to reach me **vym**
+- 📫 How to reach me **atharvam682@gmail.com**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
