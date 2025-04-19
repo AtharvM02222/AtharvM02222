@@ -11,7 +11,7 @@
 
 - 👨‍💻 All of my projects are available at [itch.io/profile/atharvam](https://itch.io/profile/atharvam)
 
-- My Website [atharvmandlavdiya.netlify.app](https://atharvmandlavdiya.netlify.app/)
+- My Website [atharvmandlavdiya.me](https://atharvmandlavdiya.me)
 
 - Google Dev [g.dev/atharvmandlavdiya](g.dev/atharvmandlavdiya)
 
