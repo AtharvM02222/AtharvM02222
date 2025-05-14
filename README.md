@@ -1,8 +1,6 @@
 <h1 align="center">Hi 👋, I'm Atharv Mandlavdiya</h1>
 <h3 align="center">A passionate developer from India</h3>
 
-
-
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=atharvm02222&label=Profile%20views&color=0e75b6&style=flat" alt="atharvm02222" /> </p>
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=atharvm02222" alt="atharvm02222" /></a> </p>
