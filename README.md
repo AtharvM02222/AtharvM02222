@@ -5,7 +5,7 @@
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=atharvm02222" alt="atharvm02222" /></a> </p>
 
-- 🌱 I’m currently learning **Unity Python C#**
+- 🌱 I’m currently learning **Everything**
 
 - 👨‍💻 All of my projects are available at [itch.io/profile/atharvam](https://itch.io/profile/atharvam)
 
