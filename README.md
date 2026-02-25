@@ -1,29 +1,74 @@
-<h1 align="center">Hi 👋, I'm Atharv Mandlavdiya</h1>
-<h3 align="center">A passionate developer from India</h3>
-
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=atharvm02222&label=Profile%20views&color=0e75b6&style=flat" alt="atharvm02222" /> </p>
-
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=atharvm02222" alt="atharvm02222" /></a> </p>
-
-- 🌱 I’m currently learning **Everything**
-
-- 👨‍💻 All of my projects are available at [itch.io/profile/atharvam](https://itch.io/profile/atharvam)
-
-- My Website [atharvmandlavdiya.me](https://atharvmandlavdiya.me)
-
-- Google Dev [g.dev/atharvmandlavdiya](g.dev/atharvmandlavdiya)
-
-- 📫 How to reach me **atharvam682@gmail.com**
-
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://www.hackerrank.com/profile/atharv0m" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/hackerrank.svg" alt="https://www.hackerrank.com/profile/atharv0m" height="30" width="40" /></a>
+<!-- Animated Header -->
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0e75b6&height=180&section=header&text=Atharv%20Mandlavdiya&fontSize=40&fontColor=ffffff&animation=fadeIn" />
 </p>
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://www.w3schools.com/cs/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="csharp" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> <a href="https://flutter.dev" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" alt="flutter" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> <a href="https://unity.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/unity3d/unity3d-icon.svg" alt="unity" width="40" height="40"/> </a> <a href="https://zapier.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/zapier/zapier-icon.svg" alt="zapier" width="40" height="40"/> </a> </p>
+<!-- Typing animation -->
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=0E75B6&center=true&vCenter=true&width=600&lines=Hi+👋+I'm+Atharv+Mandlavdiya;Passionate+Developer+from+India;Web+%7C+Game+%7C+Automation;Learning+Everything+🚀" />
+</p>
 
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=atharvm02222&label=Profile%20views&color=0e75b6&style=flat" />
+</p>
 
-<img align="top" src="https://github-readme-stats.vercel.app/api/top-langs/?username=AtharvM02222&theme=dark" /><img align="top" src="https://github-readme-stats.vercel.app/api?username=AtharvM02222&show_icons=true&theme=dark" />
+---
 
+## 👨‍💻 About Me
+- 🌱 Currently learning **everything**
+- 🎮 Indie games & projects: https://itch.io/profile/atharvam
+- 🌐 Website: https://atharvmandlavdiya.me
+- 🏅 Google Dev: https://g.dev/atharvmandlavdiya
+- 📫 Email: **atharvam682@gmail.com**
 
+---
+
+## 🌐 Connect With Me
+- HackerRank: https://www.hackerrank.com/profile/atharv0m
+- GitHub: https://github.com/AtharvM02222
+
+---
+
+## 🛠️ Languages & Tools
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=html,css,js,python,cs,linux,unity,flutter,figma&theme=dark" />
+</p>
+
+---
+
+## 📊 GitHub Stats (Animated)
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=AtharvM02222&show_icons=true&theme=dark&rank_icon=github" />
+</p>
+
+## 🐍 Contribution Snake
+
+<p align="center">
+  <img src="https://github.com/AtharvM02222/AtharvM02222/blob/output/github-contribution-grid-snake-dark.svg" />
+</p>
+
+## 🏆 GitHub Trophies
+
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=AtharvM02222&theme=darkhub&no-frame=true&row=1&column=6" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=AtharvM02222&layout=compact&theme=dark" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=AtharvM02222&bg_color=0d1117&color=0e75b6&line=58a6ff&point=ffffff&area=true&hide_border=true" />
+</p>
+
+---
+
+## 🚀 Featured Projects
+- 🎮 Indie Games (itch.io)
+- 🌐 Portfolio Website
+- 🛠️ Tools & Scripts
+
+<!-- Footer -->
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0e75b6&height=120&section=footer" />
+</p>
