@@ -39,27 +39,46 @@ jobs:
             TOKEN="${{ secrets.GITHUB_TOKEN }}"
           fi
           
-          # Use REST API to get all repos (simpler and more reliable)
+          # Get personal repos
+          echo "Fetching personal repositories..."
           curl -H "Authorization: token $TOKEN" \
                -H "Accept: application/vnd.github.v3+json" \
-               "https://api.github.com/user/repos?per_page=100&affiliation=owner" > repos.json
+               "https://api.github.com/user/repos?per_page=100&affiliation=owner" > personal_repos.json
           
-          # Debug: Show how many repos found
-          echo "API Response (first 10 repos):"
-          jq -r '.[0:10] | .[] | .name' repos.json 2>/dev/null || echo "Failed to parse"
+          # Get RoboNexus org repos
+          echo "Fetching RoboNexus organization repositories..."
+          curl -H "Authorization: token $TOKEN" \
+               -H "Accept: application/vnd.github.v3+json" \
+               "https://api.github.com/orgs/RoboNexxus/repos?per_page=100" > org_repos.json
           
-          # Extract repo names
-          if jq -e 'type == "array"' repos.json > /dev/null 2>&1; then
-            jq -r '.[].name' repos.json > repo_list.txt
-            echo ""
-            echo "✅ Successfully extracted $(wc -l < repo_list.txt) repositories"
-            echo "Repositories to process:"
-            cat repo_list.txt
+          # Combine both lists
+          echo "Combining repository lists..."
+          
+          # Extract personal repo names
+          if jq -e 'type == "array"' personal_repos.json > /dev/null 2>&1; then
+            jq -r '.[] | "AtharvM02222/\(.name)"' personal_repos.json > repo_list.txt
+            personal_count=$(wc -l < repo_list.txt)
+            echo "✅ Found $personal_count personal repositories"
           else
-            echo "ERROR: API did not return a repo array."
-            cat repos.json
-            exit 1
+            echo "❌ Failed to get personal repos"
+            cat personal_repos.json
+            touch repo_list.txt
           fi
+          
+          # Extract org repo names and append
+          if jq -e 'type == "array"' org_repos.json > /dev/null 2>&1; then
+            jq -r '.[] | "RoboNexxus/\(.name)"' org_repos.json >> repo_list.txt
+            org_count=$(jq -r 'length' org_repos.json)
+            echo "✅ Found $org_count RoboNexus organization repositories"
+          else
+            echo "⚠️ Could not access RoboNexus org repos (might need read:org scope)"
+          fi
+          
+          total_repos=$(wc -l < repo_list.txt)
+          echo ""
+          echo "📊 Total repositories to process: $total_repos"
+          echo "Repositories:"
+          cat repo_list.txt
           
       - name: Clone and count lines
         env:
@@ -77,7 +96,7 @@ jobs:
           # Clone each repo and count lines
           while IFS= read -r repo; do
             echo "Processing $repo..."
-            git clone https://x-access-token:${TOKEN}@github.com/AtharvM02222/$repo.git temp_repos/$repo 2>/dev/null || continue
+            git clone https://x-access-token:${TOKEN}@github.com/$repo.git temp_repos/$repo 2>/dev/null || continue
             
             # Count lines using cloc
             cloc temp_repos/$repo --json --quiet > cloc_output.json 2>/dev/null || continue
