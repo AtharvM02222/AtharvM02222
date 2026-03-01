@@ -210,14 +210,14 @@ me.say_hi()
 <sub>Across all repositories</sub>
 </td>
 <td align="center">
+<img src="https://img.shields.io/badge/Repositories-28-00d9ff?style=for-the-badge&logo=github&logoColor=white" alt="Repos"/>
+<br>
+<sub>Public & Private</sub>
+</td>
+<td align="center">
 <img src="https://img.shields.io/badge/Languages-7+-00d9ff?style=for-the-badge&logo=code&logoColor=white" alt="Languages"/>
 <br>
 <sub>Python, C#, JS, C++, etc.</sub>
-</td>
-<td align="center">
-<img src="https://img.shields.io/badge/Projects-10+-00d9ff?style=for-the-badge&logo=github&logoColor=white" alt="Projects"/>
-<br>
-<sub>Public & Private</sub>
 </td>
 </tr>
 </table>
