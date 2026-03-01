@@ -1,6 +1,7 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/particles-bg.gif" width="100%" alt="Particles Background">
+<!-- Particles GIF from this repo - will work even if Certi-Mailer is private -->
+<img src="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/main/particles-bg.gif" width="100%" alt="Particles Background">
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=180&section=header&text=Atharv%20Mandlavdiya&fontSize=42&fontColor=fff&animation=twinkling&fontAlignY=32"/>
 
@@ -407,20 +408,14 @@ Interactive silk-like pattern generator creating beautiful symmetrical designs.
 
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=AtharvM02222&theme=react-dark&hide_border=true&area=true&custom_title=Contribution%20Activity&bg_color=0d1117&color=00eaff&line=00eaff&point=ffffff" width="100%" alt="Contribution Graph"/>
 
+<!-- Snake will appear after running the workflow -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/output/github-contribution-grid-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/output/github-contribution-grid-snake.svg">
+  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/output/github-contribution-grid-snake.svg">
+</picture>
+
 </div>
-
-<details>
-<summary>🐍 Snake Animation (Click to expand - Run GitHub Actions to generate)</summary>
-<br>
-
-To enable the snake animation:
-1. Go to your repo's **Actions** tab
-2. Click **Generate Snake Animation**
-3. Click **Run workflow**
-4. Wait for it to complete
-5. The snake will appear here automatically!
-
-</details>
 
 ---
 
