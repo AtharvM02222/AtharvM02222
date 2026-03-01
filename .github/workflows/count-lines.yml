@@ -139,14 +139,21 @@ jobs:
       - name: Update README
         run: |
           # Update the README with the new counts
+          # Try multiple patterns to catch the badge
           sed -i "s/Total_Lines-Calculating\.\.\.-00d9ff/Total_Lines-${{ env.TOTAL_LINES }}-00d9ff/g" README.md
-          sed -i "s/Repositories-28-00d9ff/Repositories-${{ env.REPO_COUNT }}-00d9ff/g" README.md
+          sed -i "s/Total_Lines-[0-9,]*-00d9ff/Total_Lines-${{ env.TOTAL_LINES }}-00d9ff/g" README.md
+          sed -i "s/Repositories-[0-9]*-00d9ff/Repositories-${{ env.REPO_COUNT }}-00d9ff/g" README.md
+          sed -i "s/Across all [0-9]* repositories/Across all ${{ env.REPO_COUNT }} repositories/g" README.md
           sed -i "s/Across all repositories/Across all ${{ env.REPO_COUNT }} repositories/g" README.md
           
           # Show what changed
           echo "Updated README with:"
           echo "  Total Lines: ${{ env.TOTAL_LINES }}"
           echo "  Repositories: ${{ env.REPO_COUNT }}"
+          
+          # Show the updated lines
+          grep "Total_Lines" README.md || echo "Total_Lines not found"
+          grep "Repositories" README.md || echo "Repositories not found"
           
       - name: Commit changes
         env:
