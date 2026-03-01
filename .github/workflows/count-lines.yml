@@ -1,0 +1,96 @@
+name: Count Lines of Code
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Run every Sunday at midnight
+  workflow_dispatch: # Allow manual trigger
+  push:
+    branches:
+      - main
+
+jobs:
+  count-lines:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Install cloc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cloc
+          
+      - name: Get all repos
+        id: repos
+        run: |
+          # Get all repos from the user (including private)
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               https://api.github.com/user/repos?per_page=100\&affiliation=owner > repos.json
+          
+          # Extract repo names
+          cat repos.json | jq -r '.[].name' > repo_list.txt
+          
+      - name: Clone and count lines
+        run: |
+          total_lines=0
+          total_code=0
+          total_comments=0
+          total_blanks=0
+          repo_count=0
+          
+          # Create temp directory
+          mkdir -p temp_repos
+          
+          # Clone each repo and count lines
+          while IFS= read -r repo; do
+            echo "Processing $repo..."
+            git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/AtharvM02222/$repo.git temp_repos/$repo 2>/dev/null || continue
+            
+            # Count lines using cloc
+            cloc temp_repos/$repo --json --quiet > cloc_output.json 2>/dev/null || continue
+            
+            # Extract totals
+            code=$(cat cloc_output.json | jq -r '.SUM.code // 0')
+            comments=$(cat cloc_output.json | jq -r '.SUM.comment // 0')
+            blanks=$(cat cloc_output.json | jq -r '.SUM.blank // 0')
+            
+            if [ "$code" -gt 0 ]; then
+              total_code=$((total_code + code))
+              total_comments=$((total_comments + comments))
+              total_blanks=$((total_blanks + blanks))
+              repo_count=$((repo_count + 1))
+            fi
+            
+            # Clean up
+            rm -rf temp_repos/$repo
+          done < repo_list.txt
+          
+          total_lines=$((total_code + total_comments + total_blanks))
+          
+          # Format numbers with commas
+          formatted_lines=$(printf "%'d" $total_lines)
+          formatted_code=$(printf "%'d" $total_code)
+          
+          echo "TOTAL_LINES=$formatted_lines" >> $GITHUB_ENV
+          echo "TOTAL_CODE=$formatted_code" >> $GITHUB_ENV
+          echo "REPO_COUNT=$repo_count" >> $GITHUB_ENV
+          
+          echo "Total Lines: $formatted_lines"
+          echo "Code Lines: $formatted_code"
+          echo "Repositories: $repo_count"
+          
+      - name: Update README
+        run: |
+          # Update the README with the new counts
+          sed -i "s/Total_Lines-Calculating\.\.\./Total_Lines-${{ env.TOTAL_LINES }}/g" README.md
+          sed -i "s/Repositories-10+/Repositories-${{ env.REPO_COUNT }}/g" README.md
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git diff --quiet && git diff --staged --quiet || git commit -m "📊 Update lines of code count"
+          git push

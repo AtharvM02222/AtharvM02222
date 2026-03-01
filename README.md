@@ -200,6 +200,30 @@ me.say_hi()
 <img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=AtharvM02222&layout=compact&theme=tokyonight&hide_border=true&langs_count=10&bg_color=0d1117&title_color=00eaff&text_color=c9d1d9" />
 <img width="49%" src="https://github-readme-activity-graph.vercel.app/graph?username=AtharvM02222&theme=react-dark&hide_border=true&area=true&bg_color=0d1117&color=00eaff&line=00eaff&point=ffffff" />
 
+### 💻 Code Statistics (All Repositories)
+
+<table>
+<tr>
+<td align="center">
+<img src="https://img.shields.io/badge/Total_Lines-Calculating...-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
+<br>
+<sub>Across all repositories</sub>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/Repositories-10+-00d9ff?style=for-the-badge&logo=github&logoColor=white" alt="Repos"/>
+<br>
+<sub>Public & Private</sub>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/Languages-7+-00d9ff?style=for-the-badge&logo=code&logoColor=white" alt="Languages"/>
+<br>
+<sub>Python, C#, JS, C++, etc.</sub>
+</td>
+</tr>
+</table>
+
+*Line count updates automatically via GitHub Actions*
+
 </div>
 
 ---
