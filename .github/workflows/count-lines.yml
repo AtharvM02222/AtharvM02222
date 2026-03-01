@@ -42,7 +42,7 @@ jobs:
           # Use REST API to get all repos (simpler and more reliable)
           curl -H "Authorization: token $TOKEN" \
                -H "Accept: application/vnd.github.v3+json" \
-               "https://api.github.com/user/repos?per_page=100&affiliation=owner&type=all" > repos.json
+               "https://api.github.com/user/repos?per_page=100&affiliation=owner" > repos.json
           
           # Debug: Show how many repos found
           echo "API Response (first 10 repos):"
