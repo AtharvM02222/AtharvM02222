@@ -34,8 +34,19 @@ jobs:
                -H "Accept: application/vnd.github.v3+json" \
                https://api.github.com/user/repos?per_page=100\&affiliation=owner > repos.json
           
-          # Extract repo names
-          cat repos.json | jq -r '.[].name' > repo_list.txt
+          # Debug: Show API response
+          echo "API Response:"
+          cat repos.json
+          
+          # Check if repos.json is an array before extracting names
+          if jq -e 'type == "array"' repos.json > /dev/null 2>&1; then
+            jq -r '.[].name' repos.json > repo_list.txt
+            echo "Successfully extracted $(wc -l < repo_list.txt) repositories"
+          else
+            echo "ERROR: API did not return a repo array. Check authentication or API response."
+            cat repos.json
+            exit 1
+          fi
           
       - name: Clone and count lines
         run: |
