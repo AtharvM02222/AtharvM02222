@@ -29,11 +29,21 @@ jobs:
       - name: Get all repos
         id: repos
         run: |
-          # Try using GraphQL API which might have better permissions
-          curl -H "Authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
+          # Check if PAT_TOKEN is available for private repos
+          if [ -n "${{ secrets.PAT_TOKEN }}" ]; then
+            echo "Using PAT_TOKEN to access all repositories (public + private)"
+            TOKEN="${{ secrets.PAT_TOKEN }}"
+          else
+            echo "Using GITHUB_TOKEN (public repos only)"
+            echo "⚠️ To count private repos, add a PAT_TOKEN secret. See PAT-SETUP.md"
+            TOKEN="${{ secrets.GITHUB_TOKEN }}"
+          fi
+          
+          # Use GraphQL API to get all repos
+          curl -H "Authorization: bearer $TOKEN" \
                -H "Content-Type: application/json" \
                -X POST \
-               -d '{"query":"query { viewer { repositories(first: 100, affiliations: OWNER) { nodes { name } } } }"}' \
+               -d '{"query":"query { viewer { repositories(first: 100, affiliations: OWNER, privacy: PUBLIC) { nodes { name } } } }"}' \
                https://api.github.com/graphql > repos.json
           
           # Debug: Show API response
@@ -46,13 +56,14 @@ jobs:
             echo "Successfully extracted $(wc -l < repo_list.txt) repositories"
             cat repo_list.txt
           else
-            echo "ERROR: GraphQL API failed. You need to use a Personal Access Token (PAT)."
-            echo "See PAT-SETUP.md for instructions."
+            echo "ERROR: GraphQL API failed."
             cat repos.json
             exit 1
           fi
           
       - name: Clone and count lines
+        env:
+          TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
           total_lines=0
           total_code=0
@@ -66,7 +77,7 @@ jobs:
           # Clone each repo and count lines
           while IFS= read -r repo; do
             echo "Processing $repo..."
-            git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/AtharvM02222/$repo.git temp_repos/$repo 2>/dev/null || continue
+            git clone https://x-access-token:${TOKEN}@github.com/AtharvM02222/$repo.git temp_repos/$repo 2>/dev/null || continue
             
             # Count lines using cloc
             cloc temp_repos/$repo --json --quiet > cloc_output.json 2>/dev/null || continue
