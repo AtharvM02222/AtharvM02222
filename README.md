@@ -2,24 +2,30 @@
 
 <img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/particles-bg.gif" width="100%" alt="Particles Background">
 
-# 👋 Hi, I'm Atharv Mandlavdiya
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=180&section=header&text=Atharv%20Mandlavdiya&fontSize=42&fontColor=fff&animation=twinkling&fontAlignY=32"/>
 
-### 🚀 MAKE, BREAK, AND SOMETIMES FIX THINGS.
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=24&duration=2000&pause=1000&color=00EAFF&center=true&vCenter=true&width=600&lines=Full+Stack+Developer;Game+Developer+%7C+Unity+%26+Godot;Automation+Expert+%7C+n8n+%26+Python;Robotics+Enthusiast;Web3+%26+Blockchain+Explorer;Open+Source+Contributor" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=2000&pause=1000&color=00EAFF&center=true&vCenter=true&width=800&lines=👋+Hi%2C+I'm+Atharv+Mandlavdiya;🚀+MAKE%2C+BREAK%2C+AND+SOMETIMES+FIX+THINGS;💻+Full+Stack+Developer;🎮+Game+Developer+%7C+Unity+%26+Godot;⚡+Automation+Expert+%7C+n8n+%26+Python;🤖+Robotics+Enthusiast;🔗+Web3+%26+Blockchain+Explorer;🌟+Open+Source+Contributor" alt="Typing SVG" />
 
 <br>
+
+<img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/particles-bg.gif" width="50%" alt="Particles">
 
 ![Profile Views](https://komarev.com/ghpvc/?username=AtharvM02222&label=Profile%20views&color=00d9ff&style=for-the-badge)
 [![GitHub followers](https://img.shields.io/github/followers/AtharvM02222?style=for-the-badge&color=00d9ff&logo=github)](https://github.com/AtharvM02222?tab=followers)
 [![GitHub stars](https://img.shields.io/github/stars/AtharvM02222?style=for-the-badge&color=00d9ff&logo=github)](https://github.com/AtharvM02222?tab=repositories)
-[![Website](https://img.shields.io/badge/Website-Live-00d9ff?style=for-the-badge&logo=google-chrome)](https://atharvmandlavdiya.me)
+[![Website](https://img.shields.io/badge/Website-Live-00d9ff?style=for-the-badge&logo=google-chrome&logoColor=white)](https://atharvmandlavdiya.me)
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 </div>
 
 ---
 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
 ## 🎯 About Me
+
+<img align="right" alt="Coding" width="400" src="https://raw.githubusercontent.com/devSouvik/devSouvik/master/gif3.gif">
 
 ```python
 class AtharvMandlavdiya:
@@ -60,13 +66,21 @@ me.say_hi()
 
 <div align="center">
 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
 ### 💡 *"First, solve the problem. Then, write the code."* – John Johnson
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 </div>
 
 ---
 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
 ## 🛠 Tech Toolkit
+
+<img align="right" alt="Tech" width="350" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif">
 
 <details open>
 <summary><b>🧠 Languages & Core Technologies</b></summary>
@@ -190,41 +204,68 @@ me.say_hi()
 
 </details>
 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
 ---
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## 📊 GitHub Statistics
 
 <div align="center">
 
-<img width="49%" src="https://github-readme-stats.vercel.app/api?username=AtharvM02222&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" />
-<img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=AtharvM02222&theme=tokyonight&hide_border=true" />
+<img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/particles-bg.gif" width="100%" height="3" alt="divider">
 
-<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=AtharvM02222&layout=compact&theme=tokyonight&hide_border=true&langs_count=10" />
-<img width="49%" src="https://github-readme-activity-graph.vercel.app/graph?username=AtharvM02222&theme=tokyo-night&hide_border=true&area=true" />
+<img width="49%" src="https://github-readme-stats.vercel.app/api?username=AtharvM02222&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true&bg_color=0d1117&title_color=00eaff&icon_color=00eaff&text_color=c9d1d9" />
+<img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=AtharvM02222&theme=tokyonight&hide_border=true&background=0d1117&stroke=00eaff&ring=00eaff&fire=00eaff&currStreakLabel=00eaff" />
+
+<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=AtharvM02222&layout=compact&theme=tokyonight&hide_border=true&langs_count=10&bg_color=0d1117&title_color=00eaff&text_color=c9d1d9" />
+<img width="49%" src="https://github-readme-activity-graph.vercel.app/graph?username=AtharvM02222&theme=react-dark&hide_border=true&area=true&bg_color=0d1117&color=00eaff&line=00eaff&point=ffffff" />
+
+<img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/particles-bg.gif" width="100%" height="3" alt="divider">
 
 </div>
 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
 ---
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## 🏆 GitHub Trophies
 
 <div align="center">
 
+<img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/particles-bg.gif" width="100%" height="3" alt="divider">
+
 [![trophy](https://github-profile-trophy.vercel.app/?username=AtharvM02222&theme=algolia&no-frame=false&no-bg=false&margin-w=4&row=2&column=4)](https://github.com/ryo-ma/github-profile-trophy)
+
+<img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/particles-bg.gif" width="100%" height="3" alt="divider">
 
 </div>
 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
 ---
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## 🎯 Featured Projects
 
 <div align="center">
 
+<img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/particles-bg.gif" width="100%" height="3" alt="divider">
+
 <table>
 <tr>
 <td width="50%">
 
-### 🌐 Portfolio Website
+<h3 align="center">🌐 Portfolio Website</h3>
+
+<div align="center">
+
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGw3aGRqZnBxYzBxZGRxYzBxZGRxYzBxZGRxYzBxZGRxYzBxZGRxYzBx&ep=v1_gifs_search&rid=giphy.gif&ct=g" width="400" alt="Web Dev"/>
+
 ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
@@ -237,13 +278,26 @@ Modern portfolio with smooth animations, interactive countdown timers, and dynam
 - 🎨 Custom cursor effects
 - 📱 Fully responsive design
 
-[![Website](https://img.shields.io/badge/Live-atharvmandlavdiya.me-00d9ff?style=for-the-badge)](https://atharvmandlavdiya.me)
-[![Repo](https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github)](https://github.com/AtharvM02222/Portfolio)
+<p align="center">
+<a href="https://atharvmandlavdiya.me" target="_blank">
+<img src="https://img.shields.io/badge/Live-atharvmandlavdiya.me-00d9ff?style=for-the-badge"/>
+</a>
+<a href="https://github.com/AtharvM02222/Portfolio" target="_blank">
+<img src="https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github"/>
+</a>
+</p>
+
+</div>
 
 </td>
 <td width="50%">
 
-### 📧 Certificate Mailer System
+<h3 align="center">📧 Certificate Mailer System</h3>
+
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/nyrc-title.gif" width="400" alt="Certi Mailer"/>
+
 ![n8n](https://img.shields.io/badge/-n8n-EA4B71?style=flat-square&logo=n8n&logoColor=white)
 ![Brevo](https://img.shields.io/badge/-Brevo-0B996E?style=flat-square)
 ![Automation](https://img.shields.io/badge/-Automation-FF6B6B?style=flat-square)
@@ -253,10 +307,16 @@ Automated certificate distribution system for NYRC'25 robotics competition.
 **Achievements:**
 - ✅ 90+ certificates sent successfully
 - ⚡ Rate limiting (1 email/40s)
-- 🔄 Auto-retry on failures
+- � Auto-retry on failures
 - 📊 Discord webhook notifications
 
-[![Repo](https://img.shields.io/badge/GitHub-Certi--Mailer-181717?style=for-the-badge&logo=github)](https://github.com/AtharvM02222/Certi-Mailer)
+<p align="center">
+<a href="https://github.com/AtharvM02222/Certi-Mailer" target="_blank">
+<img src="https://img.shields.io/badge/GitHub-Certi--Mailer-181717?style=for-the-badge&logo=github"/>
+</a>
+</p>
+
+</div>
 
 </td>
 </tr>
@@ -264,7 +324,12 @@ Automated certificate distribution system for NYRC'25 robotics competition.
 <tr>
 <td width="50%">
 
-### 🤖 Robo Nexus Discord Bot
+<h3 align="center">🤖 Robo Nexus Discord Bot</h3>
+
+<div align="center">
+
+<img src="https://media.giphy.com/media/LMt9638dO8dftAjtco/giphy.gif" width="400" alt="Discord Bot"/>
+
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Discord](https://img.shields.io/badge/-Discord-5865F2?style=flat-square&logo=discord&logoColor=white)
 ![SQLite](https://img.shields.io/badge/-SQLite-003B57?style=flat-square&logo=sqlite)
@@ -277,12 +342,23 @@ Advanced Discord bot for robotics team management with stats tracking and automa
 - 📢 Event notifications
 - 💬 Custom commands
 
-[![Repo](https://img.shields.io/badge/GitHub-robo--nexus--bot-181717?style=for-the-badge&logo=github)](https://github.com/AtharvM02222/robo-nexus-bot)
+<p align="center">
+<a href="https://github.com/AtharvM02222/robo-nexus-bot" target="_blank">
+<img src="https://img.shields.io/badge/GitHub-robo--nexus--bot-181717?style=for-the-badge&logo=github"/>
+</a>
+</p>
+
+</div>
 
 </td>
 <td width="50%">
 
-### 🐍 Python Projects Collection
+<h3 align="center">🐍 Python Projects Collection</h3>
+
+<div align="center">
+
+<img src="https://media.giphy.com/media/KAq5w47R9rmTuvWOWa/giphy.gif" width="400" alt="Python"/>
+
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![HackerRank](https://img.shields.io/badge/-HackerRank-00EA64?style=flat-square&logo=hackerrank&logoColor=black)
 
@@ -294,8 +370,16 @@ Collection of Python projects including automation scripts, games, and HackerRan
 - 🔧 Automation utilities
 - 🏆 HackerRank solutions
 
-[![Repo](https://img.shields.io/badge/GitHub-Python-181717?style=for-the-badge&logo=github)](https://github.com/AtharvM02222/Python)
-[![HackerRank](https://img.shields.io/badge/HackerRank-Profile-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black)](https://www.hackerrank.com/profile/atharv0m)
+<p align="center">
+<a href="https://github.com/AtharvM02222/Python" target="_blank">
+<img src="https://img.shields.io/badge/GitHub-Python-181717?style=for-the-badge&logo=github"/>
+</a>
+<a href="https://www.hackerrank.com/profile/atharv0m" target="_blank">
+<img src="https://img.shields.io/badge/HackerRank-Profile-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black"/>
+</a>
+</p>
+
+</div>
 
 </td>
 </tr>
@@ -303,7 +387,12 @@ Collection of Python projects including automation scripts, games, and HackerRan
 <tr>
 <td width="50%">
 
-### ⚽ Robo Football
+<h3 align="center">⚽ Robo Football</h3>
+
+<div align="center">
+
+<img src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" width="400" alt="Robotics"/>
+
 ![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=flat-square&logo=arduino&logoColor=white)
 ![C++](https://img.shields.io/badge/-C++-00599C?style=flat-square&logo=cplusplus)
 ![Robotics](https://img.shields.io/badge/-Robotics-FF6B6B?style=flat-square)
@@ -316,12 +405,23 @@ Arduino-based robot football player with autonomous navigation and ball detectio
 - 📡 Sensor integration
 - 🏆 Competition-ready
 
-[![Repo](https://img.shields.io/badge/GitHub-Robo--Football-181717?style=for-the-badge&logo=github)](https://github.com/AtharvM02222/Robo-Football)
+<p align="center">
+<a href="https://github.com/AtharvM02222/Robo-Football" target="_blank">
+<img src="https://img.shields.io/badge/GitHub-Robo--Football-181717?style=for-the-badge&logo=github"/>
+</a>
+</p>
+
+</div>
 
 </td>
 <td width="50%">
 
-### 🎨 Silk Visualizer
+<h3 align="center">🎨 Silk Visualizer</h3>
+
+<div align="center">
+
+<img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" width="400" alt="Graphics"/>
+
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Pygame](https://img.shields.io/badge/-Pygame-3776AB?style=flat-square)
 
@@ -333,13 +433,23 @@ Interactive silk-like pattern generator creating beautiful symmetrical designs.
 - 🌈 Color customization
 - 💾 Export functionality
 
-[![Repo](https://img.shields.io/badge/GitHub-silk--visualizer-181717?style=for-the-badge&logo=github)](https://github.com/AtharvM02222/silk-visualizer)
+<p align="center">
+<a href="https://github.com/AtharvM02222/silk-visualizer" target="_blank">
+<img src="https://img.shields.io/badge/GitHub-silk--visualizer-181717?style=for-the-badge&logo=github"/>
+</a>
+</p>
+
+</div>
 
 </td>
 </tr>
 </table>
 
+<img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/particles-bg.gif" width="100%" height="3" alt="divider">
+
 </div>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ---
 
@@ -462,5 +572,18 @@ console.log("Let's build something amazing! 🚀");
 ### ⭐ From [AtharvM02222](https://github.com/AtharvM02222) with 💙
 
 *Made with passion, powered by code*
+
+</div>
+
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=150&section=footer&text=Thanks%20for%20Visiting!&fontSize=32&fontColor=fff&animation=twinkling&fontAlignY=70"/>
+
+<img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/particles-bg.gif" width="100%" alt="Footer Particles">
 
 </div>
