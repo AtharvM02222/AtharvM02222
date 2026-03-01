@@ -46,7 +46,7 @@ class AtharvMandlavdiya:
     
     def get_stats(self):
         return {
-            "repositories": "10+",
+            "repositories": "29+",
             "languages": ["Python", "C#", "JavaScript", "C++", "HTML/CSS"],
             "tools": ["Unity", "Godot", "n8n", "Arduino", "Git"],
             "competitions": "Multiple Robotics Competitions"
