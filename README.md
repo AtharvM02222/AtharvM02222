@@ -1,8 +1,5 @@
 <div align="center">
 
-<!-- Particles GIF from this repo - will work even if Certi-Mailer is private -->
-<img src="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/main/particles-bg.gif" width="100%" alt="Particles Background">
-
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=180&section=header&text=Atharv%20Mandlavdiya&fontSize=42&fontColor=fff&animation=twinkling&fontAlignY=32"/>
 
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&duration=2000&pause=1000&color=00EAFF&center=true&vCenter=true&width=800&lines=Hi+I'm+Atharv+Mandlavdiya;MAKE+BREAK+AND+SOMETIMES+FIX+THINGS;Full+Stack+Developer;Game+Developer;Automation+Expert;Robotics+Enthusiast;Web3+Explorer;Open+Source+Contributor" alt="Typing SVG" />
