@@ -29,21 +29,25 @@ jobs:
       - name: Get all repos
         id: repos
         run: |
-          # Get all repos from the user (including private)
-          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-               -H "Accept: application/vnd.github.v3+json" \
-               https://api.github.com/user/repos?per_page=100\&affiliation=owner > repos.json
+          # Try using GraphQL API which might have better permissions
+          curl -H "Authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
+               -H "Content-Type: application/json" \
+               -X POST \
+               -d '{"query":"query { viewer { repositories(first: 100, affiliations: OWNER) { nodes { name } } } }"}' \
+               https://api.github.com/graphql > repos.json
           
           # Debug: Show API response
           echo "API Response:"
           cat repos.json
           
-          # Check if repos.json is an array before extracting names
-          if jq -e 'type == "array"' repos.json > /dev/null 2>&1; then
-            jq -r '.[].name' repos.json > repo_list.txt
+          # Extract repo names from GraphQL response
+          if jq -e '.data.viewer.repositories.nodes' repos.json > /dev/null 2>&1; then
+            jq -r '.data.viewer.repositories.nodes[].name' repos.json > repo_list.txt
             echo "Successfully extracted $(wc -l < repo_list.txt) repositories"
+            cat repo_list.txt
           else
-            echo "ERROR: API did not return a repo array. Check authentication or API response."
+            echo "ERROR: GraphQL API failed. You need to use a Personal Access Token (PAT)."
+            echo "See PAT-SETUP.md for instructions."
             cat repos.json
             exit 1
           fi
@@ -77,6 +81,7 @@ jobs:
               total_comments=$((total_comments + comments))
               total_blanks=$((total_blanks + blanks))
               repo_count=$((repo_count + 1))
+              echo "  ✓ $repo: $code lines of code"
             fi
             
             # Clean up
@@ -93,15 +98,19 @@ jobs:
           echo "TOTAL_CODE=$formatted_code" >> $GITHUB_ENV
           echo "REPO_COUNT=$repo_count" >> $GITHUB_ENV
           
+          echo "================================"
           echo "Total Lines: $formatted_lines"
           echo "Code Lines: $formatted_code"
+          echo "Comments: $total_comments"
+          echo "Blanks: $total_blanks"
           echo "Repositories: $repo_count"
+          echo "================================"
           
       - name: Update README
         run: |
           # Update the README with the new counts
           sed -i "s/Total_Lines-Calculating\.\.\./Total_Lines-${{ env.TOTAL_LINES }}/g" README.md
-          sed -i "s/Repositories-10+/Repositories-${{ env.REPO_COUNT }}/g" README.md
+          sed -i "s/In this profile repository/Across all ${{ env.REPO_COUNT }} repositories/g" README.md
           
       - name: Commit changes
         env:
@@ -110,4 +119,4 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
-          git diff --quiet && git diff --staged --quiet || (git commit -m "📊 Update lines of code count" && git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "📊 Update lines of code count: ${{ env.TOTAL_LINES }} lines across ${{ env.REPO_COUNT }} repos" && git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main)
