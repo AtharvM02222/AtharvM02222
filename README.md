@@ -514,8 +514,6 @@ console.log("Let's build something amazing! 🚀");
 
 ### 🚀 Open for collaborations, freelance projects, and innovative ideas.
 
-![Visitor Count](https://profile-counter.glitch.me/AtharvM02222/count.svg)
-
 ### ⭐ From [AtharvM02222](https://github.com/AtharvM02222) with 💙
 
 *Made with passion, powered by code* 🚀
