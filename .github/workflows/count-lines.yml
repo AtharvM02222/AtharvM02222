@@ -31,32 +31,32 @@ jobs:
         run: |
           # Check if PAT_TOKEN is available for private repos
           if [ -n "${{ secrets.PAT_TOKEN }}" ]; then
-            echo "Using PAT_TOKEN to access all repositories (public + private)"
+            echo "✅ Using PAT_TOKEN to access all repositories (public + private)"
             TOKEN="${{ secrets.PAT_TOKEN }}"
           else
-            echo "Using GITHUB_TOKEN (public repos only)"
-            echo "⚠️ To count private repos, add a PAT_TOKEN secret. See PAT-SETUP.md"
+            echo "⚠️ Using GITHUB_TOKEN (public repos only)"
+            echo "To count private repos, add a PAT_TOKEN secret. See PAT-SETUP.md"
             TOKEN="${{ secrets.GITHUB_TOKEN }}"
           fi
           
-          # Use GraphQL API to get all repos
-          curl -H "Authorization: bearer $TOKEN" \
-               -H "Content-Type: application/json" \
-               -X POST \
-               -d '{"query":"query { viewer { repositories(first: 100, affiliations: OWNER, privacy: PUBLIC) { nodes { name } } } }"}' \
-               https://api.github.com/graphql > repos.json
+          # Use REST API to get all repos (simpler and more reliable)
+          curl -H "Authorization: token $TOKEN" \
+               -H "Accept: application/vnd.github.v3+json" \
+               "https://api.github.com/user/repos?per_page=100&affiliation=owner&type=all" > repos.json
           
-          # Debug: Show API response
-          echo "API Response:"
-          cat repos.json
+          # Debug: Show how many repos found
+          echo "API Response (first 10 repos):"
+          jq -r '.[0:10] | .[] | .name' repos.json 2>/dev/null || echo "Failed to parse"
           
-          # Extract repo names from GraphQL response
-          if jq -e '.data.viewer.repositories.nodes' repos.json > /dev/null 2>&1; then
-            jq -r '.data.viewer.repositories.nodes[].name' repos.json > repo_list.txt
-            echo "Successfully extracted $(wc -l < repo_list.txt) repositories"
+          # Extract repo names
+          if jq -e 'type == "array"' repos.json > /dev/null 2>&1; then
+            jq -r '.[].name' repos.json > repo_list.txt
+            echo ""
+            echo "✅ Successfully extracted $(wc -l < repo_list.txt) repositories"
+            echo "Repositories to process:"
             cat repo_list.txt
           else
-            echo "ERROR: GraphQL API failed."
+            echo "ERROR: API did not return a repo array."
             cat repos.json
             exit 1
           fi
