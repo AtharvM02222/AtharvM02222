@@ -1,14 +1,19 @@
 <div align="center">
 
+<img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/particles-bg.gif" width="100%" alt="Particles Background">
+
 # 👋 Hi, I'm Atharv Mandlavdiya
 
 ### 🚀 MAKE, BREAK, AND SOMETIMES FIX THINGS.
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=3000&pause=1000&color=00F7F7&center=true&vCenter=true&width=600&lines=Game+Developer+%7C+Cloud+Enthusiast;Automation+Expert+%7C+Cybersecurity;Web3+Builder+%7C+Full+Stack+Dev;Open+Source+Contributor" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=24&duration=2000&pause=1000&color=00EAFF&center=true&vCenter=true&width=600&lines=Full+Stack+Developer;Game+Developer+%7C+Unity+%26+Godot;Automation+Expert+%7C+n8n+%26+Python;Robotics+Enthusiast;Web3+%26+Blockchain+Explorer;Open+Source+Contributor" alt="Typing SVG" />
 
-![Profile Views](https://komarev.com/ghpvc/?username=atharvm02222&label=Profile%20views&color=00d9ff&style=for-the-badge)
-[![GitHub followers](https://img.shields.io/github/followers/AtharvM02222?style=for-the-badge&color=00d9ff)](https://github.com/AtharvM02222)
-[![GitHub stars](https://img.shields.io/github/stars/AtharvM02222?style=for-the-badge&color=00d9ff)](https://github.com/AtharvM02222)
+<br>
+
+![Profile Views](https://komarev.com/ghpvc/?username=AtharvM02222&label=Profile%20views&color=00d9ff&style=for-the-badge)
+[![GitHub followers](https://img.shields.io/github/followers/AtharvM02222?style=for-the-badge&color=00d9ff&logo=github)](https://github.com/AtharvM02222?tab=followers)
+[![GitHub stars](https://img.shields.io/github/stars/AtharvM02222?style=for-the-badge&color=00d9ff&logo=github)](https://github.com/AtharvM02222?tab=repositories)
+[![Website](https://img.shields.io/badge/Website-Live-00d9ff?style=for-the-badge&logo=google-chrome)](https://atharvmandlavdiya.me)
 
 </div>
 
@@ -21,19 +26,33 @@ class AtharvMandlavdiya:
     def __init__(self):
         self.username = "AtharvM02222"
         self.location = "India 🇮🇳"
-        self.role = "Full Stack Developer | Game Dev | Cloud Architect"
+        self.role = "Full Stack Developer | Game Dev | Automation Expert"
+        self.education = "High School Student"
         self.interests = [
-            "🎮 Game Development",
-            "☁️ Cloud Computing", 
-            "🤖 Automation",
-            "🔐 Cybersecurity",
-            "🔗 Web3 & Blockchain",
-            "🧠 AI/ML"
+            "🎮 Game Development (Unity, Godot)",
+            "🌐 Web Development (HTML, CSS, JS)", 
+            "🤖 Robotics & Arduino",
+            "⚡ Automation (n8n, Python)",
+            "🔗 Web3 & Blockchain (Solana)",
+            "🎨 UI/UX Design"
         ]
-        self.current_focus = "Building innovative solutions & contributing to open source"
+        self.current_projects = [
+            "Portfolio Website (atharvmandlavdiya.me)",
+            "Certificate Mailer System (90+ emails sent)",
+            "Robo Nexus Discord Bot",
+            "Robotics Competition Projects"
+        ]
         
     def say_hi(self):
         print("Thanks for dropping by! Let's build something amazing together 🚀")
+    
+    def get_stats(self):
+        return {
+            "repositories": "10+",
+            "languages": ["Python", "C#", "JavaScript", "C++", "HTML/CSS"],
+            "tools": ["Unity", "Godot", "n8n", "Arduino", "Git"],
+            "competitions": "Multiple Robotics Competitions"
+        }
 
 me = AtharvMandlavdiya()
 me.say_hi()
@@ -41,7 +60,7 @@ me.say_hi()
 
 <div align="center">
 
-### 💡 *"Code is like humor. When you have to explain it, it's bad."* – Cory House
+### 💡 *"First, solve the problem. Then, write the code."* – John Johnson
 
 </div>
 
@@ -191,7 +210,7 @@ me.say_hi()
 
 <div align="center">
 
-[![trophy](https://github-profile-trophy.vercel.app/?username=AtharvM02222&theme=darkhub&no-frame=true&no-bg=true&row=1&column=7&margin-w=15&margin-h=15)](https://github.com/ryo-ma/github-profile-trophy)
+[![trophy](https://github-profile-trophy.vercel.app/?username=AtharvM02222&theme=algolia&no-frame=false&no-bg=false&margin-w=4&row=2&column=4)](https://github.com/ryo-ma/github-profile-trophy)
 
 </div>
 
@@ -201,8 +220,124 @@ me.say_hi()
 
 <div align="center">
 
-[![Certi-Mailer](https://github-readme-stats.vercel.app/api/pin/?username=AtharvM02222&repo=Certi-Mailer&theme=tokyonight&hide_border=true)](https://github.com/AtharvM02222/Certi-Mailer)
-[![Portfolio](https://github-readme-stats.vercel.app/api/pin/?username=AtharvM02222&repo=Portfolio&theme=tokyonight&hide_border=true)](https://github.com/AtharvM02222/Portfolio)
+<table>
+<tr>
+<td width="50%">
+
+### 🌐 Portfolio Website
+![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+
+Modern portfolio with smooth animations, interactive countdown timers, and dynamic project loading.
+
+**Features:**
+- ⏱️ Time alive stopwatch counter
+- 🎵 Music player with volume control
+- 🎨 Custom cursor effects
+- 📱 Fully responsive design
+
+[![Website](https://img.shields.io/badge/Live-atharvmandlavdiya.me-00d9ff?style=for-the-badge)](https://atharvmandlavdiya.me)
+[![Repo](https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github)](https://github.com/AtharvM02222/Portfolio)
+
+</td>
+<td width="50%">
+
+### 📧 Certificate Mailer System
+![n8n](https://img.shields.io/badge/-n8n-EA4B71?style=flat-square&logo=n8n&logoColor=white)
+![Brevo](https://img.shields.io/badge/-Brevo-0B996E?style=flat-square)
+![Automation](https://img.shields.io/badge/-Automation-FF6B6B?style=flat-square)
+
+Automated certificate distribution system for NYRC'25 robotics competition.
+
+**Achievements:**
+- ✅ 90+ certificates sent successfully
+- ⚡ Rate limiting (1 email/40s)
+- 🔄 Auto-retry on failures
+- 📊 Discord webhook notifications
+
+[![Repo](https://img.shields.io/badge/GitHub-Certi--Mailer-181717?style=for-the-badge&logo=github)](https://github.com/AtharvM02222/Certi-Mailer)
+
+</td>
+</tr>
+
+<tr>
+<td width="50%">
+
+### 🤖 Robo Nexus Discord Bot
+![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Discord](https://img.shields.io/badge/-Discord-5865F2?style=flat-square&logo=discord&logoColor=white)
+![SQLite](https://img.shields.io/badge/-SQLite-003B57?style=flat-square&logo=sqlite)
+
+Advanced Discord bot for robotics team management with stats tracking and automation.
+
+**Features:**
+- 📊 Member statistics tracking
+- 🎭 Automated role assignment
+- 📢 Event notifications
+- 💬 Custom commands
+
+[![Repo](https://img.shields.io/badge/GitHub-robo--nexus--bot-181717?style=for-the-badge&logo=github)](https://github.com/AtharvM02222/robo-nexus-bot)
+
+</td>
+<td width="50%">
+
+### 🐍 Python Projects Collection
+![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![HackerRank](https://img.shields.io/badge/-HackerRank-00EA64?style=flat-square&logo=hackerrank&logoColor=black)
+
+Collection of Python projects including automation scripts, games, and HackerRank solutions.
+
+**Includes:**
+- 🎮 Mad Libs game generator
+- 🧮 Calculator with GUI
+- 🔧 Automation utilities
+- 🏆 HackerRank solutions
+
+[![Repo](https://img.shields.io/badge/GitHub-Python-181717?style=for-the-badge&logo=github)](https://github.com/AtharvM02222/Python)
+[![HackerRank](https://img.shields.io/badge/HackerRank-Profile-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black)](https://www.hackerrank.com/profile/atharv0m)
+
+</td>
+</tr>
+
+<tr>
+<td width="50%">
+
+### ⚽ Robo Football
+![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=flat-square&logo=arduino&logoColor=white)
+![C++](https://img.shields.io/badge/-C++-00599C?style=flat-square&logo=cplusplus)
+![Robotics](https://img.shields.io/badge/-Robotics-FF6B6B?style=flat-square)
+
+Arduino-based robot football player with autonomous navigation and ball detection.
+
+**Features:**
+- 🎯 Autonomous ball tracking
+- ⚙️ Motor control system
+- 📡 Sensor integration
+- 🏆 Competition-ready
+
+[![Repo](https://img.shields.io/badge/GitHub-Robo--Football-181717?style=for-the-badge&logo=github)](https://github.com/AtharvM02222/Robo-Football)
+
+</td>
+<td width="50%">
+
+### 🎨 Silk Visualizer
+![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Pygame](https://img.shields.io/badge/-Pygame-3776AB?style=flat-square)
+
+Interactive silk-like pattern generator creating beautiful symmetrical designs.
+
+**Features:**
+- 🎨 Real-time pattern generation
+- 🖱️ Mouse-based interaction
+- 🌈 Color customization
+- 💾 Export functionality
+
+[![Repo](https://img.shields.io/badge/GitHub-silk--visualizer-181717?style=for-the-badge&logo=github)](https://github.com/AtharvM02222/silk-visualizer)
+
+</td>
+</tr>
+</table>
 
 </div>
 
@@ -222,14 +357,29 @@ me.say_hi()
 
 <div align="center">
 
-[![Website](https://img.shields.io/badge/Website-atharvmandlavdiya.me-00d9ff?style=for-the-badge&logo=google-chrome&logoColor=white)](https://atharvmandlavdiya.me)
-[![itch.io](https://img.shields.io/badge/itch.io-FA5C5C?style=for-the-badge&logo=itch.io&logoColor=white)](https://itch.io/profile/atharvam)
-[![Google Dev](https://img.shields.io/badge/Google_Dev-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://g.dev/atharvmandlavdiya)
-[![HackerRank](https://img.shields.io/badge/HackerRank-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black)](https://www.hackerrank.com/profile/atharv0m)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/atharvmandlavdiya)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/atharvmandlavdiya)
-[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:atharv0m@gmail.com)
+<a href="https://atharvmandlavdiya.me" target="_blank">
+  <img src="https://img.shields.io/badge/🌐_Website-atharvmandlavdiya.me-00d9ff?style=for-the-badge&logoColor=white" alt="Website"/>
+</a>
+<a href="https://github.com/AtharvM02222" target="_blank">
+  <img src="https://img.shields.io/badge/GitHub-AtharvM02222-181717?style=for-the-badge&logo=github" alt="GitHub"/>
+</a>
+<a href="https://www.linkedin.com/in/atharvmandlavdiya/" target="_blank">
+  <img src="https://img.shields.io/badge/LinkedIn-atharvmandlavdiya-0077B5?style=for-the-badge&logo=linkedin" alt="LinkedIn"/>
+</a>
+
+<a href="https://itch.io/profile/atharvam" target="_blank">
+  <img src="https://img.shields.io/badge/itch.io-atharvam-FA5C5C?style=for-the-badge&logo=itch.io&logoColor=white" alt="itch.io"/>
+</a>
+<a href="https://www.hackerrank.com/profile/atharv0m" target="_blank">
+  <img src="https://img.shields.io/badge/HackerRank-atharv0m-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black" alt="HackerRank"/>
+</a>
+<a href="https://g.dev/atharvmandlavdiya" target="_blank">
+  <img src="https://img.shields.io/badge/Google_Dev-atharvmandlavdiya-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Dev"/>
+</a>
+
+<a href="mailto:atharvam682@gmail.com">
+  <img src="https://img.shields.io/badge/Email-atharvam682@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
+</a>
 
 </div>
 
@@ -238,13 +388,47 @@ me.say_hi()
 ## 💼 What I'm Up To
 
 ```javascript
-const currentlyWorkingOn = {
-    learning: ["Advanced Web3 Development", "Rust Programming", "AI/ML Integration"],
-    building: ["Indie Games", "Automation Tools", "Blockchain Projects"],
-    exploring: ["Cloud Architecture", "Cybersecurity", "IoT Solutions"],
-    collaborating: "Open to exciting projects and collaborations! 🤝"
+const atharvMandlavdiya = {
+    currentlyLearning: [
+        "Advanced Web Development",
+        "Game Development with Unity & Godot",
+        "Robotics & Arduino Programming",
+        "Web3 & Blockchain (Solana)"
+    ],
+    currentlyBuilding: [
+        "Portfolio Website with Interactive Features",
+        "Discord Bots for Team Management",
+        "Automation Tools with n8n & Python",
+        "Robotics Competition Projects"
+    ],
+    recentAchievements: [
+        "✅ Built automated certificate mailer (90+ emails)",
+        "🌐 Launched personal portfolio website",
+        "🤖 Created Discord bot for robotics team",
+        "🏆 Participated in multiple robotics competitions"
+    ],
+    openTo: [
+        "Collaborations on interesting projects",
+        "Freelance opportunities",
+        "Open source contributions",
+        "Robotics competitions"
+    ]
 };
+
+console.log("Let's build something amazing! 🚀");
 ```
+
+---
+
+## 📈 Contribution Graph
+
+<div align="center">
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=AtharvM02222&theme=react-dark&hide_border=true&area=true&custom_title=Contribution%20Activity" width="100%" alt="Contribution Graph"/>
+
+![Snake animation](https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/output/github-contribution-grid-snake-dark.svg)
+
+</div>
 
 ---
 
@@ -252,13 +436,6 @@ const currentlyWorkingOn = {
 
 <!--START_SECTION:activity-->
 <!--END_SECTION:activity-->
-
----
-
-## 📝 Latest Blog Posts
-
-<!-- BLOG-POST-LIST:START -->
-<!-- BLOG-POST-LIST:END -->
 
 ---
 
@@ -272,44 +449,18 @@ const currentlyWorkingOn = {
 
 ---
 
-## 🎵 Spotify Playing
-
 <div align="center">
 
-[![Spotify](https://novatorem-atharvmandlavdiya.vercel.app/api/spotify)](https://open.spotify.com/user/YOUR_SPOTIFY_ID)
-
-</div>
-
----
-
-## 📊 Weekly Development Breakdown
-
-<!--START_SECTION:waka-->
-<!--END_SECTION:waka-->
-
----
-
-<div align="center">
-
-### 🚀 Let's Build Something Amazing Together!
+### � Let's Build Something Amazing Together!
 
 **Open for collaborations, freelance projects, and innovative ideas.**
+
+<img src="https://raw.githubusercontent.com/AtharvM02222/Certi-Mailer/main/nyrc-title.gif" width="300" alt="NYRC"/>
 
 ![Visitor Count](https://profile-counter.glitch.me/AtharvM02222/count.svg)
 
 ### ⭐ From [AtharvM02222](https://github.com/AtharvM02222) with 💙
 
-</div>
-
----
-
-<div align="center">
-
-```ascii
-╔═══════════════════════════════════════════════════════════════╗
-║  "First, solve the problem. Then, write the code."           ║
-║                                        - John Johnson         ║
-╚═══════════════════════════════════════════════════════════════╝
-```
+*Made with passion, powered by code*
 
 </div>
