@@ -514,7 +514,7 @@ console.log("Let's build something amazing! 🚀");
 
 ### 🚀 Open for collaborations, freelance projects, and innovative ideas.
 
-<img src="https://count.getloli.com/get/@AtharvM02222?theme=rule34" alt="Visitor Count"/>
+![Visitor Count](https://profile-counter.glitch.me/AtharvM02222/count.svg)
 
 ### ⭐ From [AtharvM02222](https://github.com/AtharvM02222) with 💙
 
