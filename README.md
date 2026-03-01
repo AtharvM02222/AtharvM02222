@@ -205,12 +205,12 @@ me.say_hi()
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/Total_Lines-41627-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
+<img src="https://img.shields.io/badge/Total_Lines-89977-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
 <br>
-<sub>Across all 27 repositories</sub>
+<sub>Across all 33 repositories</sub>
 </td>
 <td align="center">
-<img src="https://img.shields.io/badge/Repositories-27-00d9ff?style=for-the-badge&logo=github&logoColor=white" alt="Repos"/>
+<img src="https://img.shields.io/badge/Repositories-33-00d9ff?style=for-the-badge&logo=github&logoColor=white" alt="Repos"/>
 <br>
 <sub>Public & Private</sub>
 </td>
