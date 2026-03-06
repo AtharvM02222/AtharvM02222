@@ -205,7 +205,7 @@ me.say_hi()
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/Total_Lines-160308-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
+<img src="https://img.shields.io/badge/Total_Lines-132484-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
 <br>
 <sub>Across all 34 repositories</sub>
 </td>
