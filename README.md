@@ -510,6 +510,9 @@ console.log("Let's build something amazing! 🚀");
 ## 🎮 Recent Activity
 
 <!--START_SECTION:activity-->
+1. 💪 Opened PR [#34105](https://github.com/is-a-dev/register/pull/34105) in [is-a-dev/register](https://github.com/is-a-dev/register)
+2. ❌ Closed PR [#34102](https://github.com/is-a-dev/register/pull/34102) in [is-a-dev/register](https://github.com/is-a-dev/register)
+3. 💪 Opened PR [#34102](https://github.com/is-a-dev/register/pull/34102) in [is-a-dev/register](https://github.com/is-a-dev/register)
 <!--END_SECTION:activity-->
 
 ---
