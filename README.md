@@ -28,7 +28,7 @@ class AtharvMandlavdiya:
         self.education = "High School Student"
         self.interests = [
             "🎮 Game Development (Unity, Godot)",
-            "🌐 Web Development (HTML, CSS, JS)", 
+            "🌐 Web Development (HTML, CSS, JS)",
             "🤖 Robotics & Arduino",
             "⚡ Automation (n8n, Python)",
             "🔗 Web3 & Blockchain (Solana)",
@@ -40,17 +40,9 @@ class AtharvMandlavdiya:
             "Robo Nexus Discord Bot",
             "Robotics Competition Projects"
         ]
-        
+
     def say_hi(self):
         print("Thanks for dropping by! Let's build something amazing together 🚀")
-    
-    def get_stats(self):
-        return {
-            "repositories": "29+",
-            "languages": ["Python", "C#", "JavaScript", "C++", "HTML/CSS"],
-            "tools": ["Unity", "Godot", "n8n", "Arduino", "Git"],
-            "competitions": "Multiple Robotics Competitions"
-        }
 
 me = AtharvMandlavdiya()
 me.say_hi()
@@ -90,8 +82,6 @@ me.say_hi()
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
 ![Blender](https://img.shields.io/badge/Blender-F5792A?style=for-the-badge&logo=blender&logoColor=white)
 
-**Skills:** Game Scripting • Physics Systems • UI/UX Design • Mobile Development • 2D/3D Game Design
-
 </details>
 
 <details open>
@@ -103,8 +93,6 @@ me.say_hi()
 ![Debian](https://img.shields.io/badge/Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white)
 ![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-A22846?style=for-the-badge&logo=raspberry-pi&logoColor=white)
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
-
-**Skills:** Robotics • Embedded Systems • Low-level Programming • System Administration • Shell Scripting
 
 </details>
 
@@ -119,8 +107,6 @@ me.say_hi()
 ![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
-**Skills:** CI/CD Pipelines • Container Orchestration • Server Management • Cloud Architecture • Infrastructure as Code
-
 </details>
 
 <details open>
@@ -133,8 +119,6 @@ me.say_hi()
 ![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
 
-**Skills:** Database Design • Query Optimization • RESTful APIs • GraphQL • Microservices Architecture
-
 </details>
 
 <details open>
@@ -145,8 +129,6 @@ me.say_hi()
 ![Zapier](https://img.shields.io/badge/Zapier-FF4A00?style=for-the-badge&logo=zapier&logoColor=white)
 ![Make](https://img.shields.io/badge/Make-6D00CC?style=for-the-badge&logo=integromat&logoColor=white)
 ![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
-
-**Skills:** Workflow Automation • API Integration • Web Scraping • Task Scheduling • Process Optimization
 
 </details>
 
@@ -184,8 +166,6 @@ me.say_hi()
 ![DaVinci Resolve](https://img.shields.io/badge/DaVinci_Resolve-233A51?style=for-the-badge&logo=davinci-resolve&logoColor=white)
 ![Canva](https://img.shields.io/badge/Canva-00C4CC?style=for-the-badge&logo=canva&logoColor=white)
 
-**Skills:** UI/UX Design • Video Editing • Graphic Design • Motion Graphics • 3D Modeling
-
 </details>
 
 ---
@@ -202,10 +182,13 @@ me.say_hi()
 
 ### 💻 Code Statistics (All Repositories)
 
+<!-- LANG_STATS_START -->
+<!-- LANG_STATS_END -->
+
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/Total_Lines-134090-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
+<img src="https://img.shields.io/badge/Total_Lines-134,090-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
 <br>
 <sub>Across all 34 repositories</sub>
 </td>
@@ -222,7 +205,7 @@ me.say_hi()
 </tr>
 </table>
 
-*Line count updates automatically via GitHub Actions*
+*Line count updates automatically via GitHub Actions every 2 hours*
 
 </div>
 
@@ -247,7 +230,6 @@ me.say_hi()
 <td width="50%">
 
 <h3 align="center">🌐 Portfolio Website</h3>
-
 <div align="center">
 
 ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
@@ -256,50 +238,24 @@ me.say_hi()
 
 Modern portfolio with smooth animations, interactive countdown timers, and dynamic project loading.
 
-**Features:**
-- ⏱️ Time alive stopwatch counter
-- 🎵 Music player with volume control
-- 🎨 Custom cursor effects
-- 📱 Fully responsive design
-
-<p align="center">
-<a href="https://atharvmandlavdiya.me" target="_blank">
-<img src="https://img.shields.io/badge/Live-atharvmandlavdiya.me-00d9ff?style=for-the-badge"/>
-</a>
-<a href="https://github.com/AtharvM02222/Portfolio" target="_blank">
-<img src="https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github"/>
-</a>
-</p>
+<a href="https://atharvmandlavdiya.me" target="_blank"><img src="https://img.shields.io/badge/Live-atharvmandlavdiya.me-00d9ff?style=for-the-badge"/></a>
+<a href="https://github.com/AtharvM02222/Portfolio" target="_blank"><img src="https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github"/></a>
 
 </div>
-
 </td>
 <td width="50%">
 
 <h3 align="center">📧 Certificate Mailer System</h3>
-
 <div align="center">
 
 ![n8n](https://img.shields.io/badge/-n8n-EA4B71?style=flat-square&logo=n8n&logoColor=white)
-![Brevo](https://img.shields.io/badge/-Brevo-0B996E?style=flat-square)
 ![Automation](https://img.shields.io/badge/-Automation-FF6B6B?style=flat-square)
 
-Automated certificate distribution system for NYRC'25 robotics competition.
+Automated certificate distribution for NYRC'25 robotics competition. 90+ certificates sent with rate limiting and auto-retry.
 
-**Achievements:**
-- ✅ 90+ certificates sent successfully
-- ⚡ Rate limiting (1 email/40s)
-- 🔄 Auto-retry on failures
-- 📊 Discord webhook notifications
-
-<p align="center">
-<a href="https://github.com/AtharvM02222/Certi-Mailer" target="_blank">
-<img src="https://img.shields.io/badge/GitHub-Certi--Mailer-181717?style=for-the-badge&logo=github"/>
-</a>
-</p>
+<a href="https://github.com/AtharvM02222/Certi-Mailer" target="_blank"><img src="https://img.shields.io/badge/GitHub-Certi--Mailer-181717?style=for-the-badge&logo=github"/></a>
 
 </div>
-
 </td>
 </tr>
 
@@ -307,58 +263,31 @@ Automated certificate distribution system for NYRC'25 robotics competition.
 <td width="50%">
 
 <h3 align="center">🤖 Robo Nexus Discord Bot</h3>
-
 <div align="center">
 
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Discord](https://img.shields.io/badge/-Discord-5865F2?style=flat-square&logo=discord&logoColor=white)
-![SQLite](https://img.shields.io/badge/-SQLite-003B57?style=flat-square&logo=sqlite)
 
-Advanced Discord bot for robotics team management with stats tracking and automation.
+Advanced Discord bot for robotics team management — stats tracking, role assignment, event notifications, and music.
 
-**Features:**
-- 📊 Member statistics tracking
-- 🎭 Automated role assignment
-- 📢 Event notifications
-- 💬 Custom commands
-
-<p align="center">
-<a href="https://github.com/AtharvM02222/robo-nexus-bot" target="_blank">
-<img src="https://img.shields.io/badge/GitHub-robo--nexus--bot-181717?style=for-the-badge&logo=github"/>
-</a>
-</p>
+<a href="https://github.com/AtharvM02222/robo-nexus-bot" target="_blank"><img src="https://img.shields.io/badge/GitHub-robo--nexus--bot-181717?style=for-the-badge&logo=github"/></a>
 
 </div>
-
 </td>
 <td width="50%">
 
 <h3 align="center">🐍 Python Projects Collection</h3>
-
 <div align="center">
 
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![HackerRank](https://img.shields.io/badge/-HackerRank-00EA64?style=flat-square&logo=hackerrank&logoColor=black)
 
-Collection of Python projects including automation scripts, games, and HackerRank solutions.
+Automation scripts, games, utilities, and HackerRank solutions.
 
-**Includes:**
-- 🎮 Mad Libs game generator
-- 🧮 Calculator with GUI
-- 🔧 Automation utilities
-- 🏆 HackerRank solutions
-
-<p align="center">
-<a href="https://github.com/AtharvM02222/Python" target="_blank">
-<img src="https://img.shields.io/badge/GitHub-Python-181717?style=for-the-badge&logo=github"/>
-</a>
-<a href="https://www.hackerrank.com/profile/atharv0m" target="_blank">
-<img src="https://img.shields.io/badge/HackerRank-Profile-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black"/>
-</a>
-</p>
+<a href="https://github.com/AtharvM02222/Python" target="_blank"><img src="https://img.shields.io/badge/GitHub-Python-181717?style=for-the-badge&logo=github"/></a>
+<a href="https://www.hackerrank.com/profile/atharv0m" target="_blank"><img src="https://img.shields.io/badge/HackerRank-Profile-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black"/></a>
 
 </div>
-
 </td>
 </tr>
 
@@ -366,55 +295,30 @@ Collection of Python projects including automation scripts, games, and HackerRan
 <td width="50%">
 
 <h3 align="center">⚽ Robo Football</h3>
-
 <div align="center">
 
 ![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=flat-square&logo=arduino&logoColor=white)
 ![C++](https://img.shields.io/badge/-C++-00599C?style=flat-square&logo=cplusplus)
-![Robotics](https://img.shields.io/badge/-Robotics-FF6B6B?style=flat-square)
 
-Arduino-based robot football player with autonomous navigation and ball detection.
+Arduino-based autonomous robot football player with ball tracking and motor control.
 
-**Features:**
-- 🎯 Autonomous ball tracking
-- ⚙️ Motor control system
-- 📡 Sensor integration
-- 🏆 Competition-ready
-
-<p align="center">
-<a href="https://github.com/AtharvM02222/Robo-Football" target="_blank">
-<img src="https://img.shields.io/badge/GitHub-Robo--Football-181717?style=for-the-badge&logo=github"/>
-</a>
-</p>
+<a href="https://github.com/AtharvM02222/Robo-Football" target="_blank"><img src="https://img.shields.io/badge/GitHub-Robo--Football-181717?style=for-the-badge&logo=github"/></a>
 
 </div>
-
 </td>
 <td width="50%">
 
 <h3 align="center">🎨 Silk Visualizer</h3>
-
 <div align="center">
 
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Pygame](https://img.shields.io/badge/-Pygame-3776AB?style=flat-square)
 
-Interactive silk-like pattern generator creating beautiful symmetrical designs.
+Interactive silk-like pattern generator with real-time mouse-driven symmetrical designs and color customization.
 
-**Features:**
-- 🎨 Real-time pattern generation
-- 🖱️ Mouse-based interaction
-- 🌈 Color customization
-- 💾 Export functionality
-
-<p align="center">
-<a href="https://github.com/AtharvM02222/silk-visualizer" target="_blank">
-<img src="https://img.shields.io/badge/GitHub-silk--visualizer-181717?style=for-the-badge&logo=github"/>
-</a>
-</p>
+<a href="https://github.com/AtharvM02222/silk-visualizer" target="_blank"><img src="https://img.shields.io/badge/GitHub-silk--visualizer-181717?style=for-the-badge&logo=github"/></a>
 
 </div>
-
 </td>
 </tr>
 </table>
@@ -429,44 +333,11 @@ Interactive silk-like pattern generator creating beautiful symmetrical designs.
 
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=AtharvM02222&theme=react-dark&hide_border=true&area=true&custom_title=Contribution%20Activity&bg_color=0d1117&color=00eaff&line=00eaff&point=ffffff" width="100%" alt="Contribution Graph"/>
 
-<!-- Snake will appear after running the workflow -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/output/github-contribution-grid-snake-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/output/github-contribution-grid-snake.svg">
   <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/output/github-contribution-grid-snake.svg">
 </picture>
-
-</div>
-
----
-
-## 🌐 Connect With Me
-
-<div align="center">
-
-<a href="https://atharvmandlavdiya.me" target="_blank">
-  <img src="https://img.shields.io/badge/🌐_Website-atharvmandlavdiya.me-00d9ff?style=for-the-badge&logoColor=white" alt="Website"/>
-</a>
-<a href="https://github.com/AtharvM02222" target="_blank">
-  <img src="https://img.shields.io/badge/GitHub-AtharvM02222-181717?style=for-the-badge&logo=github" alt="GitHub"/>
-</a>
-<a href="https://www.linkedin.com/in/atharvmandlavdiya/" target="_blank">
-  <img src="https://img.shields.io/badge/LinkedIn-atharvmandlavdiya-0077B5?style=for-the-badge&logo=linkedin" alt="LinkedIn"/>
-</a>
-
-<a href="https://itch.io/profile/atharvam" target="_blank">
-  <img src="https://img.shields.io/badge/itch.io-atharvam-FA5C5C?style=for-the-badge&logo=itch.io&logoColor=white" alt="itch.io"/>
-</a>
-<a href="https://www.hackerrank.com/profile/atharv0m" target="_blank">
-  <img src="https://img.shields.io/badge/HackerRank-atharv0m-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black" alt="HackerRank"/>
-</a>
-<a href="https://g.dev/atharvmandlavdiya" target="_blank">
-  <img src="https://img.shields.io/badge/Google_Dev-atharvmandlavdiya-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Dev"/>
-</a>
-
-<a href="mailto:atharvam682@gmail.com">
-  <img src="https://img.shields.io/badge/Email-atharvam682@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
-</a>
 
 </div>
 
@@ -487,12 +358,6 @@ const atharvMandlavdiya = {
         "Discord Bots for Team Management",
         "Automation Tools with n8n & Python",
         "Robotics Competition Projects"
-    ],
-    recentAchievements: [
-        "✅ Built automated certificate mailer (90+ emails)",
-        "🌐 Launched personal portfolio website",
-        "🤖 Created Discord bot for robotics team",
-        "🏆 Participated in multiple robotics competitions"
     ],
     openTo: [
         "Collaborations on interesting projects",
@@ -517,11 +382,19 @@ console.log("Let's build something amazing! 🚀");
 
 ---
 
-## 💡 Random Dev Quote
+## 🌐 Connect With Me
 
 <div align="center">
 
-![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight)
+<a href="https://atharvmandlavdiya.me" target="_blank"><img src="https://img.shields.io/badge/🌐_Website-atharvmandlavdiya.me-00d9ff?style=for-the-badge&logoColor=white" alt="Website"/></a>
+<a href="https://github.com/AtharvM02222" target="_blank"><img src="https://img.shields.io/badge/GitHub-AtharvM02222-181717?style=for-the-badge&logo=github" alt="GitHub"/></a>
+<a href="https://www.linkedin.com/in/atharvmandlavdiya/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-atharvmandlavdiya-0077B5?style=for-the-badge&logo=linkedin" alt="LinkedIn"/></a>
+
+<a href="https://itch.io/profile/atharvam" target="_blank"><img src="https://img.shields.io/badge/itch.io-atharvam-FA5C5C?style=for-the-badge&logo=itch.io&logoColor=white" alt="itch.io"/></a>
+<a href="https://www.hackerrank.com/profile/atharv0m" target="_blank"><img src="https://img.shields.io/badge/HackerRank-atharv0m-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black" alt="HackerRank"/></a>
+<a href="https://g.dev/atharvmandlavdiya" target="_blank"><img src="https://img.shields.io/badge/Google_Dev-atharvmandlavdiya-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Dev"/></a>
+
+<a href="mailto:atharvam682@gmail.com"><img src="https://img.shields.io/badge/Email-atharvam682@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
 
 </div>
 
