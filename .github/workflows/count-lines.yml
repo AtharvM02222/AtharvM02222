@@ -1,8 +1,8 @@
-name: Count Lines of Code
+name: Count Lines & Languages
 
 on:
   schedule:
-    - cron: '0 0 * * 0' # Run every Sunday at midnight
+    - cron: '0 */2 * * *' # Run every 2 hours
   workflow_dispatch: # Allow manual trigger
   push:
     branches:
@@ -24,7 +24,7 @@ jobs:
       - name: Install cloc
         run: |
           sudo apt-get update
-          sudo apt-get install -y cloc
+          sudo apt-get install -y cloc jq
           
       - name: Get all repos
         id: repos
@@ -80,7 +80,7 @@ jobs:
           echo "Repositories:"
           cat repo_list.txt
           
-      - name: Clone and count lines
+      - name: Clone and count lines with language stats
         env:
           TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
@@ -90,21 +90,24 @@ jobs:
           total_blanks=0
           repo_count=0
           
+          # Initialize language counters
+          declare -A lang_lines
+          
           # Create temp directory
           mkdir -p temp_repos
           
           # Clone each repo and count lines
           while IFS= read -r repo; do
             echo "Processing $repo..."
-            git clone https://x-access-token:${TOKEN}@github.com/$repo.git temp_repos/$repo 2>/dev/null || continue
+            git clone --depth 1 https://x-access-token:${TOKEN}@github.com/$repo.git temp_repos/$repo 2>/dev/null || continue
             
-            # Count lines using cloc
+            # Count lines using cloc with JSON output
             cloc temp_repos/$repo --json --quiet > cloc_output.json 2>/dev/null || continue
             
             # Extract totals
-            code=$(cat cloc_output.json | jq -r '.SUM.code // 0')
-            comments=$(cat cloc_output.json | jq -r '.SUM.comment // 0')
-            blanks=$(cat cloc_output.json | jq -r '.SUM.blank // 0')
+            code=$(jq -r '.SUM.code // 0' cloc_output.json)
+            comments=$(jq -r '.SUM.comment // 0' cloc_output.json)
+            blanks=$(jq -r '.SUM.blank // 0' cloc_output.json)
             
             if [ "$code" -gt 0 ]; then
               total_code=$((total_code + code))
@@ -112,6 +115,17 @@ jobs:
               total_blanks=$((total_blanks + blanks))
               repo_count=$((repo_count + 1))
               echo "  ✓ $repo: $code lines of code"
+              
+              # Extract language-specific stats
+              for lang in Python JavaScript C# "C++" HTML CSS TypeScript Bash C "C/C++ Header" Java Rust Go PHP Ruby Swift Kotlin; do
+                lang_code=$(jq -r --arg lang "$lang" '.[$lang].code // 0' cloc_output.json)
+                if [ "$lang_code" -gt 0 ]; then
+                  # Normalize language names
+                  normalized_lang=$(echo "$lang" | sed 's/C++/CPP/g' | sed 's/C#/CSharp/g' | sed 's/C\/C++ Header/CPP/g' | tr -d ' ')
+                  current_val=${lang_lines[$normalized_lang]:-0}
+                  lang_lines[$normalized_lang]=$((current_val + lang_code))
+                fi
+              done
             fi
             
             # Clean up
@@ -128,6 +142,34 @@ jobs:
           echo "TOTAL_CODE=$formatted_code" >> $GITHUB_ENV
           echo "REPO_COUNT=$repo_count" >> $GITHUB_ENV
           
+          # Find top 5 languages
+          echo "Language breakdown:" > lang_stats.txt
+          for lang in "${!lang_lines[@]}"; do
+            echo "$lang ${lang_lines[$lang]}"
+          done | sort -rn -k2 | head -5 | while read lang lines; do
+            percentage=$(awk "BEGIN {printf \"%.1f\", ($lines / $total_code) * 100}")
+            formatted=$(printf "%'d" $lines)
+            echo "$lang: $formatted lines ($percentage%)" >> lang_stats.txt
+            
+            # Export top 3 for badges
+            if [ ! -f top_langs_set ]; then
+              echo "LANG1=$lang" >> $GITHUB_ENV
+              echo "LANG1_LINES=$formatted" >> $GITHUB_ENV
+              echo "LANG1_PCT=$percentage" >> $GITHUB_ENV
+              touch top_langs_set
+            elif [ ! -f top_langs_set2 ]; then
+              echo "LANG2=$lang" >> $GITHUB_ENV
+              echo "LANG2_LINES=$formatted" >> $GITHUB_ENV
+              echo "LANG2_PCT=$percentage" >> $GITHUB_ENV
+              touch top_langs_set2
+            elif [ ! -f top_langs_set3 ]; then
+              echo "LANG3=$lang" >> $GITHUB_ENV
+              echo "LANG3_LINES=$formatted" >> $GITHUB_ENV
+              echo "LANG3_PCT=$percentage" >> $GITHUB_ENV
+              touch top_langs_set3
+            fi
+          done
+          
           echo "================================"
           echo "Total Lines: $formatted_lines"
           echo "Code Lines: $formatted_code"
@@ -135,25 +177,46 @@ jobs:
           echo "Blanks: $total_blanks"
           echo "Repositories: $repo_count"
           echo "================================"
+          echo "Top Languages:"
+          cat lang_stats.txt
+          echo "================================"
           
-      - name: Update README
+      - name: Update README with stats and languages
         run: |
-          # Update the README with the new counts
-          # Try multiple patterns to catch the badge
+          # Update line counts
           sed -i "s/Total_Lines-Calculating\.\.\.-00d9ff/Total_Lines-${{ env.TOTAL_LINES }}-00d9ff/g" README.md
           sed -i "s/Total_Lines-[0-9,]*-00d9ff/Total_Lines-${{ env.TOTAL_LINES }}-00d9ff/g" README.md
           sed -i "s/Repositories-[0-9]*-00d9ff/Repositories-${{ env.REPO_COUNT }}-00d9ff/g" README.md
           sed -i "s/Across all [0-9]* repositories/Across all ${{ env.REPO_COUNT }} repositories/g" README.md
-          sed -i "s/Across all repositories/Across all ${{ env.REPO_COUNT }} repositories/g" README.md
+          
+          # Update language stats if section exists
+          if grep -q "<!-- LANG_STATS_START -->" README.md; then
+            # Create language stats section
+            cat > lang_section.txt << 'EOF'
+<!-- LANG_STATS_START -->
+**Top Languages by Lines of Code:**
+
+![Lang1](https://img.shields.io/badge/${{ env.LANG1 }}-${{ env.LANG1_LINES }}_lines_(${{ env.LANG1_PCT }}%)-00d9ff?style=for-the-badge)
+![Lang2](https://img.shields.io/badge/${{ env.LANG2 }}-${{ env.LANG2_LINES }}_lines_(${{ env.LANG2_PCT }}%)-00d9ff?style=for-the-badge)
+![Lang3](https://img.shields.io/badge/${{ env.LANG3 }}-${{ env.LANG3_LINES }}_lines_(${{ env.LANG3_PCT }}%)-00d9ff?style=for-the-badge)
+
+*Last updated: $(date -u '+%Y-%m-%d %H:%M UTC')*
+<!-- LANG_STATS_END -->
+EOF
+            
+            # Replace section
+            sed -i '/<!-- LANG_STATS_START -->/,/<!-- LANG_STATS_END -->/d' README.md
+            # Append new section before code statistics table
+            sed -i '/### 💻 Code Statistics/i\'"$(cat lang_section.txt)" README.md
+          fi
           
           # Show what changed
           echo "Updated README with:"
           echo "  Total Lines: ${{ env.TOTAL_LINES }}"
           echo "  Repositories: ${{ env.REPO_COUNT }}"
-          
-          # Show the updated lines
-          grep "Total_Lines" README.md || echo "Total_Lines not found"
-          grep "Repositories" README.md || echo "Repositories not found"
+          echo "  Top Language 1: ${{ env.LANG1 }} (${{ env.LANG1_PCT }}%)"
+          echo "  Top Language 2: ${{ env.LANG2 }} (${{ env.LANG2_PCT }}%)"
+          echo "  Top Language 3: ${{ env.LANG3 }} (${{ env.LANG3_PCT }}%)"
           
       - name: Commit changes
         env:
@@ -162,4 +225,4 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
-          git diff --quiet && git diff --staged --quiet || (git commit -m "📊 Update lines of code count: ${{ env.TOTAL_LINES }} lines across ${{ env.REPO_COUNT }} repos" && git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "📊 Update code stats: ${{ env.TOTAL_LINES }} lines across ${{ env.REPO_COUNT }} repos | Top: ${{ env.LANG1 }} (${{ env.LANG1_PCT }}%)" && git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main)
