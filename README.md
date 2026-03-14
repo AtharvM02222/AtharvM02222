@@ -9,7 +9,7 @@
 ![Profile Views](https://komarev.com/ghpvc/?username=AtharvM02222&label=Profile%20views&color=00d9ff&style=for-the-badge)
 [![GitHub followers](https://img.shields.io/github/followers/AtharvM02222?style=for-the-badge&color=00d9ff&logo=github)](https://github.com/AtharvM02222?tab=followers)
 [![GitHub stars](https://img.shields.io/github/stars/AtharvM02222?style=for-the-badge&color=00d9ff&logo=github)](https://github.com/AtharvM02222?tab=repositories)
-[![Website](https://img.shields.io/badge/Website-Live-00d9ff?style=for-the-badge&logo=google-chrome&logoColor=white)](https://atharvmandlavdiya.me)
+[![Website](https://img.shields.io/badge/Website-Live-00d9ff?style=for-the-badge&logo=google-chrome&logoColor=white)](https://atharvmandlavdiya.is-a.dev/)
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
@@ -35,7 +35,7 @@ class AtharvMandlavdiya:
             "🎨 UI/UX Design"
         ]
         self.current_projects = [
-            "Portfolio Website (atharvmandlavdiya.me)",
+            "Portfolio Website (https://atharvmandlavdiya.is-a.dev/)",
             "Certificate Mailer System (90+ emails sent)",
             "Robo Nexus Discord Bot",
             "Robotics Competition Projects"
@@ -238,7 +238,7 @@ me.say_hi()
 
 Modern portfolio with smooth animations, interactive countdown timers, and dynamic project loading.
 
-<a href="https://atharvmandlavdiya.me" target="_blank"><img src="https://img.shields.io/badge/Live-atharvmandlavdiya.me-00d9ff?style=for-the-badge"/></a>
+<a href="https://https://atharvmandlavdiya.is-a.dev/" target="_blank"><img src="https://img.shields.io/badge/Live-https://atharvmandlavdiya.is-a.dev/-00d9ff?style=for-the-badge"/></a>
 <a href="https://github.com/AtharvM02222/Portfolio" target="_blank"><img src="https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github"/></a>
 
 </div>
@@ -386,7 +386,7 @@ console.log("Let's build something amazing! 🚀");
 
 <div align="center">
 
-<a href="https://atharvmandlavdiya.me" target="_blank"><img src="https://img.shields.io/badge/🌐_Website-atharvmandlavdiya.me-00d9ff?style=for-the-badge&logoColor=white" alt="Website"/></a>
+<a href="https://https://atharvmandlavdiya.is-a.dev/" target="_blank"><img src="https://img.shields.io/badge/🌐_Website-https://atharvmandlavdiya.is-a.dev/-00d9ff?style=for-the-badge&logoColor=white" alt="Website"/></a>
 <a href="https://github.com/AtharvM02222" target="_blank"><img src="https://img.shields.io/badge/GitHub-AtharvM02222-181717?style=for-the-badge&logo=github" alt="GitHub"/></a>
 <a href="https://www.linkedin.com/in/atharvmandlavdiya/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-atharvmandlavdiya-0077B5?style=for-the-badge&logo=linkedin" alt="LinkedIn"/></a>
 
