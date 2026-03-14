@@ -189,13 +189,13 @@ me.say_hi()
 ![Lang2](https://img.shields.io/badge/HTML-11432_lines_(5.3%25)-00d9ff?style=for-the-badge)
 ![Lang3](https://img.shields.io/badge/CSS-8731_lines_(4.0%25)-00d9ff?style=for-the-badge)
 
-*Last updated: 2026-03-14 16:34 UTC*
+*Last updated: 2026-03-14 18:41 UTC*
 <!-- LANG_STATS_END -->
 
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/Total_Lines-260078-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
+<img src="https://img.shields.io/badge/Total_Lines-260046-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
 <br>
 <sub>Across all 37 repositories</sub>
 </td>
