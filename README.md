@@ -183,17 +183,24 @@ me.say_hi()
 ### 💻 Code Statistics (All Repositories)
 
 <!-- LANG_STATS_START -->
+**Top Languages by Lines of Code:**
+
+![Lang1](https://img.shields.io/badge/Python-57866_lines_(26.8%25)-00d9ff?style=for-the-badge)
+![Lang2](https://img.shields.io/badge/HTML-11432_lines_(5.3%25)-00d9ff?style=for-the-badge)
+![Lang3](https://img.shields.io/badge/CSS-8731_lines_(4.0%25)-00d9ff?style=for-the-badge)
+
+*Last updated: 2026-03-14 11:24 UTC*
 <!-- LANG_STATS_END -->
 
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/Total_Lines-134,090-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
+<img src="https://img.shields.io/badge/Total_Lines-260071-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
 <br>
-<sub>Across all 34 repositories</sub>
+<sub>Across all 37 repositories</sub>
 </td>
 <td align="center">
-<img src="https://img.shields.io/badge/Repositories-34-00d9ff?style=for-the-badge&logo=github&logoColor=white" alt="Repos"/>
+<img src="https://img.shields.io/badge/Repositories-37-00d9ff?style=for-the-badge&logo=github&logoColor=white" alt="Repos"/>
 <br>
 <sub>Public & Private</sub>
 </td>
