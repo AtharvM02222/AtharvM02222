@@ -14,18 +14,18 @@ permissions:
 jobs:
   count-lines:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-        
+
       - name: Install cloc
         run: |
           sudo apt-get update
           sudo apt-get install -y cloc jq
-          
+
       - name: Get all repos
         id: repos
         run: |
@@ -36,19 +36,19 @@ jobs:
             echo "⚠️ Using GITHUB_TOKEN (public repos only)"
             TOKEN="${{ secrets.GITHUB_TOKEN }}"
           fi
-          
+
           echo "Fetching personal repositories..."
           curl -H "Authorization: token $TOKEN" \
                -H "Accept: application/vnd.github.v3+json" \
                "https://api.github.com/user/repos?per_page=100&affiliation=owner" > personal_repos.json
-          
+
           echo "Fetching RoboNexus organization repositories..."
           curl -H "Authorization: token $TOKEN" \
                -H "Accept: application/vnd.github.v3+json" \
                "https://api.github.com/orgs/RoboNexxus/repos?per_page=100" > org_repos.json
-          
+
           echo "Combining repository lists..."
-          
+
           if jq -e 'type == "array"' personal_repos.json > /dev/null 2>&1; then
             jq -r '.[] | "AtharvM02222/\(.name)"' personal_repos.json > repo_list.txt
             personal_count=$(wc -l < repo_list.txt)
@@ -58,7 +58,7 @@ jobs:
             cat personal_repos.json
             touch repo_list.txt
           fi
-          
+
           if jq -e 'type == "array"' org_repos.json > /dev/null 2>&1; then
             jq -r '.[] | "RoboNexxus/\(.name)"' org_repos.json >> repo_list.txt
             org_count=$(jq -r 'length' org_repos.json)
@@ -66,13 +66,13 @@ jobs:
           else
             echo "⚠️ Could not access RoboNexus org repos (might need read:org scope)"
           fi
-          
+
           total_repos=$(wc -l < repo_list.txt)
           echo ""
           echo "📊 Total repositories to process: $total_repos"
           echo "Repositories:"
           cat repo_list.txt
-          
+
       - name: Clone and count lines with language stats
         env:
           TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
@@ -82,28 +82,28 @@ jobs:
           total_comments=0
           total_blanks=0
           repo_count=0
-          
+
           declare -A lang_lines
-          
+
           mkdir -p temp_repos
-          
+
           while IFS= read -r repo; do
             echo "Processing $repo..."
             git clone --depth 1 https://x-access-token:${TOKEN}@github.com/$repo.git temp_repos/$repo 2>/dev/null || continue
-            
+
             cloc temp_repos/$repo --json --quiet > cloc_output.json 2>/dev/null || continue
-            
+
             code=$(jq -r '.SUM.code // 0' cloc_output.json)
             comments=$(jq -r '.SUM.comment // 0' cloc_output.json)
             blanks=$(jq -r '.SUM.blank // 0' cloc_output.json)
-            
+
             if [ "$code" -gt 0 ]; then
               total_code=$((total_code + code))
               total_comments=$((total_comments + comments))
               total_blanks=$((total_blanks + blanks))
               repo_count=$((repo_count + 1))
               echo "  ✓ $repo: $code lines of code"
-              
+
               for lang in Python JavaScript C# "C++" HTML CSS TypeScript Bash C "C/C++ Header" Java Rust Go PHP Ruby Swift Kotlin; do
                 lang_code=$(jq -r --arg lang "$lang" '.[$lang].code // 0' cloc_output.json)
                 if [ "$lang_code" -gt 0 ]; then
@@ -113,19 +113,19 @@ jobs:
                 fi
               done
             fi
-            
+
             rm -rf temp_repos/$repo
           done < repo_list.txt
-          
+
           total_lines=$((total_code + total_comments + total_blanks))
-          
+
           formatted_lines=$(printf "%'d" $total_lines)
           formatted_code=$(printf "%'d" $total_code)
-          
+
           echo "TOTAL_LINES=$formatted_lines" >> $GITHUB_ENV
           echo "TOTAL_CODE=$formatted_code" >> $GITHUB_ENV
           echo "REPO_COUNT=$repo_count" >> $GITHUB_ENV
-          
+
           echo "================================"
           echo "Total Lines: $formatted_lines"
           echo "Code Lines: $formatted_code"
@@ -133,20 +133,17 @@ jobs:
           echo "Blanks: $total_blanks"
           echo "Repositories: $repo_count"
           echo "================================"
-          
-          # Only compute language stats if we have code
+
           if [ "$total_code" -gt 0 ]; then
             echo "Top Languages:"
-            
-            # Write sorted languages to a file (avoids pipe subshell issue)
+
             for lang in "${!lang_lines[@]}"; do
               echo "$lang ${lang_lines[$lang]}"
             done | sort -rn -k2 | head -5 > top_langs_raw.txt
-            
+
             cat top_langs_raw.txt
             echo "================================"
-            
-            # Read without a pipe so $GITHUB_ENV writes are not lost in a subshell
+
             rank=1
             while IFS= read -r line; do
               lang=$(echo "$line" | awk '{print $1}')
@@ -163,37 +160,37 @@ jobs:
           else
             echo "⚠️ No code lines found — skipping language stats"
           fi
-          
+
       - name: Update README with stats and languages
         run: |
           sed -i "s/Total_Lines-Calculating\.\.\.-00d9ff/Total_Lines-${{ env.TOTAL_LINES }}-00d9ff/g" README.md
           sed -i "s/Total_Lines-[0-9,]*-00d9ff/Total_Lines-${{ env.TOTAL_LINES }}-00d9ff/g" README.md
           sed -i "s/Repositories-[0-9]*-00d9ff/Repositories-${{ env.REPO_COUNT }}-00d9ff/g" README.md
           sed -i "s/Across all [0-9]* repositories/Across all ${{ env.REPO_COUNT }} repositories/g" README.md
-          
+
           if grep -q "<!-- LANG_STATS_START -->" README.md; then
             cat > lang_section.txt << EOF
-<!-- LANG_STATS_START -->
-**Top Languages by Lines of Code:**
+          <!-- LANG_STATS_START -->
+          **Top Languages by Lines of Code:**
 
-![Lang1](https://img.shields.io/badge/${{ env.LANG1 }}-${{ env.LANG1_LINES }}_lines_(${{ env.LANG1_PCT }}%25)-00d9ff?style=for-the-badge)
-![Lang2](https://img.shields.io/badge/${{ env.LANG2 }}-${{ env.LANG2_LINES }}_lines_(${{ env.LANG2_PCT }}%25)-00d9ff?style=for-the-badge)
-![Lang3](https://img.shields.io/badge/${{ env.LANG3 }}-${{ env.LANG3_LINES }}_lines_(${{ env.LANG3_PCT }}%25)-00d9ff?style=for-the-badge)
+          ![Lang1](https://img.shields.io/badge/${{ env.LANG1 }}-${{ env.LANG1_LINES }}_lines_(${{ env.LANG1_PCT }}%25)-00d9ff?style=for-the-badge)
+          ![Lang2](https://img.shields.io/badge/${{ env.LANG2 }}-${{ env.LANG2_LINES }}_lines_(${{ env.LANG2_PCT }}%25)-00d9ff?style=for-the-badge)
+          ![Lang3](https://img.shields.io/badge/${{ env.LANG3 }}-${{ env.LANG3_LINES }}_lines_(${{ env.LANG3_PCT }}%25)-00d9ff?style=for-the-badge)
 
-*Last updated: $(date -u '+%Y-%m-%d %H:%M UTC')*
-<!-- LANG_STATS_END -->
-EOF
+          *Last updated: $(date -u '+%Y-%m-%d %H:%M UTC')*
+          <!-- LANG_STATS_END -->
+          EOF
             sed -i '/<!-- LANG_STATS_START -->/,/<!-- LANG_STATS_END -->/d' README.md
             sed -i '/### 💻 Code Statistics/i\'"$(cat lang_section.txt)" README.md
           fi
-          
+
           echo "Updated README with:"
           echo "  Total Lines: ${{ env.TOTAL_LINES }}"
           echo "  Repositories: ${{ env.REPO_COUNT }}"
           echo "  Top Language 1: ${{ env.LANG1 }} (${{ env.LANG1_PCT }}%)"
           echo "  Top Language 2: ${{ env.LANG2 }} (${{ env.LANG2_PCT }}%)"
           echo "  Top Language 3: ${{ env.LANG3 }} (${{ env.LANG3_PCT }}%)"
-          
+
       - name: Commit changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -201,18 +198,18 @@ EOF
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
-          
+
           # Exit cleanly if nothing changed
           if git diff --quiet && git diff --staged --quiet; then
             echo "✅ No changes to commit"
             exit 0
           fi
-          
+
           git commit -m "📊 Update code stats: ${{ env.TOTAL_LINES }} lines across ${{ env.REPO_COUNT }} repos | Top: ${{ env.LANG1 }} (${{ env.LANG1_PCT }}%)"
-          
-          # Retry push with rebase in case of concurrent runs
+
+          # Retry push with rebase to handle concurrent run conflicts
           for i in 1 2 3; do
             git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main && break
-            echo "Push failed (attempt $i), rebasing and retrying..."
+            echo "⚠️ Push failed (attempt $i), rebasing and retrying..."
             git pull --rebase https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} main
           done
