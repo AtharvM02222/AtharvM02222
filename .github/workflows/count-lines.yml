@@ -165,10 +165,10 @@ jobs:
 
       - name: Update README with stats and languages
         run: |
-          sed -i "s/Total_Lines-Calculating\.\.\.-00d9ff/Total_Lines-${{ env.TOTAL_LINES }}-00d9ff/g" README.md
-          sed -i "s/Total_Lines-[0-9,]*-00d9ff/Total_Lines-${{ env.TOTAL_LINES }}-00d9ff/g" README.md
-          sed -i "s/Repositories-[0-9]*-00d9ff/Repositories-${{ env.REPO_COUNT }}-00d9ff/g" README.md
-          sed -i "s/Across all [0-9]* repositories/Across all ${{ env.REPO_COUNT }} repositories/g" README.md
+          sed -E -i "s|Total_Lines-Calculating\.\.\.-00d9ff|Total_Lines-${{ env.TOTAL_LINES }}-00d9ff|g" README.md
+          sed -E -i "s|Total_Lines-[0-9,]+-00d9ff|Total_Lines-${{ env.TOTAL_LINES }}-00d9ff|g" README.md
+          sed -E -i "s|Repositories-[0-9]+-00d9ff|Repositories-${{ env.REPO_COUNT }}-00d9ff|g" README.md
+          sed -E -i "s|Across all [0-9]+ repositories|Across all ${{ env.REPO_COUNT }} repositories|g" README.md
 
           if grep -q "<!-- LANG_STATS_START -->" README.md; then
             cat > lang_section.txt << EOF
@@ -201,7 +201,6 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add README.md
 
-          # Exit cleanly if nothing changed
           if git diff --quiet && git diff --staged --quiet; then
             echo "✅ No changes to commit"
             exit 0
@@ -209,7 +208,6 @@ jobs:
 
           git commit -m "📊 Update code stats: ${{ env.TOTAL_LINES }} lines across ${{ env.REPO_COUNT }} repos | Top: ${{ env.LANG1 }} (${{ env.LANG1_PCT }}%)"
 
-          # Retry push with rebase to handle concurrent run conflicts
           for i in 1 2 3; do
             git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main && break
             echo "⚠️ Push failed (attempt $i), rebasing and retrying..."
