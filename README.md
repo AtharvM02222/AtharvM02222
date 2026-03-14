@@ -375,9 +375,9 @@ console.log("Let's build something amazing! 🚀");
 ## 🎮 Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🗣 Commented on [#34156](https://github.com/is-a-dev/register/pull/34156#issuecomment-4053417520) in [is-a-dev/register](https://github.com/is-a-dev/register)
-2. 💪 Opened PR [#34156](https://github.com/is-a-dev/register/pull/34156) in [is-a-dev/register](https://github.com/is-a-dev/register)
-3. 🗣 Commented on [#34105](https://github.com/is-a-dev/register/pull/34105#issuecomment-4036177271) in [is-a-dev/register](https://github.com/is-a-dev/register)
+1. 🎉 Merged PR [#34156](https://github.com/is-a-dev/register/pull/34156) in [is-a-dev/register](https://github.com/is-a-dev/register)
+2. 🗣 Commented on [#34156](https://github.com/is-a-dev/register/pull/34156#issuecomment-4053417520) in [is-a-dev/register](https://github.com/is-a-dev/register)
+3. 💪 Opened PR [#34156](https://github.com/is-a-dev/register/pull/34156) in [is-a-dev/register](https://github.com/is-a-dev/register)
 <!--END_SECTION:activity-->
 
 ---
