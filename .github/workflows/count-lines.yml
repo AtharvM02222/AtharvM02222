@@ -29,32 +29,26 @@ jobs:
           sudo apt-get install -y cloc jq
 
       - name: Get all repos
-        id: repos
         run: |
           if [ -n "${{ secrets.PAT_TOKEN }}" ]; then
-            echo "✅ Using PAT_TOKEN to access all repositories (public + private)"
+            echo "✅ Using PAT_TOKEN"
             TOKEN="${{ secrets.PAT_TOKEN }}"
           else
-            echo "⚠️ Using GITHUB_TOKEN (public repos only)"
+            echo "⚠️ Using GITHUB_TOKEN (public only)"
             TOKEN="${{ secrets.GITHUB_TOKEN }}"
           fi
 
-          echo "Fetching personal repositories..."
-          curl -H "Authorization: token $TOKEN" \
+          curl -s -H "Authorization: token $TOKEN" \
                -H "Accept: application/vnd.github.v3+json" \
                "https://api.github.com/user/repos?per_page=100&affiliation=owner" > personal_repos.json
 
-          echo "Fetching RoboNexus organization repositories..."
-          curl -H "Authorization: token $TOKEN" \
+          curl -s -H "Authorization: token $TOKEN" \
                -H "Accept: application/vnd.github.v3+json" \
                "https://api.github.com/orgs/RoboNexxus/repos?per_page=100" > org_repos.json
 
-          echo "Combining repository lists..."
-
           if jq -e 'type == "array"' personal_repos.json > /dev/null 2>&1; then
             jq -r '.[] | "AtharvM02222/\(.name)"' personal_repos.json > repo_list.txt
-            personal_count=$(wc -l < repo_list.txt)
-            echo "✅ Found $personal_count personal repositories"
+            echo "✅ Found $(wc -l < repo_list.txt) personal repos"
           else
             echo "❌ Failed to get personal repos"
             cat personal_repos.json
@@ -63,23 +57,18 @@ jobs:
 
           if jq -e 'type == "array"' org_repos.json > /dev/null 2>&1; then
             jq -r '.[] | "RoboNexxus/\(.name)"' org_repos.json >> repo_list.txt
-            org_count=$(jq -r 'length' org_repos.json)
-            echo "✅ Found $org_count RoboNexus organization repositories"
+            echo "✅ Found $(jq -r 'length' org_repos.json) RoboNexus repos"
           else
-            echo "⚠️ Could not access RoboNexus org repos (might need read:org scope)"
+            echo "⚠️ Could not access RoboNexus org repos"
           fi
 
-          total_repos=$(wc -l < repo_list.txt)
-          echo ""
-          echo "📊 Total repositories to process: $total_repos"
-          echo "Repositories:"
+          echo "📊 Total: $(wc -l < repo_list.txt) repositories"
           cat repo_list.txt
 
       - name: Clone and count lines with language stats
         env:
           TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
-          total_lines=0
           total_code=0
           total_comments=0
           total_blanks=0
@@ -109,7 +98,7 @@ jobs:
               for lang in Python JavaScript C# "C++" HTML CSS TypeScript Bash C "C/C++ Header" Java Rust Go PHP Ruby Swift Kotlin; do
                 lang_code=$(jq -r --arg lang "$lang" '.[$lang].code // 0' cloc_output.json)
                 if [ "$lang_code" -gt 0 ]; then
-                  normalized_lang=$(echo "$lang" | sed 's/C++/CPP/g' | sed 's/C#/CSharp/g' | sed 's/C\/C++ Header/CPP/g' | tr -d ' ')
+                  normalized_lang=$(echo "$lang" | sed 's/C++/CPP/g; s/C#/CSharp/g; s/C\/C++ Header/CPP/g' | tr -d ' ')
                   current_val=${lang_lines[$normalized_lang]:-0}
                   lang_lines[$normalized_lang]=$((current_val + lang_code))
                 fi
@@ -121,77 +110,107 @@ jobs:
 
           total_lines=$((total_code + total_comments + total_blanks))
 
-          formatted_lines=$(printf "%'d" $total_lines)
-          formatted_code=$(printf "%'d" $total_code)
-
-          echo "TOTAL_LINES=$formatted_lines" >> $GITHUB_ENV
-          echo "TOTAL_CODE=$formatted_code" >> $GITHUB_ENV
+          echo "TOTAL_LINES=$total_lines" >> $GITHUB_ENV
+          echo "TOTAL_CODE=$total_code" >> $GITHUB_ENV
           echo "REPO_COUNT=$repo_count" >> $GITHUB_ENV
 
           echo "================================"
-          echo "Total Lines: $formatted_lines"
-          echo "Code Lines: $formatted_code"
-          echo "Comments: $total_comments"
-          echo "Blanks: $total_blanks"
-          echo "Repositories: $repo_count"
+          echo "Total Lines: $total_lines"
+          echo "Code Lines:  $total_code"
+          echo "Comments:    $total_comments"
+          echo "Blanks:      $total_blanks"
+          echo "Repos:       $repo_count"
           echo "================================"
 
           if [ "$total_code" -gt 0 ]; then
-            echo "Top Languages:"
-
             for lang in "${!lang_lines[@]}"; do
               echo "$lang ${lang_lines[$lang]}"
             done | sort -rn -k2 | head -5 > top_langs_raw.txt
 
+            echo "Top Languages:"
             cat top_langs_raw.txt
-            echo "================================"
 
             rank=1
             while IFS= read -r line; do
               lang=$(echo "$line" | awk '{print $1}')
               lines=$(echo "$line" | awk '{print $2}')
-              percentage=$(awk "BEGIN {printf \"%.1f\", ($lines / $total_code) * 100}")
-              formatted=$(printf "%'d" $lines)
-              echo "  #$rank: $lang — $formatted lines ($percentage%)"
+              pct=$(awk "BEGIN {printf \"%.1f\", ($lines / $total_code) * 100}")
               echo "LANG${rank}=$lang" >> $GITHUB_ENV
-              echo "LANG${rank}_LINES=$formatted" >> $GITHUB_ENV
-              echo "LANG${rank}_PCT=$percentage" >> $GITHUB_ENV
+              echo "LANG${rank}_LINES=$lines" >> $GITHUB_ENV
+              echo "LANG${rank}_PCT=$pct" >> $GITHUB_ENV
               rank=$((rank + 1))
               [ $rank -gt 3 ] && break
             done < top_langs_raw.txt
-          else
-            echo "⚠️ No code lines found — skipping language stats"
           fi
 
       - name: Update README with stats and languages
         run: |
-          sed -E -i "s|Total_Lines-Calculating\.\.\.-00d9ff|Total_Lines-${{ env.TOTAL_LINES }}-00d9ff|g" README.md
-          sed -E -i "s|Total_Lines-[0-9,]+-00d9ff|Total_Lines-${{ env.TOTAL_LINES }}-00d9ff|g" README.md
-          sed -E -i "s|Repositories-[0-9]+-00d9ff|Repositories-${{ env.REPO_COUNT }}-00d9ff|g" README.md
-          sed -E -i "s|Across all [0-9]+ repositories|Across all ${{ env.REPO_COUNT }} repositories|g" README.md
+          python3 << 'PYEOF'
+          import re, os
 
-          if grep -q "<!-- LANG_STATS_START -->" README.md; then
-            cat > lang_section.txt << EOF
-          <!-- LANG_STATS_START -->
+          total_lines = os.environ.get("TOTAL_LINES", "0")
+          repo_count  = os.environ.get("REPO_COUNT", "0")
+          lang1       = os.environ.get("LANG1", "")
+          lang1_lines = os.environ.get("LANG1_LINES", "0")
+          lang1_pct   = os.environ.get("LANG1_PCT", "0")
+          lang2       = os.environ.get("LANG2", "")
+          lang2_lines = os.environ.get("LANG2_LINES", "0")
+          lang2_pct   = os.environ.get("LANG2_PCT", "0")
+          lang3       = os.environ.get("LANG3", "")
+          lang3_lines = os.environ.get("LANG3_LINES", "0")
+          lang3_pct   = os.environ.get("LANG3_PCT", "0")
+
+          with open("README.md", "r", encoding="utf-8") as f:
+              content = f.read()
+
+          # Update total lines badge
+          content = re.sub(
+              r'Total_Lines-[^"\'<\s]+-00d9ff',
+              f'Total_Lines-{total_lines}-00d9ff',
+              content
+          )
+
+          # Update repositories badge
+          content = re.sub(
+              r'Repositories-\d+-00d9ff',
+              f'Repositories-{repo_count}-00d9ff',
+              content
+          )
+
+          # Update "Across all X repositories" text
+          content = re.sub(
+              r'Across all \d+ repositories',
+              f'Across all {repo_count} repositories',
+              content
+          )
+
+          # Update language stats section if markers exist
+          if "<!-- LANG_STATS_START -->" in content:
+              from datetime import datetime, timezone
+              now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+              lang_section = f"""<!-- LANG_STATS_START -->
           **Top Languages by Lines of Code:**
 
-          ![Lang1](https://img.shields.io/badge/${{ env.LANG1 }}-${{ env.LANG1_LINES }}_lines_(${{ env.LANG1_PCT }}%25)-00d9ff?style=for-the-badge)
-          ![Lang2](https://img.shields.io/badge/${{ env.LANG2 }}-${{ env.LANG2_LINES }}_lines_(${{ env.LANG2_PCT }}%25)-00d9ff?style=for-the-badge)
-          ![Lang3](https://img.shields.io/badge/${{ env.LANG3 }}-${{ env.LANG3_LINES }}_lines_(${{ env.LANG3_PCT }}%25)-00d9ff?style=for-the-badge)
+          ![Lang1](https://img.shields.io/badge/{lang1}-{lang1_lines}_lines_({lang1_pct}%25)-00d9ff?style=for-the-badge)
+          ![Lang2](https://img.shields.io/badge/{lang2}-{lang2_lines}_lines_({lang2_pct}%25)-00d9ff?style=for-the-badge)
+          ![Lang3](https://img.shields.io/badge/{lang3}-{lang3_lines}_lines_({lang3_pct}%25)-00d9ff?style=for-the-badge)
 
-          *Last updated: $(date -u '+%Y-%m-%d %H:%M UTC')*
-          <!-- LANG_STATS_END -->
-          EOF
-            sed -i '/<!-- LANG_STATS_START -->/,/<!-- LANG_STATS_END -->/d' README.md
-            sed -i '/### 💻 Code Statistics/i\'"$(cat lang_section.txt)" README.md
-          fi
+          *Last updated: {now}*
+          <!-- LANG_STATS_END -->"""
 
-          echo "Updated README with:"
-          echo "  Total Lines: ${{ env.TOTAL_LINES }}"
-          echo "  Repositories: ${{ env.REPO_COUNT }}"
-          echo "  Top Language 1: ${{ env.LANG1 }} (${{ env.LANG1_PCT }}%)"
-          echo "  Top Language 2: ${{ env.LANG2 }} (${{ env.LANG2_PCT }}%)"
-          echo "  Top Language 3: ${{ env.LANG3 }} (${{ env.LANG3_PCT }}%)"
+              content = re.sub(
+                  r'<!-- LANG_STATS_START -->.*?<!-- LANG_STATS_END -->',
+                  lang_section,
+                  content,
+                  flags=re.DOTALL
+              )
+
+          with open("README.md", "w", encoding="utf-8") as f:
+              f.write(content)
+
+          print(f"✅ Updated README: {total_lines} lines, {repo_count} repos")
+          print(f"   Top: {lang1} ({lang1_pct}%), {lang2} ({lang2_pct}%), {lang3} ({lang3_pct}%)")
+          PYEOF
 
       - name: Commit changes
         env:
@@ -210,6 +229,6 @@ jobs:
 
           for i in 1 2 3; do
             git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main && break
-            echo "⚠️ Push failed (attempt $i), rebasing and retrying..."
+            echo "⚠️ Push failed (attempt $i), rebasing..."
             git pull --rebase https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} main
           done
