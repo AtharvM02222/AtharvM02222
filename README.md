@@ -245,7 +245,7 @@ me.say_hi()
 
 Modern portfolio with smooth animations, interactive countdown timers, and dynamic project loading.
 
-<a href="https://https://atharvmandlavdiya.is-a.dev/" target="_blank"><img src="https://img.shields.io/badge/Live-https://atharvmandlavdiya.is-a.dev/-00d9ff?style=for-the-badge"/></a>
+<a href="https://atharvmandlavdiya.is-a.dev/" target="_blank"><img src="https://img.shields.io/badge/Live-https://atharvmandlavdiya.is-a.dev/-00d9ff?style=for-the-badge"/></a>
 <a href="https://github.com/AtharvM02222/Portfolio" target="_blank"><img src="https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github"/></a>
 
 </div>
@@ -393,7 +393,7 @@ console.log("Let's build something amazing! 🚀");
 
 <div align="center">
 
-<a href="https://https://atharvmandlavdiya.is-a.dev/" target="_blank"><img src="https://img.shields.io/badge/🌐_Website-https://atharvmandlavdiya.is-a.dev/-00d9ff?style=for-the-badge&logoColor=white" alt="Website"/></a>
+<a href="https://atharvmandlavdiya.is-a.dev/" target="_blank"><img src="https://img.shields.io/badge/🌐_Website-https://atharvmandlavdiya.is-a.dev/-00d9ff?style=for-the-badge&logoColor=white" alt="Website"/></a>
 <a href="https://github.com/AtharvM02222" target="_blank"><img src="https://img.shields.io/badge/GitHub-AtharvM02222-181717?style=for-the-badge&logo=github" alt="GitHub"/></a>
 <a href="https://www.linkedin.com/in/atharvmandlavdiya/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-atharvmandlavdiya-0077B5?style=for-the-badge&logo=linkedin" alt="LinkedIn"/></a>
 
