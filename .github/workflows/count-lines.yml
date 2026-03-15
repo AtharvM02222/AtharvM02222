@@ -57,9 +57,9 @@ jobs:
 
           if jq -e 'type == "array"' org_repos.json > /dev/null 2>&1; then
             jq -r '.[] | "RoboNexxus/\(.name)"' org_repos.json >> repo_list.txt
-            echo "✅ Found $(jq -r 'length' org_repos.json) RoboNexus repos"
+            echo "✅ Found $(jq -r 'length' org_repos.json) RoboNexxus repos"
           else
-            echo "⚠️ Could not access RoboNexus org repos"
+            echo "⚠️ Could not access RoboNexxus org repos"
           fi
 
           echo "📊 Total: $(wc -l < repo_list.txt) repositories"
@@ -72,6 +72,8 @@ jobs:
           total_code=0
           total_comments=0
           total_blanks=0
+          total_added=0
+          total_changed=0
           repo_count=0
 
           declare -A lang_lines
@@ -80,7 +82,7 @@ jobs:
 
           while IFS= read -r repo; do
             echo "Processing $repo..."
-            git clone --depth 1 https://x-access-token:${TOKEN}@github.com/$repo.git temp_repos/$repo 2>/dev/null || continue
+            git clone --depth=1000 https://x-access-token:${TOKEN}@github.com/$repo.git temp_repos/$repo 2>/dev/null || continue
 
             cloc temp_repos/$repo --json --quiet > cloc_output.json 2>/dev/null || continue
 
@@ -103,6 +105,14 @@ jobs:
                   lang_lines[$normalized_lang]=$((current_val + lang_code))
                 fi
               done
+
+              # Count all-time lines added + changed via git numstat
+              while IFS=$'\t' read -r added removed file; do
+                if [[ "$added" =~ ^[0-9]+$ ]] && [[ "$removed" =~ ^[0-9]+$ ]]; then
+                  total_added=$((total_added + added))
+                  total_changed=$((total_changed + added + removed))
+                fi
+              done < <(git -C temp_repos/$repo log --pretty=tformat: --numstat 2>/dev/null)
             fi
 
             rm -rf temp_repos/$repo
@@ -110,16 +120,26 @@ jobs:
 
           total_lines=$((total_code + total_comments + total_blanks))
 
+          # Format with commas
+          total_added_fmt=$(printf "%'d" $total_added)
+          total_changed_fmt=$(printf "%'d" $total_changed)
+
           echo "TOTAL_LINES=$total_lines" >> $GITHUB_ENV
           echo "TOTAL_CODE=$total_code" >> $GITHUB_ENV
           echo "REPO_COUNT=$repo_count" >> $GITHUB_ENV
+          echo "TOTAL_ADDED=$total_added" >> $GITHUB_ENV
+          echo "TOTAL_ADDED_FMT=$total_added_fmt" >> $GITHUB_ENV
+          echo "TOTAL_CHANGED=$total_changed" >> $GITHUB_ENV
+          echo "TOTAL_CHANGED_FMT=$total_changed_fmt" >> $GITHUB_ENV
 
           echo "================================"
-          echo "Total Lines: $total_lines"
-          echo "Code Lines:  $total_code"
-          echo "Comments:    $total_comments"
-          echo "Blanks:      $total_blanks"
-          echo "Repos:       $repo_count"
+          echo "Total Lines:      $total_lines"
+          echo "Code Lines:       $total_code"
+          echo "Comments:         $total_comments"
+          echo "Blanks:           $total_blanks"
+          echo "Repos:            $repo_count"
+          echo "All-Time Added:   $total_added_fmt"
+          echo "All-Time Changed: $total_changed_fmt"
           echo "================================"
 
           if [ "$total_code" -gt 0 ]; then
@@ -148,17 +168,24 @@ jobs:
           python3 << 'PYEOF'
           import re, os
 
-          total_lines = os.environ.get("TOTAL_LINES", "0")
-          repo_count  = os.environ.get("REPO_COUNT", "0")
-          lang1       = os.environ.get("LANG1", "")
-          lang1_lines = os.environ.get("LANG1_LINES", "0")
-          lang1_pct   = os.environ.get("LANG1_PCT", "0")
-          lang2       = os.environ.get("LANG2", "")
-          lang2_lines = os.environ.get("LANG2_LINES", "0")
-          lang2_pct   = os.environ.get("LANG2_PCT", "0")
-          lang3       = os.environ.get("LANG3", "")
-          lang3_lines = os.environ.get("LANG3_LINES", "0")
-          lang3_pct   = os.environ.get("LANG3_PCT", "0")
+          total_lines      = os.environ.get("TOTAL_LINES", "0")
+          repo_count       = os.environ.get("REPO_COUNT", "0")
+          total_added_fmt  = os.environ.get("TOTAL_ADDED_FMT", "0")
+          total_changed_fmt = os.environ.get("TOTAL_CHANGED_FMT", "0")
+          lang1            = os.environ.get("LANG1", "")
+          lang1_lines      = os.environ.get("LANG1_LINES", "0")
+          lang1_pct        = os.environ.get("LANG1_PCT", "0")
+          lang2            = os.environ.get("LANG2", "")
+          lang2_lines      = os.environ.get("LANG2_LINES", "0")
+          lang2_pct        = os.environ.get("LANG2_PCT", "0")
+          lang3            = os.environ.get("LANG3", "")
+          lang3_lines      = os.environ.get("LANG3_LINES", "0")
+          lang3_pct        = os.environ.get("LANG3_PCT", "0")
+
+          # URL-encode commas for badge URLs
+          total_lines_url       = str(total_lines).replace(",", "%2C")
+          total_added_url       = total_added_fmt.replace(",", "%2C")
+          total_changed_url     = total_changed_fmt.replace(",", "%2C")
 
           with open("README.md", "r", encoding="utf-8") as f:
               content = f.read()
@@ -166,7 +193,7 @@ jobs:
           # Update total lines badge
           content = re.sub(
               r'Total_Lines-[^"\'<\s]+-00d9ff',
-              f'Total_Lines-{total_lines}-00d9ff',
+              f'Total_Lines-{total_lines_url}-00d9ff',
               content
           )
 
@@ -184,7 +211,21 @@ jobs:
               content
           )
 
-          # Update language stats section if markers exist
+          # Update lines added badge
+          content = re.sub(
+              r'Lines_Added-[^"\'<\s]+-00d9ff',
+              f'Lines_Added-{total_added_url}-00d9ff',
+              content
+          )
+
+          # Update lines changed badge
+          content = re.sub(
+              r'Lines_Changed-[^"\'<\s]+-00d9ff',
+              f'Lines_Changed-{total_changed_url}-00d9ff',
+              content
+          )
+
+          # Update language stats section
           if "<!-- LANG_STATS_START -->" in content:
               from datetime import datetime, timezone
               now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -209,6 +250,7 @@ jobs:
               f.write(content)
 
           print(f"✅ Updated README: {total_lines} lines, {repo_count} repos")
+          print(f"   All-time added: {total_added_fmt} | changed: {total_changed_fmt}")
           print(f"   Top: {lang1} ({lang1_pct}%), {lang2} ({lang2_pct}%), {lang3} ({lang3_pct}%)")
           PYEOF
 
@@ -225,7 +267,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "📊 Update code stats: ${{ env.TOTAL_LINES }} lines across ${{ env.REPO_COUNT }} repos | Top: ${{ env.LANG1 }} (${{ env.LANG1_PCT }}%)"
+          git commit -m "📊 Update code stats: ${{ env.TOTAL_LINES }} lines | +${{ env.TOTAL_ADDED_FMT }} added | ${{ env.REPO_COUNT }} repos | Top: ${{ env.LANG1 }} (${{ env.LANG1_PCT }}%)"
 
           for i in 1 2 3; do
             git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main && break
