@@ -36,7 +36,7 @@ class AtharvMandlavdiya:
         ]
         self.current_projects = [
             "Portfolio Website (https://atharvmandlavdiya.is-a.dev/)",
-            "Certificate Mailer System (90+ emails sent)",
+            "Certificate Mailer System (222+ emails sent)",
             "Robo Nexus Discord Bot",
             "Robotics Competition Projects"
         ]
