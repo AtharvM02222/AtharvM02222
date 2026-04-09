@@ -387,8 +387,8 @@ console.log("Let's build something amazing! 🚀");
 ## 🎮 Recent Activity
 
 <!--START_SECTION:activity-->
-1. ❌ Closed PR [#1](https://github.com/RoboNexxus/Website/pull/1) in [RoboNexxus/Website](https://github.com/RoboNexxus/Website)
-2. 💪 Opened PR [#34374](https://github.com/is-a-dev/register/pull/34374) in [is-a-dev/register](https://github.com/is-a-dev/register)
+1. ❌ Closed PR [#2](https://github.com/RoboNexxus/Website/pull/2) in [RoboNexxus/Website](https://github.com/RoboNexxus/Website)
+2. ❌ Closed PR [#1](https://github.com/RoboNexxus/Website/pull/1) in [RoboNexxus/Website](https://github.com/RoboNexxus/Website)
 3. 🎉 Merged PR [#34156](https://github.com/is-a-dev/register/pull/34156) in [is-a-dev/register](https://github.com/is-a-dev/register)
 <!--END_SECTION:activity-->
 
