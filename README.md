@@ -389,7 +389,7 @@ console.log("Let's build something amazing! 🚀");
 <!--START_SECTION:activity-->
 1. ❗ Opened issue [#2](https://github.com/AtharvM02222/Class-X/issues/2) in [AtharvM02222/Class-X](https://github.com/AtharvM02222/Class-X)
 2. ❗ Opened issue [#1](https://github.com/AtharvM02222/Class-X/issues/1) in [AtharvM02222/Class-X](https://github.com/AtharvM02222/Class-X)
-3. 🎉 Merged PR [#34156](https://github.com/is-a-dev/register/pull/34156) in [is-a-dev/register](https://github.com/is-a-dev/register)
+3. ❌ Closed PR [#6](https://github.com/RoboNexxus/Website/pull/6) in [RoboNexxus/Website](https://github.com/RoboNexxus/Website)
 <!--END_SECTION:activity-->
 
 ---
