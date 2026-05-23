@@ -387,9 +387,9 @@ console.log("Let's build something amazing! 🚀");
 ## 🎮 Recent Activity
 
 <!--START_SECTION:activity-->
-1. 💪 Opened PR [#2](https://github.com/techsyndicate/ts-25/pull/2) in [techsyndicate/ts-25](https://github.com/techsyndicate/ts-25)
-2. ❗ Opened issue [#2](https://github.com/AtharvM02222/Class-X/issues/2) in [AtharvM02222/Class-X](https://github.com/AtharvM02222/Class-X)
-3. ❗ Opened issue [#1](https://github.com/AtharvM02222/Class-X/issues/1) in [AtharvM02222/Class-X](https://github.com/AtharvM02222/Class-X)
+1. ❗ Opened issue [#13](https://github.com/RoboNexxus/Website/issues/13) in [RoboNexxus/Website](https://github.com/RoboNexxus/Website)
+2. 💪 Opened PR [#2](https://github.com/techsyndicate/ts-25/pull/2) in [techsyndicate/ts-25](https://github.com/techsyndicate/ts-25)
+3. ❗ Opened issue [#2](https://github.com/AtharvM02222/Class-X/issues/2) in [AtharvM02222/Class-X](https://github.com/AtharvM02222/Class-X)
 <!--END_SECTION:activity-->
 
 ---
