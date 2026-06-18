@@ -387,9 +387,9 @@ console.log("Let's build something amazing! 🚀");
 ## 🎮 Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🔒 Closed issue [#7](https://github.com/RoboNexxus/RN-Website/issues/7) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
-2. 🔒 Closed issue [#6](https://github.com/RoboNexxus/RN-Website/issues/6) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
-3. 🔒 Closed issue [#5](https://github.com/RoboNexxus/RN-Website/issues/5) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
+1. 🔒 Closed issue [#1](https://github.com/RoboNexxus/RN-Website/issues/1) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
+2. 🔒 Closed issue [#7](https://github.com/RoboNexxus/RN-Website/issues/7) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
+3. 🔒 Closed issue [#6](https://github.com/RoboNexxus/RN-Website/issues/6) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
 <!--END_SECTION:activity-->
 
 ---
