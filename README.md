@@ -189,7 +189,7 @@ me.say_hi()
 ![Lang2](https://img.shields.io/badge/HTML-11240_lines_(3.8%25)-00d9ff?style=for-the-badge)
 ![Lang3](https://img.shields.io/badge/CSS-8886_lines_(3.0%25)-00d9ff?style=for-the-badge)
 
-*Last updated: 2026-06-22 11:58 UTC*
+*Last updated: 2026-06-22 17:04 UTC*
 <!-- LANG_STATS_END -->
 
 <table>
@@ -205,12 +205,12 @@ me.say_hi()
 <sub>Public & Private</sub>
 </td>
 <td align="center">
-<img src="https://img.shields.io/badge/Lines_Added-992615-00d9ff?style=for-the-badge&logo=git&logoColor=white" alt="Lines Added"/>
+<img src="https://img.shields.io/badge/Lines_Added-992622-00d9ff?style=for-the-badge&logo=git&logoColor=white" alt="Lines Added"/>
 <br>
 <sub>All-time lines added</sub>
 </td>
 <td align="center">
-<img src="https://img.shields.io/badge/Lines_Changed-1621031-00d9ff?style=for-the-badge&logo=git&logoColor=white" alt="Lines Changed"/>
+<img src="https://img.shields.io/badge/Lines_Changed-1621045-00d9ff?style=for-the-badge&logo=git&logoColor=white" alt="Lines Changed"/>
 <br>
 <sub>All-time lines added + deleted</sub>
 </td>
