@@ -185,32 +185,32 @@ me.say_hi()
 <!-- LANG_STATS_START -->
 **Top Languages by Lines of Code:**
 
-![Lang1](https://img.shields.io/badge/Python-67131_lines_(21.8%25)-00d9ff?style=for-the-badge)
-![Lang2](https://img.shields.io/badge/HTML-11240_lines_(3.7%25)-00d9ff?style=for-the-badge)
-![Lang3](https://img.shields.io/badge/CSS-8957_lines_(2.9%25)-00d9ff?style=for-the-badge)
+![Lang1](https://img.shields.io/badge/Python-67131_lines_(21.6%25)-00d9ff?style=for-the-badge)
+![Lang2](https://img.shields.io/badge/HTML-11240_lines_(3.6%25)-00d9ff?style=for-the-badge)
+![Lang3](https://img.shields.io/badge/TypeScript-9652_lines_(3.1%25)-00d9ff?style=for-the-badge)
 
-*Last updated: 2026-06-25 03:40 UTC*
+*Last updated: 2026-06-25 07:44 UTC*
 <!-- LANG_STATS_END -->
 
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/Total_Lines-357621-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
+<img src="https://img.shields.io/badge/Total_Lines-360577-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
 <br>
-<sub>Across all 51 repositories</sub>
+<sub>Across all 52 repositories</sub>
 </td>
 <td align="center">
-<img src="https://img.shields.io/badge/Repositories-51-00d9ff?style=for-the-badge&logo=github&logoColor=white" alt="Repos"/>
+<img src="https://img.shields.io/badge/Repositories-52-00d9ff?style=for-the-badge&logo=github&logoColor=white" alt="Repos"/>
 <br>
 <sub>Public & Private</sub>
 </td>
 <td align="center">
-<img src="https://img.shields.io/badge/Lines_Added-1006321-00d9ff?style=for-the-badge&logo=git&logoColor=white" alt="Lines Added"/>
+<img src="https://img.shields.io/badge/Lines_Added-1015958-00d9ff?style=for-the-badge&logo=git&logoColor=white" alt="Lines Added"/>
 <br>
 <sub>All-time lines added</sub>
 </td>
 <td align="center">
-<img src="https://img.shields.io/badge/Lines_Changed-1637023-00d9ff?style=for-the-badge&logo=git&logoColor=white" alt="Lines Changed"/>
+<img src="https://img.shields.io/badge/Lines_Changed-1653311-00d9ff?style=for-the-badge&logo=git&logoColor=white" alt="Lines Changed"/>
 <br>
 <sub>All-time lines added + deleted</sub>
 </td>
