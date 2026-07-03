@@ -186,16 +186,16 @@ me.say_hi()
 **Top Languages by Lines of Code:**
 
 ![Lang1](https://img.shields.io/badge/Python-66169_lines_(21.3%25)-00d9ff?style=for-the-badge)
-![Lang2](https://img.shields.io/badge/HTML-11439_lines_(3.7%25)-00d9ff?style=for-the-badge)
+![Lang2](https://img.shields.io/badge/HTML-11523_lines_(3.7%25)-00d9ff?style=for-the-badge)
 ![Lang3](https://img.shields.io/badge/TypeScript-9740_lines_(3.1%25)-00d9ff?style=for-the-badge)
 
-*Last updated: 2026-07-03 07:22 UTC*
+*Last updated: 2026-07-03 10:38 UTC*
 <!-- LANG_STATS_END -->
 
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/Total_Lines-360338-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
+<img src="https://img.shields.io/badge/Total_Lines-360531-00d9ff?style=for-the-badge&logo=codecov&logoColor=white" alt="Total Lines"/>
 <br>
 <sub>Across all 53 repositories</sub>
 </td>
@@ -205,12 +205,12 @@ me.say_hi()
 <sub>Public & Private</sub>
 </td>
 <td align="center">
-<img src="https://img.shields.io/badge/Lines_Added-1024926-00d9ff?style=for-the-badge&logo=git&logoColor=white" alt="Lines Added"/>
+<img src="https://img.shields.io/badge/Lines_Added-1025073-00d9ff?style=for-the-badge&logo=git&logoColor=white" alt="Lines Added"/>
 <br>
 <sub>All-time lines added</sub>
 </td>
 <td align="center">
-<img src="https://img.shields.io/badge/Lines_Changed-1673818-00d9ff?style=for-the-badge&logo=git&logoColor=white" alt="Lines Changed"/>
+<img src="https://img.shields.io/badge/Lines_Changed-1673919-00d9ff?style=for-the-badge&logo=git&logoColor=white" alt="Lines Changed"/>
 <br>
 <sub>All-time lines added + deleted</sub>
 </td>
