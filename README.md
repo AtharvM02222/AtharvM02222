@@ -387,9 +387,9 @@ console.log("Let's build something amazing! 🚀");
 ## 🎮 Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#6](https://github.com/AtharvM02222/silk-visualizer/pull/6) in [AtharvM02222/silk-visualizer](https://github.com/AtharvM02222/silk-visualizer)
-2. 💪 Opened PR [#6](https://github.com/AtharvM02222/silk-visualizer/pull/6) in [AtharvM02222/silk-visualizer](https://github.com/AtharvM02222/silk-visualizer)
-3. 🔒 Closed issue [#1](https://github.com/AtharvM02222/silk-visualizer/issues/1) in [AtharvM02222/silk-visualizer](https://github.com/AtharvM02222/silk-visualizer)
+1. 🔒 Closed issue [#13](https://github.com/RoboNexxus/RN-Website/issues/13) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
+2. 🔒 Closed issue [#12](https://github.com/RoboNexxus/RN-Website/issues/12) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
+3. 🎉 Merged PR [#14](https://github.com/RoboNexxus/RN-Website/pull/14) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
 <!--END_SECTION:activity-->
 
 ---
