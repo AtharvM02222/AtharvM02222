@@ -45,6 +45,8 @@
 ### 🚀 Recent Activity
 
 <!--START_SECTION:activity-->
+1. 🎉 Merged PR [#16](https://github.com/RoboNexxus/RN-Website/pull/16) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
+2. 💪 Opened PR [#16](https://github.com/RoboNexxus/RN-Website/pull/16) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
 <!--END_SECTION:activity-->
 
 </div>
