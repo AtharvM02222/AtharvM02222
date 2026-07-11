@@ -450,9 +450,14 @@ if __name__ == '__main__':
     # Calculate age - update birthday as needed
     age_data, age_time = perf_counter(daily_readme, datetime.datetime(2009, 1, 1))  # Update with your birthday
     formatter('age calculation', age_time)
-    total_loc, loc_time = perf_counter(loc_query, ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'], 7)
-    formatter('LOC (cached)', loc_time) if total_loc[-1] else formatter('LOC (no cache)', loc_time)
-    commit_data, commit_time = perf_counter(commit_counter, 7)
+    
+    # Skip LOC calculation to avoid recursion issues with many repos
+    # Use the count-lines workflow for accurate LOC statistics instead
+    total_loc = [0, 0, 0, True]
+    loc_time = 0
+    
+    formatter('LOC (skipped)', loc_time)
+    commit_data, commit_time = perf_counter(graph_commits, acc_date, datetime.datetime.now().isoformat())
     star_data, star_time = perf_counter(graph_repos_stars, 'stars', ['OWNER'])
     repo_data, repo_time = perf_counter(graph_repos_stars, 'repos', ['OWNER'])
     contrib_data, contrib_time = perf_counter(graph_repos_stars, 'repos', ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'])
