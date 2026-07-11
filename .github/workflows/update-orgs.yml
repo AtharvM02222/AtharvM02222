@@ -1,0 +1,35 @@
+name: Update Organization Badges
+
+on:
+  schedule:
+    - cron: '0 4 * * *'   # daily at 4 AM UTC, alongside the main build
+  workflow_dispatch:
+
+jobs:
+  update-orgs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Update org badges in README
+        env:
+          ACCESS_TOKEN: ${{ secrets.PAT_TOKEN }}
+          USER_NAME: AtharvM02222
+        run: python update_orgs.py
+
+      - name: Commit changes
+        run: |
+          git config --global user.email "github-actions-bot@atharvmandlavdiya.github.io"
+          git config --global user.name "AtharvM02222/GitHub-Actions-Bot"
+          git add README.md
+          git diff --cached --quiet || git commit -m "chore: auto-update organization badges"
+          git push
