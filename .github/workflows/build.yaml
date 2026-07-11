@@ -30,7 +30,7 @@ jobs:
         env:
           ACCESS_TOKEN: ${{ secrets.PAT_TOKEN }}
           USER_NAME: AtharvM02222
-        run: python today.py
+        run: python update_svg.py
       - name: Commit
         run: |-
           git add .
