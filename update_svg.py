@@ -22,21 +22,10 @@ def query_github(query, variables):
     raise Exception(f'Query failed: {response.status_code} {response.text}')
 
 def get_stats():
-    """Get all GitHub stats in one query"""
-    # First, get user creation date for all-time commits
-    user_query = '''
-    query($login: String!) {
-        user(login: $login) {
-            createdAt
-        }
-    }'''
-    
-    user_data = query_github(user_query, {'login': USER_NAME})
-    created_at = user_data['data']['user']['createdAt']
-    
+    """Get all GitHub stats"""
     # Main stats query
     query = '''
-    query($login: String!, $from: DateTime!) {
+    query($login: String!) {
         user(login: $login) {
             repositories(first: 1, ownerAffiliations: OWNER) {
                 totalCount
@@ -54,22 +43,43 @@ def get_stats():
             followers {
                 totalCount
             }
-            contributionsCollection(from: $from) {
-                contributionCalendar {
-                    totalContributions
-                }
-            }
         }
     }'''
     
-    data = query_github(query, {'login': USER_NAME, 'from': created_at})
+    data = query_github(query, {'login': USER_NAME})
     user = data['data']['user']
     
     # Calculate total stars
     stars = sum(repo['stargazers']['totalCount'] for repo in user['ownedRepos']['nodes'])
     
+    # Get total commits using the search API (more accurate for all-time)
+    # Note: This only counts commits to default branches
+    try:
+        search_response = requests.get(
+            f'https://api.github.com/search/commits?q=author:{USER_NAME}',
+            headers={**HEADERS, 'Accept': 'application/vnd.github.cloak-preview'}
+        )
+        if search_response.status_code == 200:
+            total_commits = search_response.json()['total_count']
+        else:
+            # Fallback: Use contribution calendar (last year only)
+            contrib_query = '''
+            query($login: String!) {
+                user(login: $login) {
+                    contributionsCollection {
+                        contributionCalendar {
+                            totalContributions
+                        }
+                    }
+                }
+            }'''
+            contrib_data = query_github(contrib_query, {'login': USER_NAME})
+            total_commits = contrib_data['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions']
+    except:
+        total_commits = 0
+    
     return {
-        'commits': user['contributionsCollection']['contributionCalendar']['totalContributions'],
+        'commits': total_commits,
         'stars': stars,
         'repos': user['repositories']['totalCount'],
         'contrib_repos': user['contributedRepos']['totalCount'],
