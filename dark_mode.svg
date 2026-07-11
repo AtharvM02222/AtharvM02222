@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="860" height="660" viewBox="0 0 860 660">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap');
+      
+      text {
+        font-family: 'JetBrains Mono', monospace;
+        fill: #E6EDF3;
+      }
+      
+      .header {
+        font-size: 28px;
+        font-weight: 700;
+        fill: #58A6FF;
+      }
+      
+      .subheader {
+        font-size: 14px;
+        fill: #8B949E;
+      }
+      
+      .label {
+        font-size: 14px;
+        fill: #7EE787;
+      }
+      
+      .value {
+        font-size: 14px;
+        font-weight: 700;
+      }
+      
+      .dots {
+        font-size: 14px;
+        fill: #484F58;
+      }
+      
+      .section-title {
+        font-size: 18px;
+        font-weight: 700;
+        fill: #F778BA;
+      }
+      
+      .accent {
+        fill: #FFA657;
+      }
+    </style>
+  </defs>
+  
+  <rect width="860" height="660" fill="#0D1117" rx="10"/>
+  
+  <!-- Header -->
+  <text x="30" y="50" class="header">Atharv Mandlavdiya</text>
+  <text x="30" y="75" class="subheader">Student | Developer | Cybersecurity Enthusiast</text>
+  
+  <!-- Decorative Line -->
+  <line x1="30" y1="95" x2="830" y2="95" stroke="#21262D" stroke-width="2"/>
+  
+  <!-- Stats Section -->
+  <text x="30" y="135" class="section-title">📊 GitHub Statistics</text>
+  
+  <!-- Row 1 -->
+  <text x="50" y="170" class="label">Total Commits</text>
+  <text id="commit_data_dots" x="210" y="170" class="dots">.......</text>
+  <text id="commit_data" x="760" y="170" class="value">0</text>
+  
+  <text x="50" y="200" class="label">Total Stars</text>
+  <text id="star_data_dots" x="210" y="200" class="dots">...........</text>
+  <text id="star_data" x="760" y="200" class="value">0</text>
+  
+  <text x="50" y="230" class="label">Public Repositories</text>
+  <text id="repo_data_dots" x="210" y="230" class="dots">.........</text>
+  <text id="repo_data" x="760" y="230" class="value">0</text>
+  
+  <text x="50" y="260" class="label">Contributed Repos</text>
+  <text id="contrib_data_dots" x="210" y="260" class="dots">..........</text>
+  <text id="contrib_data" x="760" y="260" class="value">0</text>
+  
+  <text x="50" y="290" class="label">Followers</text>
+  <text id="follower_data_dots" x="210" y="290" class="dots">............</text>
+  <text id="follower_data" x="760" y="290" class="value">0</text>
+  
+  <!-- Decorative Line -->
+  <line x1="30" y1="315" x2="830" y2="315" stroke="#21262D" stroke-width="2"/>
+  
+  <!-- Lines of Code Section -->
+  <text x="30" y="355" class="section-title">💻 Lines of Code</text>
+  
+  <text x="50" y="390" class="label">Total LOC</text>
+  <text id="loc_data_dots" x="210" y="390" class="dots">.............</text>
+  <text id="loc_data" x="760" y="390" class="value">0</text>
+  
+  <text x="50" y="420" class="label">Lines Added</text>
+  <text id="loc_add_dots" x="210" y="420" class="dots">............</text>
+  <text id="loc_add" x="760" y="420" class="accent">0</text>
+  
+  <text x="50" y="450" class="label">Lines Deleted</text>
+  <text id="loc_del_dots" x="210" y="450" class="dots">...........</text>
+  <text id="loc_del" x="760" y="450" class="accent">0</text>
+  
+  <!-- Decorative Line -->
+  <line x1="30" y1="475" x2="830" y2="475" stroke="#21262D" stroke-width="2"/>
+  
+  <!-- About Section -->
+  <text x="30" y="515" class="section-title">🚀 Tech Stack</text>
+  
+  <text x="50" y="550" class="label">Languages:</text>
+  <text x="180" y="550" class="subheader">Python • TypeScript • JavaScript • C++ • C#</text>
+  
+  <text x="50" y="575" class="label">Web:</text>
+  <text x="180" y="575" class="subheader">HTML • CSS • React • Node.js</text>
+  
+  <text x="50" y="600" class="label">Hardware:</text>
+  <text x="180" y="600" class="subheader">Arduino • ESP32 • PCB Design</text>
+  
+  <!-- Footer -->
+  <text x="30" y="640" class="subheader">🔄 Auto-updated daily via GitHub Actions</text>
+</svg>
