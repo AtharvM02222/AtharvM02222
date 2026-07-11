@@ -1,8 +1,9 @@
 name: README build
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Count Lines & Languages"]
+    types:
+      - completed
   schedule:
     - cron: "0 4 * * *"
   workflow_dispatch:

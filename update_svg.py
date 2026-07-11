@@ -23,8 +23,20 @@ def query_github(query, variables):
 
 def get_stats():
     """Get all GitHub stats in one query"""
-    query = '''
+    # First, get user creation date for all-time commits
+    user_query = '''
     query($login: String!) {
+        user(login: $login) {
+            createdAt
+        }
+    }'''
+    
+    user_data = query_github(user_query, {'login': USER_NAME})
+    created_at = user_data['data']['user']['createdAt']
+    
+    # Main stats query
+    query = '''
+    query($login: String!, $from: DateTime!) {
         user(login: $login) {
             repositories(first: 1, ownerAffiliations: OWNER) {
                 totalCount
@@ -42,7 +54,7 @@ def get_stats():
             followers {
                 totalCount
             }
-            contributionsCollection {
+            contributionsCollection(from: $from) {
                 contributionCalendar {
                     totalContributions
                 }
@@ -50,7 +62,7 @@ def get_stats():
         }
     }'''
     
-    data = query_github(query, {'login': USER_NAME})
+    data = query_github(query, {'login': USER_NAME, 'from': created_at})
     user = data['data']['user']
     
     # Calculate total stars
@@ -64,7 +76,34 @@ def get_stats():
         'followers': user['followers']['totalCount']
     }
 
-def update_svg(filename, stats):
+def get_loc_from_readme():
+    """Extract LOC stats from README badges"""
+    try:
+        with open('README.md', 'r') as f:
+            readme = f.read()
+        
+        import re
+        # Extract from badges like: Total_Lines-365017-00d9ff
+        total_match = re.search(r'Total_Lines-(\d+)-', readme)
+        added_match = re.search(r'Lines_Added-(\d+)-', readme)
+        changed_match = re.search(r'Lines_Changed-(\d+)-', readme)
+        
+        if total_match and added_match and changed_match:
+            total = int(total_match.group(1))
+            added = int(added_match.group(1))
+            changed = int(changed_match.group(1))
+            deleted = changed - added
+            return {
+                'total': total,
+                'added': added,
+                'deleted': deleted
+            }
+    except:
+        pass
+    
+    return {'total': 0, 'added': 0, 'deleted': 0}
+
+def update_svg(filename, stats, loc_stats):
     """Update SVG file with stats"""
     tree = etree.parse(filename)
     root = tree.getroot()
@@ -93,10 +132,10 @@ def update_svg(filename, stats):
     update_element('contrib_data', stats['contrib_repos'], 10)
     update_element('follower_data', stats['followers'], 12)
     
-    # LOC remains 0 (updated by count-lines workflow via README badges)
-    update_element('loc_data', 0, 13)
-    update_element('loc_add', 0, 12)
-    update_element('loc_del', 0, 11)
+    # Update LOC from count-lines workflow
+    update_element('loc_data', loc_stats['total'], 13)
+    update_element('loc_add', loc_stats['added'], 12)
+    update_element('loc_del', loc_stats['deleted'], 11)
     
     tree.write(filename, encoding='utf-8', xml_declaration=True)
     print(f'✅ Updated {filename}')
@@ -114,7 +153,16 @@ Stats fetched:
   Followers: {stats['followers']:,}
 """)
     
-    update_svg('dark_mode.svg', stats)
-    update_svg('light_mode.svg', stats)
+    print('Extracting LOC from README...')
+    loc_stats = get_loc_from_readme()
+    print(f"""
+LOC Stats:
+  Total: {loc_stats['total']:,}
+  Added: {loc_stats['added']:,}
+  Deleted: {loc_stats['deleted']:,}
+""")
+    
+    update_svg('dark_mode.svg', stats, loc_stats)
+    update_svg('light_mode.svg', stats, loc_stats)
     
     print('✅ All done!')
