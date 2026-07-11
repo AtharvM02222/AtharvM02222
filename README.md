@@ -1,41 +1,51 @@
 <div align="center">
+  
+<img src="CAM.png" alt="Profile" width="200" style="border-radius: 50%;">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=2500&pause=1200&color=00EAFF&center=true&vCenter=true&width=600&lines=Atharv+Mandlavdiya;Full-Stack+Dev+%7C+Robo+Nexus+Co-Lead;Class+10+%7C+Gurugram%2C+India" alt="Typing SVG" />
+### Atharv Mandlavdiya
+
+**Student@AISG46 | Core Member@RoboNexus | Member@TechSyndicate | Co-Founder@FirstCommit | Cybersecurity /\​ Developer**
+
+<br>
+
+[![Website](https://img.shields.io/badge/🌐_Website-atharvmandlavdiya.is--a.dev-00ADD8?style=for-the-badge)](https://atharvmandlavdiya.is-a.dev)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/atharvmandlavdiya)
+[![HackerRank](https://img.shields.io/badge/HackerRank-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black)](https://www.hackerrank.com/profile/Atharv0M)
+[![Google Dev](https://img.shields.io/badge/Google_Dev-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://g.dev/atharvmandlavdiya)
+[![Itch.io](https://img.shields.io/badge/Itch.io-FA5C5C?style=for-the-badge&logo=itch.io&logoColor=white)](https://itch.io/profile/atharvam)
 
 </div>
 
-<!--STATS:START-->
-```ansi
-[96m   ┌────────────┐   [0m  [1;96matharv[0m[97m@[0m[1;96mrobonexus[0m
-[96m   │ ┌────────┐ │   [0m  [90m-----------------[0m
-[96m   │ │  A  M  │ │   [0m  [1;96mOS[0m: [97mCBSE Class 10 · IST (UTC+5:30)[0m
-[96m   │ └────────┘ │   [0m  [1;96mHost[0m: [97mAmity Intl School, Gurugram[0m
-[96m   └─┬──┬──┬──┬─┘   [0m  [1;96mUptime[0m: [97mcoding since 2020 (Class 4)[0m
-[96m  ───┴──┴──┴──┴───  [0m  [1;96mKernel[0m: [97mMacBook Pro '17 · Iris 640[0m
-[96m   │  │  │  │  │    [0m  [1;96mIDE[0m: [97mVS Code, Claude Code, Copilot[0m
-[96m  ─┴──┴──┴──┴──┴─   [0m  [1;96mLang.Code[0m: [97mPython, TS/JS, C++, C#[0m
-                      [1;96mLang.Web[0m: [97mHTML, CSS, React, Next.js[0m
-[96m   ROBO NEXUS 46    [0m  [1;96mLang.Human[0m: [97mEnglish, Hindi[0m
-                      [1;96mRobotics[0m: [97mArduino, ESP32, PCB design[0m
-                      [1;96mSecurity[0m: [97mKali, Metasploit, OSINT[0m
-                      [1;96mWeb3[0m: [97mSolana, Web3.js[0m
-                      
-                      [1;96mContact[0m
-                      [1;96mEmail[0m: [97matharvam682@gmail.com[0m
-                      [1;96mGitHub[0m: [97mgithub.com/AtharvM02222[0m
-                      [1;96mLinkedIn[0m: [97min/atharvmandlavdiya[0m
-                      [1;96mWebsite[0m: [97matharvmandlavdiya.is-a.dev[0m
-                      
-                      [1;96mGitHub Stats[0m
-                      [1;96mRepos[0m: [97m53[0m
-                      [1;96mTop Lang[0m: [97mPython — 66,160 lines (21.0%)[0m
-                      [1;96mAlso[0m: [97mHTML (3.7%), TypeScript (3.3%)[0m
-                      [1;96mTotal LOC[0m: [97m364,459 across all repos[0m
-                      [1;96mAll-time[0m: [97m+1,034,644 / 1,689,124 Δ[0m
+---
 
-                      [41m  [0m[42m  [0m[43m  [0m[44m  [0m[45m  [0m[46m  [0m[47m  [0m
 ```
-<!--STATS:END-->
+                                                    atharvm@github
+         ,gPPRg,                                    ---------------
+      ,@P''   'Y@,             @@                   OS: ..................... Class 10 Student, India
+    ,@P'  @@@@@g '@,         g@@@M                  Uptime: ................. 15 years, coding since 2020
+   ,@P' ,@P"````YM '@,     ,@P" R@                  Host: ................... Amity Intl School, Gurugram
+  ,@P  @P'       `Rg '@   ,@P    `@L                Kernel: ................. MacBook Pro '17 (Iris 640)
+  @P' ]@@          l@g`@ ,@P      `@L               IDE: .................... VS Code 1.96.6, Claude, Copilot
+,@L    g@@@@@@@@g    l@@@M@        R@
+P@P'    ]@@WWWW@@L    l@@@  @    @  @@              Languages.Programming: ... Python, TypeScript, JavaScript, C++, C#
+@@L      ]@P  `R@     ]@P  'M@@@@@M' ]@             Languages.Computer: ...... HTML, CSS, JSON, LaTeX, YAML
+@@L       @,   ]@     '@       @@    '@@            Languages.Real: .......... English, Hindi
+P@P'      '@ggg@P      R@     ,@P    ,@P
+`R@g        '^^'       ,@P    ,@P    ,@P            Hobbies.Software: ....... Full-Stack Dev, Web3, Cybersecurity
+  `@L                 ,@P  '@@@@@@@@@@P             Hobbies.Hardware: ....... Arduino, ESP32, PCB Design
+   `@L               ,@P   ,@P    ,@@'
+    `@@g           ,@@P  ,@@P    ,@P'               Contact:
+      "R@g,     ,g@P'   ,@P     ,@P                 Email.Personal: ......... atharvam682@gmail.com
+        `"MPRgPP"'     ,@P  ,@@@@@'                 Email.Work: ............. AtharvM@robonexusindia.tech
+                      ,@P  ,@P                      LinkedIn: ............... in/atharvmandlavdiya
+          @@@@@@@@@@  ,@P ,@P                       Discord: ................ atharvmandlavdiya
+                     ,@P  @P                        Website: ................ atharvmandlavdiya.is-a.dev
+                    '@@@ @@@
+                     ````                           GitHub Stats
+                                                    Repos: .... 53 (Contributed: 133) | Stars: .......... 342
+                                                    Commits: .......... 1,116 | Followers: ........... 196
+                                                    Lines of Code on GitHub: 446,276 ( 523,178++, 76,902-- )
+```
 
 <div align="center">
 
@@ -47,6 +57,6 @@
 3. 🔒 Closed issue [#13](https://github.com/RoboNexxus/RN-Website/issues/13) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
 <!--END_SECTION:activity-->
 
-<sub>stats block regenerated hourly via GitHub Actions</sub>
+<sub>stats updated via GitHub Actions</sub>
 
 </div>
