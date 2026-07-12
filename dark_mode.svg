@@ -62,7 +62,7 @@
   <!-- Row 1 -->
   <text x="50" y="170" class="label">Total Commits</text>
   <text id="commit_data_dots" x="210" y="170" class="dots">. </text>
-  <text id="commit_data" x="760" y="170" class="value">2,890</text>
+  <text id="commit_data" x="760" y="170" class="value">2,891</text>
   
   <text x="50" y="200" class="label">Total Stars</text>
   <text id="star_data_dots" x="210" y="200" class="dots"> ......... </text>
@@ -88,15 +88,15 @@
   
   <text x="50" y="390" class="label">Total LOC</text>
   <text id="loc_data_dots" x="210" y="390" class="dots"> ...... </text>
-  <text id="loc_data" x="760" y="390" class="value">365,378</text>
+  <text id="loc_data" x="760" y="390" class="value">365,377</text>
   
   <text x="50" y="420" class="label">Lines Added</text>
   <text id="loc_add_dots" x="210" y="420" class="dots"> ... </text>
-  <text id="loc_add" x="760" y="420" class="accent">1,036,344</text>
+  <text id="loc_add" x="760" y="420" class="accent">1,036,350</text>
   
   <text x="50" y="450" class="label">Lines Deleted</text>
   <text id="loc_del_dots" x="210" y="450" class="dots"> .... </text>
-  <text id="loc_del" x="760" y="450" class="accent">655,237</text>
+  <text id="loc_del" x="760" y="450" class="accent">655,244</text>
   
   <!-- Decorative Line -->
   <line x1="30" y1="475" x2="830" y2="475" stroke="#21262D" stroke-width="2"/>
