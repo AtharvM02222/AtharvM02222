@@ -74,7 +74,7 @@
   
   <text x="50" y="260" class="label">Contributed Repos</text>
   <text id="contrib_data_dots" x="210" y="260" class="dots"> ....... </text>
-  <text id="contrib_data" x="760" y="260" class="value">115</text>
+  <text id="contrib_data" x="760" y="260" class="value">116</text>
   
   <text x="50" y="290" class="label">Followers</text>
   <text id="follower_data_dots" x="210" y="290" class="dots"> .......... </text>
