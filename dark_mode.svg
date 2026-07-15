@@ -92,11 +92,11 @@
   
   <text x="50" y="420" class="label">Lines Added</text>
   <text id="loc_add_dots" x="210" y="420" class="dots"> ... </text>
-  <text id="loc_add" x="760" y="420" class="accent">1,036,358</text>
+  <text id="loc_add" x="760" y="420" class="accent">1,036,353</text>
   
   <text x="50" y="450" class="label">Lines Deleted</text>
   <text id="loc_del_dots" x="210" y="450" class="dots"> .... </text>
-  <text id="loc_del" x="760" y="450" class="accent">655,246</text>
+  <text id="loc_del" x="760" y="450" class="accent">655,241</text>
   
   <!-- Decorative Line -->
   <line x1="30" y1="475" x2="830" y2="475" stroke="#21262D" stroke-width="2"/>
