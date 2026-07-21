@@ -21,8 +21,8 @@
 
 ![Total Lines](https://img.shields.io/badge/Total_Lines-368425-00d9ff?style=for-the-badge)
 ![Repositories](https://img.shields.io/badge/Repositories-55-00d9ff?style=for-the-badge)
-![Lines Added](https://img.shields.io/badge/Lines_Added-1040368-00d9ff?style=for-the-badge)
-![Lines Changed](https://img.shields.io/badge/Lines_Changed-1696436-00d9ff?style=for-the-badge)
+![Lines Added](https://img.shields.io/badge/Lines_Added-1040374-00d9ff?style=for-the-badge)
+![Lines Changed](https://img.shields.io/badge/Lines_Changed-1696448-00d9ff?style=for-the-badge)
 
 *Across all 55 repositories*
 
@@ -33,7 +33,7 @@
 ![Lang2](https://img.shields.io/badge/HTML-11503_lines_(3.6%25)-00d9ff?style=for-the-badge)
 ![Lang3](https://img.shields.io/badge/TypeScript-10556_lines_(3.3%25)-00d9ff?style=for-the-badge)
 
-*Last updated: 2026-07-21 19:25 UTC*
+*Last updated: 2026-07-21 21:11 UTC*
 <!-- LANG_STATS_END -->
 
 </div>
