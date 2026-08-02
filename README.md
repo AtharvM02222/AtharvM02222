@@ -71,7 +71,7 @@
 ### 🚀 Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#16](https://github.com/RoboNexxus/RN-Website/pull/16) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
+1. 🗣 Commented on [#1](https://github.com/PianoPianist/padhle/issues/1#issuecomment-5156030583) in [PianoPianist/padhle](https://github.com/PianoPianist/padhle)
 2. 💪 Opened PR [#16](https://github.com/RoboNexxus/RN-Website/pull/16) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
 <!--END_SECTION:activity-->
 
