@@ -52,9 +52,6 @@
 <a href="https://github.com/hackclub" title="hackclub">
   <img src="https://avatars.githubusercontent.com/u/5633654?s=64&v=4" width="48" height="48" style="border-radius:50%" alt="hackclub" />
 </a>
-&nbsp;&nbsp;
-<a href="https://github.com/techsyndicate" title="techsyndicate">
-  <img src="https://avatars.githubusercontent.com/u/50449253?s=64&v=4" width="48" height="48" style="border-radius:50%" alt="techsyndicate" />
 </a>
 &nbsp;&nbsp;
 <a href="https://github.com/1st-Commit" title="1st-Commit">
