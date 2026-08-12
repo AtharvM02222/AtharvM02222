@@ -71,8 +71,8 @@
 ### 🚀 Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🗣 Commented on [#1](https://github.com/PianoPianist/padhle/issues/1#issuecomment-5156030583) in [PianoPianist/padhle](https://github.com/PianoPianist/padhle)
-2. 💪 Opened PR [#16](https://github.com/RoboNexxus/RN-Website/pull/16) in [RoboNexxus/RN-Website](https://github.com/RoboNexxus/RN-Website)
+1. 💪 Opened PR [#47071](https://github.com/is-a-dev/register/pull/47071) in [is-a-dev/register](https://github.com/is-a-dev/register)
+2. 🗣 Commented on [#1](https://github.com/PianoPianist/padhle/issues/1#issuecomment-5156030583) in [PianoPianist/padhle](https://github.com/PianoPianist/padhle)
 <!--END_SECTION:activity-->
 
 </div>
