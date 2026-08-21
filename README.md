@@ -9,7 +9,7 @@
 
 <div align="center">
 
-### 🌐 Connect with me
+### Connect with me
 
 [![Website](https://img.shields.io/badge/🌐_Website-atharvmandlavdiya.is--a.dev-00ADD8?style=for-the-badge)](https://atharvmandlavdiya.is-a.dev)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/atharvmandlavdiya)
@@ -17,7 +17,7 @@
 [![Google Dev](https://img.shields.io/badge/Google_Dev-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://g.dev/atharvmandlavdiya)
 [![Itch.io](https://img.shields.io/badge/Itch.io-FA5C5C?style=for-the-badge&logo=itch.io&logoColor=white)](https://itch.io/profile/atharvam)
 
-### 📊 Code Statistics
+### Code Statistics
 
 ![Total Lines](https://img.shields.io/badge/Total_Lines-391548-00d9ff?style=for-the-badge)
 ![Repositories](https://img.shields.io/badge/Repositories-56-00d9ff?style=for-the-badge)
@@ -42,7 +42,7 @@
 
 <div align="center">
 
-### 🏢 Organizations
+### Organizations
 
 <!-- ORG_BADGES_START -->
 <a href="https://github.com/RoboNexxus" title="RoboNexxus">
@@ -68,7 +68,7 @@
 
 <div align="center">
 
-### 🚀 Recent Activity
+### Recent Activity
 
 <!--START_SECTION:activity-->
 1. 🎉 Merged PR [#47071](https://github.com/is-a-dev/register/pull/47071) in [is-a-dev/register](https://github.com/is-a-dev/register)
@@ -81,7 +81,7 @@
 
 <div align="center">
 
-### 🐍 Contribution Snake
+### Contribution Snake
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/output/github-contribution-grid-snake-dark.svg">
@@ -94,7 +94,5 @@
 ---
 
 <div align="center">
-
-<sub>Profile auto-updates daily via GitHub Actions</sub>
 
 </div>
