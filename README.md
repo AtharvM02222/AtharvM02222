@@ -19,10 +19,10 @@
 
 ### Code Statistics
 
-![Total Lines](https://img.shields.io/badge/Total_Lines-391515-00d9ff?style=for-the-badge)
+![Total Lines](https://img.shields.io/badge/Total_Lines-391506-00d9ff?style=for-the-badge)
 ![Repositories](https://img.shields.io/badge/Repositories-56-00d9ff?style=for-the-badge)
-![Lines Added](https://img.shields.io/badge/Lines_Added-1100421-00d9ff?style=for-the-badge)
-![Lines Changed](https://img.shields.io/badge/Lines_Changed-1792440-00d9ff?style=for-the-badge)
+![Lines Added](https://img.shields.io/badge/Lines_Added-1100465-00d9ff?style=for-the-badge)
+![Lines Changed](https://img.shields.io/badge/Lines_Changed-1792537-00d9ff?style=for-the-badge)
 
 *Across all 56 repositories*
 
@@ -31,9 +31,9 @@
 
 ![Lang1](https://img.shields.io/badge/Python-66553_lines_(19.5%25)-00d9ff?style=for-the-badge)
 ![Lang2](https://img.shields.io/badge/HTML-11503_lines_(3.4%25)-00d9ff?style=for-the-badge)
-![Lang3](https://img.shields.io/badge/TypeScript-10511_lines_(3.1%25)-00d9ff?style=for-the-badge)
+![Lang3](https://img.shields.io/badge/TypeScript-10490_lines_(3.1%25)-00d9ff?style=for-the-badge)
 
-*Last updated: 2026-08-21 17:30 UTC*
+*Last updated: 2026-08-21 18:38 UTC*
 <!-- LANG_STATS_END -->
 
 </div>
