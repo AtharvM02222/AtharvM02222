@@ -70,11 +70,11 @@
   
   <text x="50" y="230" class="label">Public Repositories</text>
   <text id="repo_data_dots" x="210" y="230" class="dots"> ....... </text>
-  <text id="repo_data" x="760" y="230" class="value">40</text>
+  <text id="repo_data" x="760" y="230" class="value">41</text>
   
   <text x="50" y="260" class="label">Contributed Repos</text>
   <text id="contrib_data_dots" x="210" y="260" class="dots"> ........ </text>
-  <text id="contrib_data" x="760" y="260" class="value">49</text>
+  <text id="contrib_data" x="760" y="260" class="value">50</text>
   
   <text x="50" y="290" class="label">Followers</text>
   <text id="follower_data_dots" x="210" y="290" class="dots"> .......... </text>
@@ -88,11 +88,11 @@
   
   <text x="50" y="390" class="label">Total LOC</text>
   <text id="loc_data_dots" x="210" y="390" class="dots"> ...... </text>
-  <text id="loc_data" x="760" y="390" class="value">391,863</text>
+  <text id="loc_data" x="760" y="390" class="value">392,642</text>
   
   <text x="50" y="420" class="label">Lines Added</text>
   <text id="loc_add_dots" x="210" y="420" class="dots"> ... </text>
-  <text id="loc_add" x="760" y="420" class="accent">1,101,235</text>
+  <text id="loc_add" x="760" y="420" class="accent">1,102,014</text>
   
   <text x="50" y="450" class="label">Lines Deleted</text>
   <text id="loc_del_dots" x="210" y="450" class="dots"> .... </text>
