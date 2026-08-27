@@ -71,8 +71,8 @@
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 💪 Opened PR [#1](https://github.com/reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-/pull/1) in [reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-](https://github.com/reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-)
-2. 🎉 Merged PR [#47071](https://github.com/is-a-dev/register/pull/47071) in [is-a-dev/register](https://github.com/is-a-dev/register)
+1. 🗣 Commented on [#1](https://github.com/reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-/pull/1#issuecomment-5438079447) in [reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-](https://github.com/reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-)
+2. 💪 Opened PR [#1](https://github.com/reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-/pull/1) in [reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-](https://github.com/reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-)
 <!--END_SECTION:activity-->
 
 </div>
