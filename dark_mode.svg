@@ -53,19 +53,19 @@
   <!-- ── GITHUB STATISTICS ── -->
   <text x="30" y="222" class="section-title">GitHub Statistics</text>
   <text x="50" y="256" class="label">Total Commits</text>
-  <text id="commit_data_dots" x="210" y="256" class="dots">.................................</text>
-  <text id="commit_data" x="760" y="256" class="value" text-anchor="end">3,056</text>
+  <text id="commit_data_dots" x="210" y="256" class="dots">. </text>
+  <text id="commit_data" x="760" y="256" class="value" text-anchor="end">3,064</text>
   <text x="50" y="284" class="label">Total Stars</text>
-  <text id="star_data_dots" x="210" y="284" class="dots">.................................</text>
+  <text id="star_data_dots" x="210" y="284" class="dots"> ......... </text>
   <text id="star_data" x="760" y="284" class="value" text-anchor="end">81</text>
   <text x="50" y="312" class="label">Public Repositories</text>
-  <text id="repo_data_dots" x="210" y="312" class="dots">.................................</text>
-  <text id="repo_data" x="760" y="312" class="value" text-anchor="end">42</text>
+  <text id="repo_data_dots" x="210" y="312" class="dots"> ....... </text>
+  <text id="repo_data" x="760" y="312" class="value" text-anchor="end">43</text>
   <text x="50" y="340" class="label">Contributed Repos</text>
-  <text id="contrib_data_dots" x="210" y="340" class="dots">.................................</text>
-  <text id="contrib_data" x="760" y="340" class="value" text-anchor="end">51</text>
+  <text id="contrib_data_dots" x="210" y="340" class="dots"> ........ </text>
+  <text id="contrib_data" x="760" y="340" class="value" text-anchor="end">52</text>
   <text x="50" y="368" class="label">Followers</text>
-  <text id="follower_data_dots" x="210" y="368" class="dots">.................................</text>
+  <text id="follower_data_dots" x="210" y="368" class="dots"> .......... </text>
   <text id="follower_data" x="760" y="368" class="value" text-anchor="end">11</text>
   <line x1="30" y1="390" x2="830" y2="390" stroke="#21262D" stroke-width="1.5"/>
 
