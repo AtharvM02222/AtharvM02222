@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="860" height="1236" viewBox="0 0 860 1236">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="860" height="1330" viewBox="0 0 860 1330">
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap');
@@ -19,7 +19,7 @@
     </style>
   </defs>
 
-  <rect width="860" height="1236" fill="#FFFFFF" rx="10"/>
+  <rect width="860" height="1330" fill="#FFFFFF" rx="10"/>
 
   <!-- ── HEADER ── -->
   <text x="30" y="52" class="header"><tspan fill="#FFFFFF">Atharv</tspan><tspan fill="#AF963C"> Mandlavdiya</tspan></text>
@@ -30,7 +30,7 @@
   <text x="30" y="128" class="section-title">GitHub Statistics</text>
   <text x="50" y="162" class="label">Total Commits</text>
   <text id="commit_data_dots" x="210" y="162" class="dots">. </text>
-  <text id="commit_data" x="760" y="162" class="value" text-anchor="end">3,205</text>
+  <text id="commit_data" x="760" y="162" class="value" text-anchor="end">3,206</text>
   <text x="50" y="190" class="label">Total Stars</text>
   <text id="star_data_dots" x="210" y="190" class="dots"> ......... </text>
   <text id="star_data" x="760" y="190" class="value" text-anchor="end">81</text>
@@ -57,7 +57,7 @@
   <text x="400" y="306" class="streak-lbl" text-anchor="middle">Longest Streak (days)</text>
   <!-- Total contributions box -->
   <rect x="530" y="248" width="220" height="1236" rx="8" fill="#F6F8FA" stroke="#D0D7DE" stroke-width="1.5"/>
-  <text id="streak_total" x="640" y="286" class="streak-val" text-anchor="middle">3,205</text>
+  <text id="streak_total" x="640" y="286" class="streak-val" text-anchor="middle">3,206</text>
   <text x="640" y="306" class="streak-lbl" text-anchor="middle">Total Contributions</text>
   <line x1="30" y1="338" x2="830" y2="338" stroke="#D0D7DE" stroke-width="1.5"/>
 
@@ -68,13 +68,13 @@
   <text id="loc_data" x="760" y="406" class="value" text-anchor="end">86,925</text>
   <text x="50" y="434" class="label">Lines Added</text>
   <text id="loc_add_dots" x="210" y="434" class="dots">.................................</text>
-  <text id="loc_add" x="760" y="434" class="accent" text-anchor="end">1,110,533</text>
+  <text id="loc_add" x="760" y="434" class="accent" text-anchor="end">1,110,703</text>
   <text x="50" y="462" class="label">Lines Deleted</text>
   <text id="loc_del_dots" x="210" y="462" class="dots">.................................</text>
-  <text id="loc_del" x="760" y="462" class="accent" text-anchor="end">700,218</text>
+  <text id="loc_del" x="760" y="462" class="accent" text-anchor="end">700,578</text>
   <text x="50" y="490" class="label">Lines Changed</text>
   <text id="loc_changed_dots" x="210" y="490" class="dots">.................................</text>
-  <text id="loc_changed" x="760" y="490" class="accent" text-anchor="end">1,810,751</text>
+  <text id="loc_changed" x="760" y="490" class="accent" text-anchor="end">1,811,281</text>
   <text x="30" y="510" class="subheader">Across all 60 repositories</text>
   <line x1="30" y1="528" x2="830" y2="528" stroke="#D0D7DE" stroke-width="1.5"/>
 
@@ -96,5 +96,5 @@
 
   <!-- ── FOOTER ── -->
   <text x="30" y="1102" class="footer">Auto-updated daily via GitHub Actions</text>
-  <text id="last_updated" x="830" y="1102" class="footer" text-anchor="end">Last updated: 2026-08-29 17:28 UTC</text>
-<text id="lang1_name" x="50" y="596" class="label">Python</text><text id="lang1_dots" x="210" y="596" class="dots">.................................</text><text id="lang1_lines" x="680" y="596" class="value" text-anchor="end">67,013</text><text id="lang1_pct" x="690" y="596" class="lang-pct">(77.1%)</text><text id="lang2_name" x="50" y="624" class="label">TypeScript</text><text id="lang2_dots" x="210" y="624" class="dots">.................................</text><text id="lang2_lines" x="680" y="624" class="value" text-anchor="end">10,490</text><text id="lang2_pct" x="690" y="624" class="lang-pct">(12.1%)</text><text id="lang3_name" x="50" y="652" class="label">JavaScript</text><text id="lang3_dots" x="210" y="652" class="dots">.................................</text><text id="lang3_lines" x="680" y="652" class="value" text-anchor="end">5,456</text><text id="lang3_pct" x="690" y="652" class="lang-pct">(6.3%)</text><text id="lang4_name" x="50" y="680" class="label">Unity-Prefab</text><text id="lang4_dots" x="210" y="680" class="dots">.................................</text><text id="lang4_lines" x="680" y="680" class="value" text-anchor="end">1,213</text><text id="lang4_pct" x="690" y="680" class="lang-pct">(1.4%)</text><text id="lang5_name" x="50" y="708" class="label">MSBuild script</text><text id="lang5_dots" x="210" y="708" class="dots">.................................</text><text id="lang5_lines" x="680" y="708" class="value" text-anchor="end">1,025</text><text id="lang5_pct" x="690" y="708" class="lang-pct">(1.2%)</text><text id="lang6_name" x="50" y="736" class="label">JSX</text><text id="lang6_dots" x="210" y="736" class="dots">.................................</text><text id="lang6_lines" x="680" y="736" class="value" text-anchor="end">794</text><text id="lang6_pct" x="690" y="736" class="lang-pct">(0.9%)</text><text id="lang7_name" x="50" y="764" class="label">Arduino Sketch</text><text id="lang7_dots" x="210" y="764" class="dots">.................................</text><text id="lang7_lines" x="680" y="764" class="value" text-anchor="end">520</text><text id="lang7_pct" x="690" y="764" class="lang-pct">(0.6%)</text><text id="lang8_name" x="50" y="792" class="label">EJS</text><text id="lang8_dots" x="210" y="792" class="dots">.................................</text><text id="lang8_lines" x="680" y="792" class="value" text-anchor="end">177</text><text id="lang8_pct" x="690" y="792" class="lang-pct">(0.2%)</text><text id="lang9_name" x="50" y="820" class="label">C#</text><text id="lang9_dots" x="210" y="820" class="dots">.................................</text><text id="lang9_lines" x="680" y="820" class="value" text-anchor="end">117</text><text id="lang9_pct" x="690" y="820" class="lang-pct">(0.1%)</text><text id="lang10_name" x="50" y="848" class="label">Bourne Shell</text><text id="lang10_dots" x="210" y="848" class="dots">.................................</text><text id="lang10_lines" x="680" y="848" class="value" text-anchor="end">86</text><text id="lang10_pct" x="690" y="848" class="lang-pct">(0.1%)</text><text id="lang11_name" x="50" y="876" class="label">Visual Studio Solution</text><text id="lang11_dots" x="210" y="876" class="dots">.................................</text><text id="lang11_lines" x="680" y="876" class="value" text-anchor="end">18</text><text id="lang11_pct" x="690" y="876" class="lang-pct">(0.0%)</text><text id="lang12_name" x="50" y="904" class="label">Nix</text><text id="lang12_dots" x="210" y="904" class="dots">.................................</text><text id="lang12_lines" x="680" y="904" class="value" text-anchor="end">16</text><text id="lang12_pct" x="690" y="904" class="lang-pct">(0.0%)</text></svg>
+  <text id="last_updated" x="830" y="1102" class="footer" text-anchor="end">Last updated: 2026-08-29 17:42 UTC</text>
+<text id="lang1_name" x="50" y="784" class="label">Python</text><text id="lang1_dots" x="210" y="784" class="dots">.................................</text><text id="lang1_lines" x="680" y="784" class="value" text-anchor="end">67,013</text><text id="lang1_pct" x="690" y="784" class="lang-pct">(77.1%)</text><text id="lang2_name" x="50" y="812" class="label">TypeScript</text><text id="lang2_dots" x="210" y="812" class="dots">.................................</text><text id="lang2_lines" x="680" y="812" class="value" text-anchor="end">10,490</text><text id="lang2_pct" x="690" y="812" class="lang-pct">(12.1%)</text><text id="lang3_name" x="50" y="840" class="label">JavaScript</text><text id="lang3_dots" x="210" y="840" class="dots">.................................</text><text id="lang3_lines" x="680" y="840" class="value" text-anchor="end">5,456</text><text id="lang3_pct" x="690" y="840" class="lang-pct">(6.3%)</text><text id="lang4_name" x="50" y="868" class="label">Unity-Prefab</text><text id="lang4_dots" x="210" y="868" class="dots">.................................</text><text id="lang4_lines" x="680" y="868" class="value" text-anchor="end">1,213</text><text id="lang4_pct" x="690" y="868" class="lang-pct">(1.4%)</text><text id="lang5_name" x="50" y="896" class="label">MSBuild script</text><text id="lang5_dots" x="210" y="896" class="dots">.................................</text><text id="lang5_lines" x="680" y="896" class="value" text-anchor="end">1,025</text><text id="lang5_pct" x="690" y="896" class="lang-pct">(1.2%)</text><text id="lang6_name" x="50" y="924" class="label">JSX</text><text id="lang6_dots" x="210" y="924" class="dots">.................................</text><text id="lang6_lines" x="680" y="924" class="value" text-anchor="end">794</text><text id="lang6_pct" x="690" y="924" class="lang-pct">(0.9%)</text><text id="lang7_name" x="50" y="952" class="label">Arduino Sketch</text><text id="lang7_dots" x="210" y="952" class="dots">.................................</text><text id="lang7_lines" x="680" y="952" class="value" text-anchor="end">520</text><text id="lang7_pct" x="690" y="952" class="lang-pct">(0.6%)</text><text id="lang8_name" x="50" y="980" class="label">EJS</text><text id="lang8_dots" x="210" y="980" class="dots">.................................</text><text id="lang8_lines" x="680" y="980" class="value" text-anchor="end">177</text><text id="lang8_pct" x="690" y="980" class="lang-pct">(0.2%)</text><text id="lang9_name" x="50" y="1008" class="label">C#</text><text id="lang9_dots" x="210" y="1008" class="dots">.................................</text><text id="lang9_lines" x="680" y="1008" class="value" text-anchor="end">117</text><text id="lang9_pct" x="690" y="1008" class="lang-pct">(0.1%)</text><text id="lang10_name" x="50" y="1036" class="label">Bourne Shell</text><text id="lang10_dots" x="210" y="1036" class="dots">.................................</text><text id="lang10_lines" x="680" y="1036" class="value" text-anchor="end">86</text><text id="lang10_pct" x="690" y="1036" class="lang-pct">(0.1%)</text><text id="lang11_name" x="50" y="1064" class="label">Visual Studio Solution</text><text id="lang11_dots" x="210" y="1064" class="dots">.................................</text><text id="lang11_lines" x="680" y="1064" class="value" text-anchor="end">18</text><text id="lang11_pct" x="690" y="1064" class="lang-pct">(0.0%)</text><text id="lang12_name" x="50" y="1092" class="label">Nix</text><text id="lang12_dots" x="210" y="1092" class="dots">.................................</text><text id="lang12_lines" x="680" y="1092" class="value" text-anchor="end">16</text><text id="lang12_pct" x="690" y="1092" class="lang-pct">(0.0%)</text></svg>
