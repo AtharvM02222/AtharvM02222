@@ -117,14 +117,14 @@ jobs:
           echo "TOTAL_CHANGED=$total_changed" >> $GITHUB_ENV
           echo "TOTAL_CHANGED_FMT=$total_changed_fmt" >> $GITHUB_ENV
 
-          # Sort all languages by line count, write top 15 to file
+          # Sort ALL languages by line count, no cap
           if [ "$total_code" -gt 0 ]; then
-            # Write two parallel files: one with "lines|norm_key" and one with "norm_key|display_name"
+            # Write pipe-delimited: lines|norm_key|display_name
             for norm in "${!lang_lines[@]}"; do
               echo "${lang_lines[$norm]}|${norm}|${lang_display[$norm]}"
-            done | sort -t'|' -rn -k1 | head -15 > top_langs_raw.txt
+            done | sort -t'|' -rn -k1 > top_langs_raw.txt
 
-            echo "=== Top Languages ==="
+            echo "=== All Languages ==="
             cat top_langs_raw.txt
 
             rank=1
@@ -349,23 +349,35 @@ jobs:
           now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
           langs = []
-          for i in range(1, 16):
-              name  = env.get(f"LANG{i}_NAME", "-")
+          for i in range(1, lang_count + 1):
+              name  = env.get(f"LANG{i}_NAME",  "-")
               lines = env.get(f"LANG{i}_LINES", "0")
-              pct   = env.get(f"LANG{i}_PCT", "0")
-              if i <= lang_count and name and name != "-":
+              pct   = env.get(f"LANG{i}_PCT",   "0")
+              if name and name != "-":
                   langs.append((name, fmt(lines), f"({pct}%)"))
-              else:
-                  langs.append(("-", "-", "(-)"))
 
-          def update_svg(filename):
+          print(f"Total languages to render: {len(langs)}")
+
+          SVG_NS   = "http://www.w3.org/2000/svg"
+          XLINK_NS = "http://www.w3.org/1999/xlink"
+
+          # Row height and starting Y for language section
+          ROW_H    = 28
+          LANG_Y0  = 784   # y of first lang row (text baseline)
+
+          def update_svg(filename, is_dark):
               tree = etree.parse(filename)
               root = tree.getroot()
 
               def set_id(eid, text):
                   el = root.find(f".//*[@id='{eid}']")
                   if el is not None:
-                      el.text = text
+                      el.text = str(text)
+
+              def set_attr(eid, attr, val):
+                  el = root.find(f".//*[@id='{eid}']")
+                  if el is not None:
+                      el.set(attr, str(val))
 
               # GitHub stats
               set_id("commit_data",   gh_commits)
@@ -385,13 +397,7 @@ jobs:
               set_id("streak_longest", streak_longest)
               set_id("streak_total",   streak_total)
 
-              # Languages
-              for i, (name, lines, pct) in enumerate(langs, 1):
-                  set_id(f"lang{i}_name",  name)
-                  set_id(f"lang{i}_lines", lines)
-                  set_id(f"lang{i}_pct",   pct)
-
-              # "Across all X repositories" subheader — find by text content
+              # "Across all X repositories"
               for el in root.iter():
                   if el.text and "Across all" in el.text:
                       el.text = f"Across all {repo_count} repositories"
@@ -400,13 +406,112 @@ jobs:
               # Footer timestamp
               set_id("last_updated", f"Last updated: {now}")
 
-              tree.write(filename, encoding="utf-8", xml_declaration=True)
-              print(f"✅ Updated {filename}")
+              # ── Dynamically rebuild language rows ──
+              # Remove all existing langN_* elements
+              to_remove = []
+              for el in root.iter():
+                  eid = el.get("id", "")
+                  if re.match(r"lang\d+_(name|dots|lines|pct)$", eid):
+                      to_remove.append(el)
+              for el in to_remove:
+                  parent = root.find(f".//*[@id='{el.get('id')}']/..")
+                  if parent is None:
+                      # find parent by iterating
+                      for p in root.iter():
+                          if el in list(p):
+                              parent = p
+                              break
+                  if parent is not None:
+                      parent.remove(el)
 
-          update_svg("light_mode.svg")
-          update_svg("dark_mode.svg")
-          print(f"Languages updated: {lang_count}")
-          print(f"Streak: current={streak_current}, longest={streak_longest}, total={streak_total}")
+              # Calculate new SVG height
+              # Fixed sections height up to lang title: 750px (title at y=750)
+              # Then rows start at LANG_Y0=784, each row 28px
+              # After langs: Tech Stack (~170px) + footer (~100px) = 270px
+              lang_section_h = len(langs) * ROW_H
+              divider_y      = LANG_Y0 - 34 + lang_section_h + 24   # divider after last lang row
+              techstack_y    = divider_y + 34
+              ts_web_y       = techstack_y + 34 + 28
+              ts_hw_y        = ts_web_y + 28
+              divider2_y     = ts_hw_y + 22
+              footer_y       = divider2_y + 34
+              total_h        = footer_y + 40
+
+              root.set("height", str(total_h))
+              root.set("viewBox", f"0 0 860 {total_h}")
+
+              # Update background rect height
+              for el in root.iter(f"{{{SVG_NS}}}rect"):
+                  if el.get("width") == "860" and el.get("rx") == "10":
+                      el.set("height", str(total_h))
+                      break
+
+              # Find the parent group/svg to append to
+              svg_root = root
+
+              line_col  = "#21262D" if is_dark else "#D0D7DE"
+              label_col = "#7EE787" if is_dark else "#1A7F37"
+              value_col = "#E6EDF3" if is_dark else "#1F2328"
+              dots_col  = "#484F58" if is_dark else "#D0D7DE"
+              pct_col   = "#8B949E" if is_dark else "#656D76"
+
+              for i, (name, lines, pct) in enumerate(langs):
+                  y = LANG_Y0 + i * ROW_H
+
+                  def make_text(tid, x, y, cls, text, anchor=None):
+                      el = etree.SubElement(svg_root, f"{{{SVG_NS}}}text")
+                      el.set("id", tid)
+                      el.set("x", str(x))
+                      el.set("y", str(y))
+                      el.set("class", cls)
+                      if anchor:
+                          el.set("text-anchor", anchor)
+                      el.text = text
+                      return el
+
+                  make_text(f"lang{i+1}_name",  50,  y, "label", name)
+                  make_text(f"lang{i+1}_dots",  210, y, "dots",  ".................................")
+                  make_text(f"lang{i+1}_lines", 680, y, "value", lines, anchor="end")
+                  make_text(f"lang{i+1}_pct",   690, y, "lang-pct", pct)
+
+              # Update divider lines and Tech Stack section positions
+              for el in root.iter(f"{{{SVG_NS}}}line"):
+                  x1 = el.get("x1", "")
+                  x2 = el.get("x2", "")
+                  if x1 == "30" and x2 == "830":
+                      y1 = int(el.get("y1", "0"))
+                      # The divider after languages section (originally at 1200)
+                      if 1190 <= y1 <= 1210:
+                          el.set("y1", str(divider_y))
+                          el.set("y2", str(divider_y))
+                      # The divider after Tech Stack (originally at 1346)
+                      elif 1340 <= y1 <= 1352:
+                          el.set("y1", str(divider2_y))
+                          el.set("y2", str(divider2_y))
+
+              # Update Tech Stack text positions
+              for el in root.iter(f"{{{SVG_NS}}}text"):
+                  y_attr = el.get("y", "")
+                  try:
+                      y_val = int(y_attr)
+                  except:
+                      continue
+                  if y_val == 1234:
+                      el.set("y", str(techstack_y))
+                  elif y_val == 1268:
+                      el.set("y", str(techstack_y + 34))
+                  elif y_val == 1296:
+                      el.set("y", str(techstack_y + 62))
+                  elif y_val == 1324:
+                      el.set("y", str(techstack_y + 90))
+                  elif y_val == 1380:
+                      el.set("y", str(footer_y))
+
+              tree.write(filename, encoding="utf-8", xml_declaration=True)
+              print(f"✅ Updated {filename} — {len(langs)} language rows, height={total_h}px")
+
+          update_svg("light_mode.svg", is_dark=False)
+          update_svg("dark_mode.svg",  is_dark=True)
           PYEOF
 
       - name: Update README badges
