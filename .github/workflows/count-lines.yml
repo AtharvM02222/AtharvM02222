@@ -58,85 +58,99 @@ jobs:
         env:
           TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
-          total_code=0
+          mkdir -p temp_repos
+
+          # Clone all repos and run cloc, saving JSON output per repo
+          mkdir -p cloc_outputs
           total_added=0
           total_changed=0
           repo_count=0
-
-          declare -A lang_lines
-          declare -A lang_display
-
-          mkdir -p temp_repos
 
           while IFS= read -r repo; do
             echo "Processing $repo..."
             git clone --depth=1000 https://x-access-token:${TOKEN}@github.com/$repo.git temp_repos/$repo 2>/dev/null || continue
 
-            cloc temp_repos/$repo --json --quiet > cloc_output.json 2>/dev/null || continue
+            # Exclude data/config files — only count actual source code
+            cloc temp_repos/$repo \
+              --json --quiet \
+              --exclude-lang=JSON,YAML,TOML,XML,CSV,INI,Text,Markdown,HTML,SVG \
+              --not-match-f='\.(lock|min\.js|min\.css|pb\.go|pb\.py)$' \
+              > cloc_outputs/${repo//\//_}.json 2>/dev/null || true
 
-            code=$(jq -r '.SUM.code // 0' cloc_output.json)
+            # git numstat for lines added/changed
+            while IFS=$'\t' read -r added removed file; do
+              if [[ "$added" =~ ^[0-9]+$ ]] && [[ "$removed" =~ ^[0-9]+$ ]]; then
+                total_added=$((total_added + added))
+                total_changed=$((total_changed + added + removed))
+              fi
+            done < <(git -C temp_repos/$repo log --pretty=tformat: --numstat 2>/dev/null)
 
-            if [ "$code" -gt 0 ]; then
-              total_code=$((total_code + code))
-              repo_count=$((repo_count + 1))
-
-              # Collect every language cloc found (excluding SUM and header keys)
-              while IFS= read -r lang; do
-                lang_code=$(jq -r --arg lang "$lang" '.[$lang].code // 0' cloc_output.json)
-                if [ "$lang_code" -gt 0 ]; then
-                  # Normalize name for use as env var key
-                  norm=$(echo "$lang" | sed 's/C++/CPP/g; s/C#/CSharp/g; s/C\/C++ Header/CPP_Header/g; s/[^a-zA-Z0-9_]/_/g')
-                  current_val=${lang_lines[$norm]:-0}
-                  lang_lines[$norm]=$((current_val + lang_code))
-                  # Store original display name alongside (first time seen)
-                  if [ -z "${lang_display[$norm]+x}" ]; then
-                    lang_display[$norm]="$lang"
-                  fi
-                fi
-              done < <(jq -r 'keys[] | select(. != "SUM" and . != "header")' cloc_output.json)
-
-              # All-time added + changed via git numstat
-              while IFS=$'\t' read -r added removed file; do
-                if [[ "$added" =~ ^[0-9]+$ ]] && [[ "$removed" =~ ^[0-9]+$ ]]; then
-                  total_added=$((total_added + added))
-                  total_changed=$((total_changed + added + removed))
-                fi
-              done < <(git -C temp_repos/$repo log --pretty=tformat: --numstat 2>/dev/null)
-            fi
-
+            repo_count=$((repo_count + 1))
             rm -rf temp_repos/$repo
           done < repo_list.txt
 
           total_added_fmt=$(printf "%'d" $total_added)
           total_changed_fmt=$(printf "%'d" $total_changed)
 
-          echo "TOTAL_CODE=$total_code" >> $GITHUB_ENV
-          echo "REPO_COUNT=$repo_count" >> $GITHUB_ENV
-          echo "TOTAL_ADDED=$total_added" >> $GITHUB_ENV
+          echo "REPO_COUNT=$repo_count"         >> $GITHUB_ENV
+          echo "TOTAL_ADDED=$total_added"        >> $GITHUB_ENV
           echo "TOTAL_ADDED_FMT=$total_added_fmt" >> $GITHUB_ENV
-          echo "TOTAL_CHANGED=$total_changed" >> $GITHUB_ENV
+          echo "TOTAL_CHANGED=$total_changed"    >> $GITHUB_ENV
           echo "TOTAL_CHANGED_FMT=$total_changed_fmt" >> $GITHUB_ENV
 
-          # Sort ALL languages by line count, no cap
-          if [ "$total_code" -gt 0 ]; then
-            # Write pipe-delimited: lines|norm_key|display_name
-            for norm in "${!lang_lines[@]}"; do
-              echo "${lang_lines[$norm]}|${norm}|${lang_display[$norm]}"
-            done | sort -t'|' -rn -k1 > top_langs_raw.txt
+      - name: Aggregate language stats
+        run: |
+          python3 << 'PYEOF'
+          import json, os, glob
+          from pathlib import Path
 
-            echo "=== All Languages ==="
-            cat top_langs_raw.txt
+          # Languages to exclude (data/markup, not real code)
+          EXCLUDE = {
+              "JSON", "YAML", "TOML", "XML", "CSV", "INI", "Text",
+              "Markdown", "reStructuredText", "SVG", "HTML", "CSS",
+              "Dockerfile", "make", "CMake", "Gradle", "Maven",
+              "Properties", "Ignore List", "gitignore", "diff",
+              "ASP.NET", "Prolog",
+          }
 
-            rank=1
-            while IFS='|' read -r lines norm display; do
-              pct=$(awk "BEGIN {printf \"%.1f\", ($lines / $total_code) * 100}")
-              echo "LANG${rank}_NAME=$display" >> $GITHUB_ENV
-              echo "LANG${rank}_LINES=$lines" >> $GITHUB_ENV
-              echo "LANG${rank}_PCT=$pct" >> $GITHUB_ENV
-              rank=$((rank + 1))
-            done < top_langs_raw.txt
-            echo "LANG_COUNT=$((rank - 1))" >> $GITHUB_ENV
-          fi
+          lang_totals = {}  # lang_name -> total lines
+
+          total_code = 0
+          for f in glob.glob("cloc_outputs/*.json"):
+              try:
+                  data = json.loads(Path(f).read_text())
+              except Exception:
+                  continue
+              for lang, info in data.items():
+                  if lang in ("SUM", "header"):
+                      continue
+                  if lang in EXCLUDE:
+                      continue
+                  lines = int(info.get("code", 0))
+                  if lines > 0:
+                      lang_totals[lang] = lang_totals.get(lang, 0) + lines
+                      total_code += lines
+
+          # Sort by lines descending
+          sorted_langs = sorted(lang_totals.items(), key=lambda x: x[1], reverse=True)
+
+          print(f"Total code lines (excl. data): {total_code:,}")
+          print(f"Languages found: {len(sorted_langs)}")
+          for name, lines in sorted_langs:
+              pct = lines / total_code * 100 if total_code else 0
+              print(f"  {name}: {lines:,} ({pct:.1f}%)")
+
+          env_file = os.environ["GITHUB_ENV"]
+          with open(env_file, "a") as f:
+              f.write(f"TOTAL_CODE={total_code}\n")
+              f.write(f"LANG_COUNT={len(sorted_langs)}\n")
+              for i, (name, lines) in enumerate(sorted_langs, 1):
+                  pct = f"{lines / total_code * 100:.1f}" if total_code else "0"
+                  # Escape special chars for env var value — name is display name, safe as value
+                  f.write(f"LANG{i}_NAME={name}\n")
+                  f.write(f"LANG{i}_LINES={lines}\n")
+                  f.write(f"LANG{i}_PCT={pct}\n")
+          PYEOF
 
       - name: Fetch contribution streak
         env:
