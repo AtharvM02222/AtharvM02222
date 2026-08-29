@@ -1,118 +1,221 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="860" height="660" viewBox="0 0 860 660">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="860" height="1020" viewBox="0 0 860 1020">
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap');
-      
+
       text {
         font-family: 'JetBrains Mono', monospace;
         fill: #E6EDF3;
       }
-      
+
       .header {
         font-size: 28px;
         font-weight: 700;
         fill: #58A6FF;
       }
-      
+
       .subheader {
         font-size: 14px;
         fill: #8B949E;
       }
-      
-      .label {
-        font-size: 14px;
-        fill: #7EE787;
-      }
-      
-      .value {
-        font-size: 14px;
-        font-weight: 700;
-      }
-      
-      .dots {
-        font-size: 14px;
-        fill: #484F58;
-      }
-      
+
       .section-title {
         font-size: 18px;
         font-weight: 700;
         fill: #F778BA;
       }
-      
+
+      .label {
+        font-size: 14px;
+        fill: #7EE787;
+      }
+
+      .value {
+        font-size: 14px;
+        font-weight: 700;
+        fill: #E6EDF3;
+      }
+
+      .dots {
+        font-size: 14px;
+        fill: #484F58;
+      }
+
       .accent {
+        font-size: 14px;
+        font-weight: 700;
         fill: #FFA657;
+      }
+
+      .link-label {
+        font-size: 13px;
+        font-weight: 700;
+        fill: #FFFFFF;
+      }
+
+      .lang-label {
+        font-size: 13px;
+        fill: #E6EDF3;
+      }
+
+      .lang-value {
+        font-size: 13px;
+        font-weight: 700;
+        fill: #58A6FF;
+      }
+
+      .footer {
+        font-size: 12px;
+        fill: #6E7681;
       }
     </style>
   </defs>
-  
-  <rect width="860" height="660" fill="#0D1117" rx="10"/>
-  
-  <!-- Header -->
-  <text x="30" y="50" class="header">Atharv Mandlavdiya</text>
-  <text x="30" y="75" class="subheader">Student | Developer | Cybersecurity Enthusiast</text>
-  
-  <!-- Decorative Line -->
-  <line x1="30" y1="95" x2="830" y2="95" stroke="#21262D" stroke-width="2"/>
-  
-  <!-- Stats Section -->
-  <text x="30" y="135" class="section-title">GitHub Statistics</text>
-  
-  <!-- Row 1 -->
-  <text x="50" y="170" class="label">Total Commits</text>
-  <text id="commit_data_dots" x="210" y="170" class="dots">. </text>
-  <text id="commit_data" x="760" y="170" class="value">3,056</text>
-  
-  <text x="50" y="200" class="label">Total Stars</text>
-  <text id="star_data_dots" x="210" y="200" class="dots"> ......... </text>
-  <text id="star_data" x="760" y="200" class="value">81</text>
-  
-  <text x="50" y="230" class="label">Public Repositories</text>
-  <text id="repo_data_dots" x="210" y="230" class="dots"> ....... </text>
-  <text id="repo_data" x="760" y="230" class="value">42</text>
-  
-  <text x="50" y="260" class="label">Contributed Repos</text>
-  <text id="contrib_data_dots" x="210" y="260" class="dots"> ........ </text>
-  <text id="contrib_data" x="760" y="260" class="value">51</text>
-  
-  <text x="50" y="290" class="label">Followers</text>
-  <text id="follower_data_dots" x="210" y="290" class="dots"> .......... </text>
-  <text id="follower_data" x="760" y="290" class="value">11</text>
-  
-  <!-- Decorative Line -->
-  <line x1="30" y1="315" x2="830" y2="315" stroke="#21262D" stroke-width="2"/>
-  
-  <!-- Lines of Code Section -->
-  <text x="30" y="355" class="section-title">Lines of Code</text>
-  
-  <text x="50" y="390" class="label">Total LOC</text>
-  <text id="loc_data_dots" x="210" y="390" class="dots"> ...... </text>
-  <text id="loc_data" x="760" y="390" class="value">392,712</text>
-  
-  <text x="50" y="420" class="label">Lines Added</text>
-  <text id="loc_add_dots" x="210" y="420" class="dots"> ... </text>
-  <text id="loc_add" x="760" y="420" class="accent">1,102,140</text>
-  
-  <text x="50" y="450" class="label">Lines Deleted</text>
-  <text id="loc_del_dots" x="210" y="450" class="dots"> .... </text>
-  <text id="loc_del" x="760" y="450" class="accent">692,536</text>
-  
-  <!-- Decorative Line -->
-  <line x1="30" y1="475" x2="830" y2="475" stroke="#21262D" stroke-width="2"/>
-  
-  <!-- About Section -->
-  <text x="30" y="515" class="section-title">Tech Stack</text>
-  
-  <text x="50" y="550" class="label">Languages:</text>
-  <text x="180" y="550" class="subheader">Python • TypeScript • JavaScript • C++ • C#</text>
-  
-  <text x="50" y="575" class="label">Web:</text>
-  <text x="180" y="575" class="subheader">HTML • CSS • React • Node.js</text>
-  
-  <text x="50" y="600" class="label">Hardware:</text>
-  <text x="180" y="600" class="subheader">Arduino • ESP32 • PCB Design</text>
-  
-  <!-- Footer -->
-  <text x="30" y="640" class="subheader">Auto-updated daily via GitHub Actions</text>
+
+  <rect width="860" height="1020" fill="#0D1117" rx="10"/>
+
+  <!-- ── HEADER ── -->
+  <text x="30" y="52" class="header">Atharv Mandlavdiya</text>
+  <text x="30" y="76" class="subheader">Student | Developer | Cybersecurity Enthusiast</text>
+  <line x1="30" y1="94" x2="830" y2="94" stroke="#21262D" stroke-width="1.5"/>
+
+  <!-- ── CONNECT WITH ME ── -->
+  <text x="30" y="128" class="section-title">Connect with me</text>
+
+  <!-- Website -->
+  <a xlink:href="https://atharvmandlavdiya.is-a.dev" target="_blank">
+    <rect x="30" y="140" width="155" height="30" rx="5" fill="#00ADD8"/>
+    <text x="107" y="160" class="link-label" text-anchor="middle">Website</text>
+  </a>
+
+  <!-- LinkedIn -->
+  <a xlink:href="https://linkedin.com/in/atharvmandlavdiya" target="_blank">
+    <rect x="195" y="140" width="120" height="30" rx="5" fill="#0077B5"/>
+    <text x="255" y="160" class="link-label" text-anchor="middle">LinkedIn</text>
+  </a>
+
+  <!-- HackerRank -->
+  <a xlink:href="https://www.hackerrank.com/profile/Atharv0M" target="_blank">
+    <rect x="325" y="140" width="130" height="30" rx="5" fill="#00EA64"/>
+    <text x="390" y="160" class="link-label" text-anchor="middle" fill="#000000">HackerRank</text>
+  </a>
+
+  <!-- Google Dev -->
+  <a xlink:href="https://g.dev/atharvmandlavdiya" target="_blank">
+    <rect x="465" y="140" width="125" height="30" rx="5" fill="#4285F4"/>
+    <text x="527" y="160" class="link-label" text-anchor="middle">Google Dev</text>
+  </a>
+
+  <!-- Itch.io -->
+  <a xlink:href="https://itch.io/profile/atharvam" target="_blank">
+    <rect x="600" y="140" width="100" height="30" rx="5" fill="#FA5C5C"/>
+    <text x="650" y="160" class="link-label" text-anchor="middle">Itch.io</text>
+  </a>
+
+  <line x1="30" y1="188" x2="830" y2="188" stroke="#21262D" stroke-width="1.5"/>
+
+  <!-- ── GITHUB STATISTICS ── -->
+  <text x="30" y="222" class="section-title">GitHub Statistics</text>
+
+  <text x="50" y="256" class="label">Total Commits</text>
+  <text x="210" y="256" class="dots">.................................</text>
+  <text x="760" y="256" class="value" text-anchor="end">3,056</text>
+
+  <text x="50" y="284" class="label">Total Stars</text>
+  <text x="210" y="284" class="dots">.................................</text>
+  <text x="760" y="284" class="value" text-anchor="end">81</text>
+
+  <text x="50" y="312" class="label">Public Repositories</text>
+  <text x="210" y="312" class="dots">.................................</text>
+  <text x="760" y="312" class="value" text-anchor="end">42</text>
+
+  <text x="50" y="340" class="label">Contributed Repos</text>
+  <text x="210" y="340" class="dots">.................................</text>
+  <text x="760" y="340" class="value" text-anchor="end">51</text>
+
+  <text x="50" y="368" class="label">Followers</text>
+  <text x="210" y="368" class="dots">.................................</text>
+  <text x="760" y="368" class="value" text-anchor="end">11</text>
+
+  <line x1="30" y1="390" x2="830" y2="390" stroke="#21262D" stroke-width="1.5"/>
+
+  <!-- ── LINES OF CODE ── -->
+  <text x="30" y="424" class="section-title">Lines of Code</text>
+
+  <text x="50" y="458" class="label">Total LOC</text>
+  <text x="210" y="458" class="dots">.................................</text>
+  <text x="760" y="458" class="value" text-anchor="end">392,712</text>
+
+  <text x="50" y="486" class="label">Lines Added</text>
+  <text x="210" y="486" class="dots">.................................</text>
+  <text x="760" y="486" class="accent" text-anchor="end">1,102,140</text>
+
+  <text x="50" y="514" class="label">Lines Deleted</text>
+  <text x="210" y="514" class="dots">.................................</text>
+  <text x="760" y="514" class="accent" text-anchor="end">692,536</text>
+
+  <text x="50" y="542" class="label">Lines Changed</text>
+  <text x="210" y="542" class="dots">.................................</text>
+  <text x="760" y="542" class="accent" text-anchor="end">1,794,676</text>
+
+  <text x="30" y="562" class="subheader">Across all 58 repositories</text>
+
+  <line x1="30" y1="580" x2="830" y2="580" stroke="#21262D" stroke-width="1.5"/>
+
+  <!-- ── TOP LANGUAGES ── -->
+  <text x="30" y="614" class="section-title">Top Languages by Lines of Code</text>
+
+  <!-- Python -->
+  <text x="50" y="648" class="label">Python</text>
+  <text x="210" y="648" class="dots">.................................</text>
+  <text x="660" y="648" class="lang-value" text-anchor="end">66,898 lines</text>
+  <text x="670" y="648" class="subheader">(19.6%)</text>
+
+  <!-- HTML -->
+  <text x="50" y="676" class="label">HTML</text>
+  <text x="210" y="676" class="dots">.................................</text>
+  <text x="660" y="676" class="lang-value" text-anchor="end">11,503 lines</text>
+  <text x="670" y="676" class="subheader">(3.4%)</text>
+
+  <!-- TypeScript -->
+  <text x="50" y="704" class="label">TypeScript</text>
+  <text x="210" y="704" class="dots">.................................</text>
+  <text x="660" y="704" class="lang-value" text-anchor="end">10,490 lines</text>
+  <text x="670" y="704" class="subheader">(3.1%)</text>
+
+  <line x1="30" y1="726" x2="830" y2="726" stroke="#21262D" stroke-width="1.5"/>
+
+  <!-- ── TECH STACK ── -->
+  <text x="30" y="760" class="section-title">Tech Stack</text>
+
+  <text x="50" y="794" class="label">Languages</text>
+  <text x="180" y="794" class="subheader">Python  •  TypeScript  •  JavaScript  •  C++  •  C#</text>
+
+  <text x="50" y="822" class="label">Web</text>
+  <text x="180" y="822" class="subheader">HTML  •  CSS  •  React  •  Node.js</text>
+
+  <text x="50" y="850" class="label">Hardware</text>
+  <text x="180" y="850" class="subheader">Arduino  •  ESP32  •  PCB Design</text>
+
+  <line x1="30" y1="872" x2="830" y2="872" stroke="#21262D" stroke-width="1.5"/>
+
+  <!-- ── CODE STATISTICS BADGES ── -->
+  <text x="30" y="906" class="section-title">Code Statistics</text>
+
+  <rect x="30" y="918" width="180" height="28" rx="5" fill="#00d9ff" opacity="0.12"/>
+  <text x="120" y="937" class="lang-label" text-anchor="middle" fill="#00d9ff" font-weight="700">Total Lines: 392,712</text>
+
+  <rect x="220" y="918" width="160" height="28" rx="5" fill="#00d9ff" opacity="0.12"/>
+  <text x="300" y="937" class="lang-label" text-anchor="middle" fill="#00d9ff" font-weight="700">Repositories: 58</text>
+
+  <rect x="390" y="918" width="200" height="28" rx="5" fill="#00d9ff" opacity="0.12"/>
+  <text x="490" y="937" class="lang-label" text-anchor="middle" fill="#00d9ff" font-weight="700">Lines Added: 1,102,140</text>
+
+  <rect x="600" y="918" width="220" height="28" rx="5" fill="#00d9ff" opacity="0.12"/>
+  <text x="710" y="937" class="lang-label" text-anchor="middle" fill="#00d9ff" font-weight="700">Lines Changed: 1,794,676</text>
+
+  <!-- ── FOOTER ── -->
+  <line x1="30" y1="966" x2="830" y2="966" stroke="#21262D" stroke-width="1.5"/>
+  <text x="30" y="990" class="footer">Auto-updated daily via GitHub Actions</text>
+  <text x="830" y="990" class="footer" text-anchor="end">Last updated: 2026-08-29 16:20 UTC</text>
 </svg>
