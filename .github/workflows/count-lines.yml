@@ -493,11 +493,11 @@ jobs:
                   if x1 == "30" and x2 == "830":
                       y1 = int(el.get("y1", "0"))
                       # The divider after languages section (originally at 1200)
-                      if 1190 <= y1 <= 1210:
+                      if 1096 <= y1 <= 1116:
                           el.set("y1", str(divider_y))
                           el.set("y2", str(divider_y))
-                      # The divider after Tech Stack (originally at 1346)
-                      elif 1340 <= y1 <= 1352:
+                      # The divider after Tech Stack (originally at 1252)
+                      elif 1246 <= y1 <= 1258:
                           el.set("y1", str(divider2_y))
                           el.set("y2", str(divider2_y))
 
@@ -508,15 +508,15 @@ jobs:
                       y_val = int(y_attr)
                   except:
                       continue
-                  if y_val == 1234:
+                  if y_val == 1140:
                       el.set("y", str(techstack_y))
-                  elif y_val == 1268:
+                  elif y_val == 1174:
                       el.set("y", str(techstack_y + 34))
-                  elif y_val == 1296:
+                  elif y_val == 1202:
                       el.set("y", str(techstack_y + 62))
-                  elif y_val == 1324:
+                  elif y_val == 1230:
                       el.set("y", str(techstack_y + 90))
-                  elif y_val == 1380:
+                  elif y_val == 1286:
                       el.set("y", str(footer_y))
 
               tree.write(filename, encoding="utf-8", xml_declaration=True)
