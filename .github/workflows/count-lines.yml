@@ -243,6 +243,77 @@ jobs:
                   f.write("STREAK_CURRENT=0\nSTREAK_LONGEST=0\nSTREAK_TOTAL=0\n")
           PYEOF
 
+      - name: Fetch GitHub stats
+        env:
+          TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          python3 << 'PYEOF'
+          import urllib.request, json, os
+
+          token    = os.environ.get("TOKEN", "")
+          username = "AtharvM02222"
+
+          def graphql(query, variables):
+              payload = json.dumps({"query": query, "variables": variables}).encode()
+              req = urllib.request.Request(
+                  "https://api.github.com/graphql",
+                  data=payload,
+                  headers={"Authorization": f"token {token}", "Content-Type": "application/json"}
+              )
+              with urllib.request.urlopen(req) as resp:
+                  return json.loads(resp.read())
+
+          try:
+              q = """
+              query($login: String!) {
+                user(login: $login) {
+                  repositories(first: 1, ownerAffiliations: OWNER) { totalCount }
+                  contributedRepos: repositories(first: 1, ownerAffiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER]) { totalCount }
+                  ownedRepos: repositories(first: 100, ownerAffiliations: OWNER) {
+                    nodes { stargazers { totalCount } }
+                  }
+                  followers { totalCount }
+                  createdAt
+                }
+              }"""
+              data = graphql(q, {"login": username})
+              user = data["data"]["user"]
+              stars    = sum(r["stargazers"]["totalCount"] for r in user["ownedRepos"]["nodes"])
+              repos    = user["repositories"]["totalCount"]
+              contrib  = user["contributedRepos"]["totalCount"]
+              followers = user["followers"]["totalCount"]
+
+              # All-time commits: sum contributions per year
+              created_year = int(user["createdAt"][:4])
+              import datetime
+              current_year = datetime.date.today().year
+              cal_q = """
+              query($login: String!, $from: DateTime!, $to: DateTime!) {
+                user(login: $login) {
+                  contributionsCollection(from: $from, to: $to) {
+                    contributionCalendar { totalContributions }
+                  }
+                }
+              }"""
+              total_commits = 0
+              for year in range(created_year, current_year + 1):
+                  d = graphql(cal_q, {"login": username, "from": f"{year}-01-01T00:00:00Z", "to": f"{year}-12-31T23:59:59Z"})
+                  total_commits += d["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+                  print(f"  {year} commits: {d['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions']}")
+
+              print(f"Total commits: {total_commits}, Stars: {stars}, Repos: {repos}, Followers: {followers}")
+              with open(os.environ["GITHUB_ENV"], "a") as f:
+                  f.write(f"GH_COMMITS={total_commits}\n")
+                  f.write(f"GH_STARS={stars}\n")
+                  f.write(f"GH_REPOS={repos}\n")
+                  f.write(f"GH_CONTRIB={contrib}\n")
+                  f.write(f"GH_FOLLOWERS={followers}\n")
+          except Exception as e:
+              import traceback; traceback.print_exc()
+              with open(os.environ["GITHUB_ENV"], "a") as f:
+                  f.write("GH_COMMITS=0\nGH_STARS=0\nGH_REPOS=0\nGH_CONTRIB=0\nGH_FOLLOWERS=0\n")
+          PYEOF
+
       - name: Update SVGs with all stats
         run: |
           python3 << 'PYEOF'
@@ -267,6 +338,13 @@ jobs:
           streak_total    = fmt(env.get("STREAK_TOTAL", "0"))
           lang_count      = int(env.get("LANG_COUNT", "0"))
 
+          # GitHub stats
+          gh_commits   = fmt(env.get("GH_COMMITS",   "0"))
+          gh_stars     = fmt(env.get("GH_STARS",     "0"))
+          gh_repos     = fmt(env.get("GH_REPOS",     "0"))
+          gh_contrib   = fmt(env.get("GH_CONTRIB",   "0"))
+          gh_followers = fmt(env.get("GH_FOLLOWERS", "0"))
+
           from datetime import datetime, timezone
           now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
@@ -288,6 +366,13 @@ jobs:
                   el = root.find(f".//*[@id='{eid}']")
                   if el is not None:
                       el.text = text
+
+              # GitHub stats
+              set_id("commit_data",   gh_commits)
+              set_id("star_data",     gh_stars)
+              set_id("repo_data",     gh_repos)
+              set_id("contrib_data",  gh_contrib)
+              set_id("follower_data", gh_followers)
 
               # LOC
               set_id("loc_data",    total_code)
