@@ -64,6 +64,7 @@ jobs:
           repo_count=0
 
           declare -A lang_lines
+          declare -A lang_display
 
           mkdir -p temp_repos
 
