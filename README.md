@@ -11,7 +11,7 @@
 
 ### Connect with me
 
-[![Website](https://img.shields.io/badge/🌐_Website-atharvmandlavdiya.is--a.dev-00ADD8?style=for-the-badge)](https://atharvmandlavdiya.is-a.dev)
+[![Website](https://img.shields.io/badge/Website-atharvmandlavdiya.is--a.dev-00ADD8?style=for-the-badge)](https://atharvmandlavdiya.is-a.dev)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/atharvmandlavdiya)
 [![HackerRank](https://img.shields.io/badge/HackerRank-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black)](https://www.hackerrank.com/profile/Atharv0M)
 [![Google Dev](https://img.shields.io/badge/Google_Dev-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://g.dev/atharvmandlavdiya)
@@ -35,64 +35,5 @@
 
 *Last updated: 2026-08-29 16:20 UTC*
 <!-- LANG_STATS_END -->
-
-</div>
-
----
-
-<div align="center">
-
-### Organizations
-
-<!-- ORG_BADGES_START -->
-<a href="https://github.com/RoboNexxus" title="RoboNexxus">
-  <img src="https://avatars.githubusercontent.com/u/260877624?s=64&v=4" width="48" height="48" style="border-radius:50%" alt="RoboNexxus" />
-</a>
-&nbsp;&nbsp;
-<a href="https://github.com/hackclub" title="hackclub">
-  <img src="https://avatars.githubusercontent.com/u/5633654?s=64&v=4" width="48" height="48" style="border-radius:50%" alt="hackclub" />
-</a>
-&nbsp;&nbsp;
-<a href="https://github.com/techsyndicate" title="techsyndicate">
-  <img src="https://avatars.githubusercontent.com/u/50449253?s=64&v=4" width="48" height="48" style="border-radius:50%" alt="techsyndicate" />
-</a>
-&nbsp;&nbsp;
-<a href="https://github.com/1st-Commit" title="1st-Commit">
-  <img src="https://avatars.githubusercontent.com/u/295718725?s=64&v=4" width="48" height="48" style="border-radius:50%" alt="1st-Commit" />
-</a>
-<!-- ORG_BADGES_END -->
-
-</div>
-
----
-
-<div align="center">
-
-### Recent Activity
-
-<!--START_SECTION:activity-->
-1. 🗣 Commented on [#1](https://github.com/reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-/pull/1#issuecomment-5438079447) in [reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-](https://github.com/reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-)
-2. 💪 Opened PR [#1](https://github.com/reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-/pull/1) in [reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-](https://github.com/reyanshgugnani23/Python-Practical-Class-10-Half-Yearly-)
-<!--END_SECTION:activity-->
-
-</div>
-
----
-
-<div align="center">
-
-### Contribution Snake
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/output/github-contribution-grid-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/output/github-contribution-grid-snake.svg">
-  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/output/github-contribution-grid-snake.svg">
-</picture>
-
-</div>
-
----
-
-<div align="center">
 
 </div>

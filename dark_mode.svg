@@ -57,7 +57,7 @@
   <line x1="30" y1="95" x2="830" y2="95" stroke="#21262D" stroke-width="2"/>
   
   <!-- Stats Section -->
-  <text x="30" y="135" class="section-title">📊 GitHub Statistics</text>
+  <text x="30" y="135" class="section-title">GitHub Statistics</text>
   
   <!-- Row 1 -->
   <text x="50" y="170" class="label">Total Commits</text>
@@ -84,7 +84,7 @@
   <line x1="30" y1="315" x2="830" y2="315" stroke="#21262D" stroke-width="2"/>
   
   <!-- Lines of Code Section -->
-  <text x="30" y="355" class="section-title">💻 Lines of Code</text>
+  <text x="30" y="355" class="section-title">Lines of Code</text>
   
   <text x="50" y="390" class="label">Total LOC</text>
   <text id="loc_data_dots" x="210" y="390" class="dots"> ...... </text>
@@ -102,7 +102,7 @@
   <line x1="30" y1="475" x2="830" y2="475" stroke="#21262D" stroke-width="2"/>
   
   <!-- About Section -->
-  <text x="30" y="515" class="section-title">🚀 Tech Stack</text>
+  <text x="30" y="515" class="section-title">Tech Stack</text>
   
   <text x="50" y="550" class="label">Languages:</text>
   <text x="180" y="550" class="subheader">Python • TypeScript • JavaScript • C++ • C#</text>
@@ -114,5 +114,5 @@
   <text x="180" y="600" class="subheader">Arduino • ESP32 • PCB Design</text>
   
   <!-- Footer -->
-  <text x="30" y="640" class="subheader">🔄 Auto-updated daily via GitHub Actions</text>
+  <text x="30" y="640" class="subheader">Auto-updated daily via GitHub Actions</text>
 </svg>
