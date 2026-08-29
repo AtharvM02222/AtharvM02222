@@ -144,49 +144,72 @@ jobs:
           python3 << 'PYEOF'
           import urllib.request, json, os, datetime
 
-          token = os.environ.get("TOKEN", "")
+          token    = os.environ.get("TOKEN", "")
           username = "AtharvM02222"
 
-          query = """
-          query($login: String!) {
-            user(login: $login) {
-              contributionsCollection {
-                contributionCalendar {
-                  totalContributions
-                  weeks {
-                    contributionDays {
-                      contributionCount
-                      date
+          def graphql(query, variables):
+              payload = json.dumps({"query": query, "variables": variables}).encode()
+              req = urllib.request.Request(
+                  "https://api.github.com/graphql",
+                  data=payload,
+                  headers={"Authorization": f"token {token}", "Content-Type": "application/json"}
+              )
+              with urllib.request.urlopen(req) as resp:
+                  return json.loads(resp.read())
+
+          try:
+              # Step 1: get account creation year
+              user_q = """
+              query($login: String!) {
+                user(login: $login) { createdAt }
+              }"""
+              user_data = graphql(user_q, {"login": username})
+              created_at = user_data["data"]["user"]["createdAt"]
+              start_year = int(created_at[:4])
+              current_year = datetime.date.today().year
+
+              print(f"Account created: {created_at}, scanning {start_year}–{current_year}")
+
+              # Step 2: fetch each year's contribution calendar
+              cal_q = """
+              query($login: String!, $from: DateTime!, $to: DateTime!) {
+                user(login: $login) {
+                  contributionsCollection(from: $from, to: $to) {
+                    contributionCalendar {
+                      totalContributions
+                      weeks {
+                        contributionDays {
+                          contributionCount
+                          date
+                        }
+                      }
                     }
                   }
                 }
-              }
-            }
-          }"""
+              }"""
 
-          payload = json.dumps({"query": query, "variables": {"login": username}}).encode()
-          req = urllib.request.Request(
-              "https://api.github.com/graphql",
-              data=payload,
-              headers={"Authorization": f"token {token}", "Content-Type": "application/json"}
-          )
-          try:
-              with urllib.request.urlopen(req) as resp:
-                  data = json.loads(resp.read())
-              cal = data["data"]["user"]["contributionsCollection"]["contributionCalendar"]
-              total = cal["totalContributions"]
+              all_days = []   # list of (date_str, count)
+              total_all_time = 0
 
-              # Flatten all days sorted
-              days = []
-              for week in cal["weeks"]:
-                  for day in week["contributionDays"]:
-                      days.append((day["date"], day["contributionCount"]))
-              days.sort(key=lambda x: x[0])
+              for year in range(start_year, current_year + 1):
+                  from_dt = f"{year}-01-01T00:00:00Z"
+                  to_dt   = f"{year}-12-31T23:59:59Z"
+                  data = graphql(cal_q, {"login": username, "from": from_dt, "to": to_dt})
+                  cal  = data["data"]["user"]["contributionsCollection"]["contributionCalendar"]
+                  total_all_time += cal["totalContributions"]
+                  for week in cal["weeks"]:
+                      for day in week["contributionDays"]:
+                          all_days.append((day["date"], day["contributionCount"]))
+                  print(f"  {year}: {cal['totalContributions']} contributions")
 
-              # Compute current streak (from today backwards)
+              # Deduplicate and sort
+              all_days = sorted(set(all_days), key=lambda x: x[0])
+
               today = datetime.date.today().isoformat()
+
+              # Current streak: walk backwards from today
               current = 0
-              for date, count in reversed(days):
+              for date, count in reversed(all_days):
                   if date > today:
                       continue
                   if count > 0:
@@ -194,22 +217,26 @@ jobs:
                   else:
                       break
 
-              # Compute longest streak
+              # Longest streak: single pass
               longest = 0
               run = 0
-              for _, count in days:
+              for _, count in all_days:
                   if count > 0:
                       run += 1
                       longest = max(longest, run)
                   else:
                       run = 0
 
-              print(f"Total: {total}, Current streak: {current}, Longest: {longest}")
+              print(f"All-time total: {total_all_time:,}, Current streak: {current}, Longest: {longest}")
+
               with open(os.environ["GITHUB_ENV"], "a") as f:
                   f.write(f"STREAK_CURRENT={current}\n")
                   f.write(f"STREAK_LONGEST={longest}\n")
-                  f.write(f"STREAK_TOTAL={total}\n")
+                  f.write(f"STREAK_TOTAL={total_all_time}\n")
+
           except Exception as e:
+              import traceback
+              traceback.print_exc()
               print(f"Streak fetch failed: {e}")
               with open(os.environ["GITHUB_ENV"], "a") as f:
                   f.write("STREAK_CURRENT=0\nSTREAK_LONGEST=0\nSTREAK_TOTAL=0\n")
