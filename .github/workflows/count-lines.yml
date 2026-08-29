@@ -424,17 +424,15 @@ jobs:
               # Remove all existing langN_* elements
               to_remove = []
               for el in root.iter():
-                  eid = el.get("id", "")
+                  eid = el.get("id") or ""
                   if re.match(r"lang\d+_(name|dots|lines|pct)$", eid):
                       to_remove.append(el)
               for el in to_remove:
-                  parent = root.find(f".//*[@id='{el.get('id')}']/..")
-                  if parent is None:
-                      # find parent by iterating
-                      for p in root.iter():
-                          if el in list(p):
-                              parent = p
-                              break
+                  parent = None
+                  for p in root.iter():
+                      if el in list(p):
+                          parent = p
+                          break
                   if parent is not None:
                       parent.remove(el)
 
