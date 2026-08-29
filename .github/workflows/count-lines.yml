@@ -118,18 +118,16 @@ jobs:
 
           # Sort all languages by line count, write top 15 to file
           if [ "$total_code" -gt 0 ]; then
+            # Write two parallel files: one with "lines|norm_key" and one with "norm_key|display_name"
             for norm in "${!lang_lines[@]}"; do
-              echo "${lang_lines[$norm]} $norm ${lang_display[$norm]}"
-            done | sort -rn -k1 | head -15 > top_langs_raw.txt
+              echo "${lang_lines[$norm]}|${norm}|${lang_display[$norm]}"
+            done | sort -t'|' -rn -k1 | head -15 > top_langs_raw.txt
 
             echo "=== Top Languages ==="
             cat top_langs_raw.txt
 
             rank=1
-            while IFS= read -r line; do
-              lines=$(echo "$line" | awk '{print $1}')
-              norm=$(echo "$line" | awk '{print $2}')
-              display=$(echo "$line" | awk '{$1=$2=""; print $0}' | sed 's/^ *//')
+            while IFS='|' read -r lines norm display; do
               pct=$(awk "BEGIN {printf \"%.1f\", ($lines / $total_code) * 100}")
               echo "LANG${rank}_NAME=$display" >> $GITHUB_ENV
               echo "LANG${rank}_LINES=$lines" >> $GITHUB_ENV
