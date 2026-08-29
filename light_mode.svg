@@ -54,7 +54,7 @@
   <text x="30" y="222" class="section-title">GitHub Statistics</text>
   <text x="50" y="256" class="label">Total Commits</text>
   <text id="commit_data_dots" x="210" y="256" class="dots">. </text>
-  <text id="commit_data" x="760" y="256" class="value" text-anchor="end">3,068</text>
+  <text id="commit_data" x="760" y="256" class="value" text-anchor="end">3,203</text>
   <text x="50" y="284" class="label">Total Stars</text>
   <text id="star_data_dots" x="210" y="284" class="dots"> ......... </text>
   <text id="star_data" x="760" y="284" class="value" text-anchor="end">81</text>
@@ -81,7 +81,7 @@
   <text x="400" y="494" class="streak-lbl" text-anchor="middle">Longest Streak (days)</text>
   <!-- Total contributions box -->
   <rect x="530" y="436" width="220" height="72" rx="8" fill="#F6F8FA" stroke="#D0D7DE" stroke-width="1.5"/>
-  <text id="streak_total" x="640" y="474" class="streak-val" text-anchor="middle">3,200</text>
+  <text id="streak_total" x="640" y="474" class="streak-val" text-anchor="middle">3,203</text>
   <text x="640" y="494" class="streak-lbl" text-anchor="middle">Total Contributions</text>
   <line x1="30" y1="526" x2="830" y2="526" stroke="#D0D7DE" stroke-width="1.5"/>
 
@@ -89,16 +89,16 @@
   <text x="30" y="560" class="section-title">Lines of Code</text>
   <text x="50" y="594" class="label">Total LOC</text>
   <text id="loc_data_dots" x="210" y="594" class="dots">.................................</text>
-  <text id="loc_data" x="760" y="594" class="value" text-anchor="end">342,381</text>
+  <text id="loc_data" x="760" y="594" class="value" text-anchor="end">342,447</text>
   <text x="50" y="622" class="label">Lines Added</text>
   <text id="loc_add_dots" x="210" y="622" class="dots">.................................</text>
-  <text id="loc_add" x="760" y="622" class="accent" text-anchor="end">1,103,719</text>
+  <text id="loc_add" x="760" y="622" class="accent" text-anchor="end">1,103,834</text>
   <text x="50" y="650" class="label">Lines Deleted</text>
   <text id="loc_del_dots" x="210" y="650" class="dots">.................................</text>
-  <text id="loc_del" x="760" y="650" class="accent" text-anchor="end">693,598</text>
+  <text id="loc_del" x="760" y="650" class="accent" text-anchor="end">693,636</text>
   <text x="50" y="678" class="label">Lines Changed</text>
   <text id="loc_changed_dots" x="210" y="678" class="dots">.................................</text>
-  <text id="loc_changed" x="760" y="678" class="accent" text-anchor="end">1,797,317</text>
+  <text id="loc_changed" x="760" y="678" class="accent" text-anchor="end">1,797,470</text>
   <text x="30" y="698" class="subheader">Across all 59 repositories</text>
   <line x1="30" y1="716" x2="830" y2="716" stroke="#D0D7DE" stroke-width="1.5"/>
 
@@ -118,7 +118,7 @@
 
   <text id="lang3_name" x="50" y="840" class="label">Markdown</text>
   <text id="lang3_dots" x="210" y="840" class="dots">.................................</text>
-  <text id="lang3_lines" x="680" y="840" class="value" text-anchor="end">17,177</text>
+  <text id="lang3_lines" x="680" y="840" class="value" text-anchor="end">17,175</text>
   <text id="lang3_pct" x="690" y="840" class="lang-pct">(5.0%)</text>
 
   <text id="lang4_name" x="50" y="868" class="label">HTML</text>
@@ -143,7 +143,7 @@
 
   <text id="lang8_name" x="50" y="980" class="label">YAML</text>
   <text id="lang8_dots" x="210" y="980" class="dots">.................................</text>
-  <text id="lang8_lines" x="680" y="980" class="value" text-anchor="end">1,268</text>
+  <text id="lang8_lines" x="680" y="980" class="value" text-anchor="end">1,336</text>
   <text id="lang8_pct" x="690" y="980" class="lang-pct">(0.4%)</text>
 
   <text id="lang9_name" x="50" y="1008" class="label">Unity-Prefab</text>
@@ -195,5 +195,5 @@
 
   <!-- ── FOOTER ── -->
   <text x="30" y="1380" class="footer">Auto-updated daily via GitHub Actions</text>
-  <text id="last_updated" x="830" y="1380" class="footer" text-anchor="end">Last updated: 2026-08-29 17:14 UTC</text>
+  <text id="last_updated" x="830" y="1380" class="footer" text-anchor="end">Last updated: 2026-08-29 17:19 UTC</text>
 </svg>
