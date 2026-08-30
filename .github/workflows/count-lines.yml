@@ -373,11 +373,10 @@ jobs:
           print(f"Total languages to render: {len(langs)}")
 
           SVG_NS   = "http://www.w3.org/2000/svg"
-          XLINK_NS = "http://www.w3.org/1999/xlink"
 
-          # Row height and starting Y for language section
-          ROW_H    = 28
-          LANG_Y0  = 784   # y of first lang row (text baseline)
+          # Layout constants
+          LANG_Y0  = 690   # y-baseline of first lang row (matches section starting ~y=656 title)
+          ROW_H    = 28    # pixels between lang rows
 
           def update_svg(filename, is_dark):
               tree = etree.parse(filename)
@@ -387,11 +386,6 @@ jobs:
                   el = root.find(f".//*[@id='{eid}']")
                   if el is not None:
                       el.text = str(text)
-
-              def set_attr(eid, attr, val):
-                  el = root.find(f".//*[@id='{eid}']")
-                  if el is not None:
-                      el.set(attr, str(val))
 
               # GitHub stats
               set_id("commit_data",   gh_commits)
@@ -428,99 +422,123 @@ jobs:
                   if re.match(r"lang\d+_(name|dots|lines|pct)$", eid):
                       to_remove.append(el)
               for el in to_remove:
-                  parent = None
                   for p in root.iter():
                       if el in list(p):
-                          parent = p
+                          p.remove(el)
                           break
-                  if parent is not None:
-                      parent.remove(el)
 
-              # Calculate new SVG height
-              # Fixed sections height up to lang title: 750px (title at y=750)
-              # Then rows start at LANG_Y0=784, each row 28px
-              # After langs: Tech Stack (~170px) + footer (~100px) = 270px
-              lang_section_h = len(langs) * ROW_H
-              divider_y      = LANG_Y0 - 34 + lang_section_h + 24   # divider after last lang row
-              techstack_y    = divider_y + 34
-              ts_web_y       = techstack_y + 34 + 28
-              ts_hw_y        = ts_web_y + 28
-              divider2_y     = ts_hw_y + 22
-              footer_y       = divider2_y + 34
-              total_h        = footer_y + 40
+              # ── Calculate new layout from langs downward ──
+              # lang rows: LANG_Y0 to LANG_Y0 + (n-1)*ROW_H
+              last_lang_y   = LANG_Y0 + (len(langs) - 1) * ROW_H if langs else LANG_Y0
+              divider1_y    = last_lang_y + 24    # divider after language section
+              techstack_y   = divider1_y  + 34    # "Tech Stack" title
+              ts_lang_y     = techstack_y + 34    # Languages row
+              ts_web_y      = ts_lang_y   + 28    # Web row
+              ts_hw_y       = ts_web_y    + 28    # Hardware row
+              divider2_y    = ts_hw_y     + 22    # divider after Tech Stack
+              discord_y     = divider2_y  + 34    # "Discord Presence" title
+              dot_cy        = discord_y   + 32    # status dot cy
+              status_y      = dot_cy              # status text y (aligned to dot)
+              activity_y    = discord_y   + 66    # Activity row
+              spotify_y     = discord_y   + 94    # Spotify row
+              divider3_y    = discord_y   + 116   # divider after Discord
+              footer_y      = divider3_y  + 38    # Footer text
+              total_h       = footer_y    + 20    # total SVG height
 
+              # Update SVG dimensions
               root.set("height", str(total_h))
               root.set("viewBox", f"0 0 860 {total_h}")
-
-              # Update background rect height
               for el in root.iter(f"{{{SVG_NS}}}rect"):
                   if el.get("width") == "860" and el.get("rx") == "10":
                       el.set("height", str(total_h))
                       break
 
-              # Find the parent group/svg to append to
+              line_col = "#21262D" if is_dark else "#D0D7DE"
+
+              # ── Update divider line positions ──
+              # We identify dividers by their old approximate y and update them
+              DIVIDER_MAP = {}
+              dividers = [el for el in root.iter(f"{{{SVG_NS}}}line")
+                          if el.get("x1") == "30" and el.get("x2") == "830"]
+              # Sort by current y1
+              dividers.sort(key=lambda el: int(el.get("y1", "0")))
+              # Expected dividers (in order, after Languages section):
+              # divider after languages, after tech stack, after discord, footer area
+              # We find dividers with y1 >= 700 (after lang section start)
+              post_lang_dividers = [el for el in dividers if int(el.get("y1", "0")) >= 700]
+              targets = [divider1_y, divider2_y, divider3_y]
+              for i, el in enumerate(post_lang_dividers[:3]):
+                  y = targets[i]
+                  el.set("y1", str(y))
+                  el.set("y2", str(y))
+                  el.set("stroke", line_col)
+
+              # ── Update Tech Stack text positions ──
+              def update_section_text(search_text, new_y):
+                  for el in root.iter(f"{{{SVG_NS}}}text"):
+                      if el.text and search_text in el.text:
+                          el.set("y", str(new_y))
+                          return True
+                  return False
+
+              update_section_text("Tech Stack",                 techstack_y)
+              update_section_text("Python  •  TypeScript",      ts_lang_y)
+              update_section_text("HTML  •  CSS",               ts_web_y)
+              update_section_text("Arduino  •  ESP32",          ts_hw_y)
+
+              # ── Update Discord Presence section positions ──
+              update_section_text("Discord Presence",           discord_y)
+              update_section_text("Auto-updated daily",         footer_y)
+
+              # Status dot
+              dot_el = root.find(".//*[@id='discord_status_dot']")
+              if dot_el is not None:
+                  dot_el.set("cy", str(dot_cy))
+
+              # Status text
+              status_el = root.find(".//*[@id='discord_status']")
+              if status_el is not None:
+                  status_el.set("y", str(dot_cy + 5))
+
+              # Activity label + value
+              for el in root.iter(f"{{{SVG_NS}}}text"):
+                  if el.text == "Activity":
+                      el.set("y", str(activity_y))
+              act_el = root.find(".//*[@id='discord_activity']")
+              if act_el is not None:
+                  act_el.set("y", str(activity_y))
+
+              # Spotify label + value
+              for el in root.iter(f"{{{SVG_NS}}}text"):
+                  if el.text == "Spotify":
+                      el.set("y", str(spotify_y))
+              sp_el = root.find(".//*[@id='discord_spotify']")
+              if sp_el is not None:
+                  sp_el.set("y", str(spotify_y))
+
+              # ── Write language rows ──
               svg_root = root
-
-              line_col  = "#21262D" if is_dark else "#D0D7DE"
-              label_col = "#7EE787" if is_dark else "#1A7F37"
-              value_col = "#E6EDF3" if is_dark else "#1F2328"
-              dots_col  = "#484F58" if is_dark else "#D0D7DE"
-              pct_col   = "#8B949E" if is_dark else "#656D76"
-
               for i, (name, lines, pct) in enumerate(langs):
                   y = LANG_Y0 + i * ROW_H
 
-                  def make_text(tid, x, y, cls, text, anchor=None):
+                  def make_text(tid, x, yy, cls, text, anchor=None):
                       el = etree.SubElement(svg_root, f"{{{SVG_NS}}}text")
                       el.set("id", tid)
                       el.set("x", str(x))
-                      el.set("y", str(y))
+                      el.set("y", str(yy))
                       el.set("class", cls)
                       if anchor:
                           el.set("text-anchor", anchor)
                       el.text = text
                       return el
 
-                  make_text(f"lang{i+1}_name",  50,  y, "label", name)
-                  make_text(f"lang{i+1}_dots",  210, y, "dots",  ".................................")
-                  make_text(f"lang{i+1}_lines", 680, y, "value", lines, anchor="end")
+                  make_text(f"lang{i+1}_name",  50,  y, "label",    name)
+                  make_text(f"lang{i+1}_dots",  210, y, "dots",     ".................................")
+                  make_text(f"lang{i+1}_lines", 680, y, "value",    lines, anchor="end")
                   make_text(f"lang{i+1}_pct",   690, y, "lang-pct", pct)
 
-              # Update divider lines and Tech Stack section positions
-              for el in root.iter(f"{{{SVG_NS}}}line"):
-                  x1 = el.get("x1", "")
-                  x2 = el.get("x2", "")
-                  if x1 == "30" and x2 == "830":
-                      y1 = int(el.get("y1", "0"))
-                      # The divider after languages section (originally at 1200)
-                      if 1096 <= y1 <= 1116:
-                          el.set("y1", str(divider_y))
-                          el.set("y2", str(divider_y))
-                      # The divider after Tech Stack (originally at 1252)
-                      elif 1246 <= y1 <= 1258:
-                          el.set("y1", str(divider2_y))
-                          el.set("y2", str(divider2_y))
-
-              # Update Tech Stack text positions
-              for el in root.iter(f"{{{SVG_NS}}}text"):
-                  y_attr = el.get("y", "")
-                  try:
-                      y_val = int(y_attr)
-                  except:
-                      continue
-                  if y_val == 1140:
-                      el.set("y", str(techstack_y))
-                  elif y_val == 1174:
-                      el.set("y", str(techstack_y + 34))
-                  elif y_val == 1202:
-                      el.set("y", str(techstack_y + 62))
-                  elif y_val == 1230:
-                      el.set("y", str(techstack_y + 90))
-                  elif y_val == 1286:
-                      el.set("y", str(footer_y))
-
               tree.write(filename, encoding="utf-8", xml_declaration=True)
-              print(f"✅ Updated {filename} — {len(langs)} language rows, height={total_h}px")
+              print(f"✅ Updated {filename} — {len(langs)} lang rows, height={total_h}px")
 
           update_svg("light_mode.svg", is_dark=False)
           update_svg("dark_mode.svg",  is_dark=True)
