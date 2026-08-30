@@ -9,6 +9,94 @@ from lxml import etree
 
 HEADERS = {'authorization': 'token ' + os.environ['ACCESS_TOKEN']}
 USER_NAME = os.environ['USER_NAME']
+DISCORD_USER_ID = '1147221423815938179'
+LANYARD_KV_KEY = os.environ.get('DC', '')  # KV API key stored as repo secret
+
+
+STATUS_COLORS = {
+    'online':  '#23d18b',
+    'idle':    '#f0b232',
+    'dnd':     '#f04747',
+    'offline': '#747f8d',
+}
+STATUS_LABELS = {
+    'online':  'Online',
+    'idle':    'Idle',
+    'dnd':     'Do Not Disturb',
+    'offline': 'Offline',
+}
+
+
+def get_discord_presence():
+    """Fetch live Discord presence via Lanyard REST API."""
+    headers = {}
+    if LANYARD_KV_KEY:
+        headers['Authorization'] = LANYARD_KV_KEY
+    try:
+        resp = requests.get(
+            f'https://api.lanyard.rest/v1/users/{DISCORD_USER_ID}',
+            headers=headers,
+            timeout=10,
+        )
+        if resp.status_code != 200:
+            raise Exception(f'Lanyard returned {resp.status_code}')
+        payload = resp.json()
+        if not payload.get('success'):
+            raise Exception('Lanyard success=false')
+        data = payload['data']
+    except Exception as e:
+        print(f'⚠️  Lanyard fetch failed: {e}')
+        return {
+            'status':       'offline',
+            'status_color': STATUS_COLORS['offline'],
+            'status_label': STATUS_LABELS['offline'],
+            'activity':     '—',
+            'spotify':      '—',
+        }
+
+    raw_status = data.get('discord_status', 'offline')
+    status_color = STATUS_COLORS.get(raw_status, STATUS_COLORS['offline'])
+    status_label = STATUS_LABELS.get(raw_status, raw_status.capitalize())
+
+    # ── Spotify ──────────────────────────────────────────────────────────────
+    spotify_text = '—'
+    if data.get('listening_to_spotify') and data.get('spotify'):
+        sp = data['spotify']
+        song   = sp.get('song', '')
+        artist = sp.get('artist', '')
+        if song and artist:
+            spotify_text = f'{song} — {artist}'
+        elif song:
+            spotify_text = song
+
+    # ── Activity ─────────────────────────────────────────────────────────────
+    # Priority: non-custom activities first, then custom status emoji+text
+    activity_text = '—'
+    activities = data.get('activities', [])
+    for act in activities:
+        act_type = act.get('type', -1)
+        if act_type == 4:  # Custom Status
+            emoji = (act.get('emoji') or {}).get('name', '')
+            state = act.get('state', '')
+            parts = [p for p in [emoji, state] if p]
+            if parts:
+                activity_text = ' '.join(parts)
+        elif act_type in (0, 1, 2, 3):  # Playing / Streaming / Listening / Watching
+            act_name = act.get('name', '')
+            details  = act.get('details', '')
+            if act_name and details:
+                activity_text = f'{act_name}: {details}'
+            elif act_name:
+                activity_text = act_name
+            break  # prefer the first non-custom activity
+
+    return {
+        'status':       raw_status,
+        'status_color': status_color,
+        'status_label': status_label,
+        'activity':     activity_text,
+        'spotify':      spotify_text,
+    }
 
 
 def query_github(query, variables):
@@ -74,13 +162,18 @@ def get_stats():
     }
 
 
+def _truncate(text, max_len):
+    """Truncate long strings so they don't overflow the SVG width."""
+    return text if len(text) <= max_len else text[:max_len - 1] + '…'
+
+
 def find_and_set(root, element_id, text):
     el = root.find(f".//*[@id='{element_id}']")
     if el is not None:
         el.text = str(text)
 
 
-def update_svg(filename, stats):
+def update_svg(filename, stats, presence):
     tree = etree.parse(filename)
     root = tree.getroot()
 
@@ -98,6 +191,16 @@ def update_svg(filename, stats):
     justified('contrib_data',  stats['contrib_repos'],  10)
     justified('follower_data', stats['followers'],      12)
 
+    # ── Discord Presence ──────────────────────────────────────────────────────
+    # Status dot: update fill attribute
+    dot_el = root.find(".//*[@id='discord_status_dot']")
+    if dot_el is not None:
+        dot_el.set('fill', presence['status_color'])
+
+    find_and_set(root, 'discord_status',   presence['status_label'])
+    find_and_set(root, 'discord_activity', _truncate(presence['activity'], 60))
+    find_and_set(root, 'discord_spotify',  _truncate(presence['spotify'],  60))
+
     # LOC, streak, languages are written by count-lines.yml — skip here
     tree.write(filename, encoding='utf-8', xml_declaration=True)
     print(f'✅ Updated {filename}')
@@ -113,6 +216,15 @@ if __name__ == '__main__':
   Contributed:     {stats['contrib_repos']:,}
   Followers:       {stats['followers']:,}
 """)
-    update_svg('dark_mode.svg', stats)
-    update_svg('light_mode.svg', stats)
+
+    print('Fetching Discord presence via Lanyard...')
+    presence = get_discord_presence()
+    print(f"""
+  Status:   {presence['status_label']}
+  Activity: {presence['activity']}
+  Spotify:  {presence['spotify']}
+""")
+
+    update_svg('dark_mode.svg', stats, presence)
+    update_svg('light_mode.svg', stats, presence)
     print('✅ All done!')
