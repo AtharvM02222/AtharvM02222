@@ -13,6 +13,6 @@
 
 <br/>
 
-[![Discord Presence](https://atharv-m02222.vercel.app/api/discord)](https://discord.com/users/1147221423815938179)
+[![Discord Presence](https://discord-presence-atharv.vercel.app/api/discord)](https://discord.com/users/1147221423815938179)
 
 </div>

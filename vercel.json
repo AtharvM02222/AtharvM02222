@@ -1,9 +1,14 @@
 {
-  "version": 2,
-  "routes": [
+  "functions": {
+    "api/**/*.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [
     {
-      "src": "/api/discord",
-      "dest": "/api/discord.js"
+      "source": "/api/discord",
+      "destination": "/api/discord.js"
     }
   ]
 }
