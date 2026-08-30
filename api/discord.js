@@ -274,7 +274,7 @@ async function buildCard(data) {
   </defs>
 
   <!-- Card background -->
-  <rect width="${W}" height="${H}" rx="16" fill="#1e1f22"/>
+  <rect width="${W}" height="${H}" rx="16" fill="#010102"/>
 
   <!-- Avatar -->
   ${avatarData
