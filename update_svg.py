@@ -173,7 +173,7 @@ def find_and_set(root, element_id, text):
         el.text = str(text)
 
 
-def update_svg(filename, stats, presence):
+def update_svg(filename, stats):
     tree = etree.parse(filename)
     root = tree.getroot()
 
@@ -191,16 +191,6 @@ def update_svg(filename, stats, presence):
     justified('contrib_data',  stats['contrib_repos'],  10)
     justified('follower_data', stats['followers'],      12)
 
-    # ── Discord Presence ──────────────────────────────────────────────────────
-    # Status dot: update fill attribute
-    dot_el = root.find(".//*[@id='discord_status_dot']")
-    if dot_el is not None:
-        dot_el.set('fill', presence['status_color'])
-
-    find_and_set(root, 'discord_status',   presence['status_label'])
-    find_and_set(root, 'discord_activity', _truncate(presence['activity'], 60))
-    find_and_set(root, 'discord_spotify',  _truncate(presence['spotify'],  60))
-
     # LOC, streak, languages are written by count-lines.yml — skip here
     tree.write(filename, encoding='utf-8', xml_declaration=True)
     print(f'✅ Updated {filename}')
@@ -217,14 +207,6 @@ if __name__ == '__main__':
   Followers:       {stats['followers']:,}
 """)
 
-    print('Fetching Discord presence via Lanyard...')
-    presence = get_discord_presence()
-    print(f"""
-  Status:   {presence['status_label']}
-  Activity: {presence['activity']}
-  Spotify:  {presence['spotify']}
-""")
-
-    update_svg('dark_mode.svg', stats, presence)
-    update_svg('light_mode.svg', stats, presence)
+    update_svg('dark_mode.svg', stats)
+    update_svg('light_mode.svg', stats)
     print('✅ All done!')
