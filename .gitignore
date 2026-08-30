@@ -8,6 +8,10 @@ env/
 venv/
 ENV/
 
+# Node
+node_modules/
+.vercel/
+
 # macOS
 .DS_Store
 .AppleDouble

@@ -13,6 +13,6 @@
 
 <br/>
 
-[![Discord Presence](https://lanyard.cnrad.dev/api/1147221423815938179?theme=dark&borderRadius=22&idleMessage=%22i%20am%20stupid%22%3B&bg=0d0d0d&showDisplayName=true)](https://discord.com/users/1147221423815938179)
+[![Discord Presence](https://atharvm02222.vercel.app/api/discord)](https://discord.com/users/1147221423815938179)
 
 </div>
