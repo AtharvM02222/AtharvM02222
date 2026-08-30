@@ -1,5 +1,5 @@
+[![Discord Presence](https://discord-presence-atharv.vercel.app/api/discord)](https://discord.com/users/1147221423815938179)
 <picture>
-  [![Discord Presence](https://discord-presence-atharv.vercel.app/api/discord)](https://discord.com/users/1147221423815938179)
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/main/dark_mode.svg">
   <img alt="Atharv Mandlavdiya's GitHub Profile README" src="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/main/light_mode.svg">
 </picture>
