@@ -557,7 +557,6 @@ jobs:
               tree.write(filename, encoding="utf-8", xml_declaration=True)
               print(f"✅ Updated {filename} — {len(langs)} lang rows, height={total_h}px")
 
-          update_svg("light_mode.svg", is_dark=False)
           update_svg("dark_mode.svg",  is_dark=True)
           PYEOF
 
@@ -594,7 +593,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions[bot]"
-          git add README.md light_mode.svg dark_mode.svg
+          git add README.md dark_mode.svg
 
           if git diff --quiet && git diff --staged --quiet; then
             echo "No changes to commit"
