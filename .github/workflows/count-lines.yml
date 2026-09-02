@@ -24,12 +24,11 @@ jobs:
           sudo apt-get install -y cloc jq python3-lxml
 
       - name: Get all repos
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ -n "${{ secrets.PAT_TOKEN }}" ]; then
-            TOKEN="${{ secrets.PAT_TOKEN }}"
-          else
-            TOKEN="${{ secrets.GITHUB_TOKEN }}"
-          fi
+          TOKEN="${PAT_TOKEN:-$GITHUB_TOKEN}"
 
           curl -s -H "Authorization: token $TOKEN" \
                -H "Accept: application/vnd.github.v3+json" \
@@ -53,8 +52,10 @@ jobs:
 
       - name: Clone and count lines with language stats
         env:
-          TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          TOKEN="${PAT_TOKEN:-$GITHUB_TOKEN}"
           mkdir -p temp_repos
 
           # Clone all repos and run cloc, saving JSON output per repo
@@ -151,12 +152,14 @@ jobs:
 
       - name: Fetch contribution streak
         env:
-          TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 << 'PYEOF'
           import urllib.request, json, os, datetime
 
-          token    = os.environ.get("TOKEN", "")
+          # Prefer PAT_TOKEN for GraphQL (GITHUB_TOKEN has limited GraphQL access)
+          token = os.environ.get("PAT_TOKEN") or os.environ.get("GITHUB_TOKEN") or ""
           username = "AtharvM02222"
 
           def graphql(query, variables):
@@ -164,10 +167,14 @@ jobs:
               req = urllib.request.Request(
                   "https://api.github.com/graphql",
                   data=payload,
-                  headers={"Authorization": f"token {token}", "Content-Type": "application/json"}
+                  headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
               )
               with urllib.request.urlopen(req) as resp:
-                  return json.loads(resp.read())
+                  raw = resp.read()
+              result = json.loads(raw)
+              if "errors" in result:
+                  raise RuntimeError(f"GraphQL errors: {result['errors']}")
+              return result
 
           try:
               # Step 1: get account creation year
@@ -218,16 +225,24 @@ jobs:
               all_days = sorted(set(all_days), key=lambda x: x[0])
 
               today = datetime.date.today().isoformat()
+              yesterday = (datetime.date.today() - datetime.timedelta(days=1)).isoformat()
 
               # Current streak: walk backwards from today
+              # Allow today to have 0 (day not over yet) — start counting from yesterday if today is 0
               current = 0
+              started = False
               for date, count in reversed(all_days):
                   if date > today:
                       continue
+                  # Skip today if it has no contributions yet (day may not be over)
+                  if date == today and count == 0:
+                      continue
                   if count > 0:
                       current += 1
+                      started = True
                   else:
-                      break
+                      if started:
+                          break
 
               # Longest streak: single pass
               longest = 0
@@ -256,12 +271,13 @@ jobs:
 
       - name: Fetch GitHub stats
         env:
-          TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 << 'PYEOF'
           import urllib.request, json, os
 
-          token    = os.environ.get("TOKEN", "")
+          token    = os.environ.get("PAT_TOKEN") or os.environ.get("GITHUB_TOKEN") or ""
           username = "AtharvM02222"
 
           def graphql(query, variables):
@@ -269,10 +285,14 @@ jobs:
               req = urllib.request.Request(
                   "https://api.github.com/graphql",
                   data=payload,
-                  headers={"Authorization": f"token {token}", "Content-Type": "application/json"}
+                  headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
               )
               with urllib.request.urlopen(req) as resp:
-                  return json.loads(resp.read())
+                  raw = resp.read()
+              result = json.loads(raw)
+              if "errors" in result:
+                  raise RuntimeError(f"GraphQL errors: {result['errors']}")
+              return result
 
           try:
               q = """
