@@ -14,5 +14,17 @@
 
 <br/>
 
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+      <a href="https://discord.com/users/1147221423815938179">
+        <img src="https://discord-presence-atharv.vercel.app/api/discord" alt="Discord Presence" />
+      </a>
+    </td>
+    <td>
+      <img src="https://raw.githubusercontent.com/AtharvM02222/AtharvM02222/main/signature.svg" alt="Signature" />
+    </td>
+  </tr>
+</table>
 
 </div>
